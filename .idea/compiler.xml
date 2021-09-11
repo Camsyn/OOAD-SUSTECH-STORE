@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="uaa" />
+        <module name="test" />
+        <module name="chat" />
+        <module name="commons-spring-boot-starter" />
+        <module name="config" />
+        <module name="commons" />
+        <module name="gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="account-service" target="1.8" />
+      <module name="chat" target="1.8" />
+      <module name="commons" target="1.8" />
+      <module name="commons-spring-boot-starter" target="8" />
+      <module name="config" target="1.8" />
+      <module name="gateway" target="1.8" />
+      <module name="OOAD-SUSTECH-STORE" target="1.8" />
+      <module name="sustech-store" target="1.8" />
+      <module name="test" target="1.8" />
+      <module name="uaa" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

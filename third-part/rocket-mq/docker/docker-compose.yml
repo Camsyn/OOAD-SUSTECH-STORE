@@ -1,0 +1,81 @@
+version: '3.5'
+services:
+  rmqnamesrv:
+    image: foxiswho/rocketmq:server
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+#      - 9876
+    volumes:
+      - ./data/logs:/opt/logs
+      - ./data/store:/opt/store
+#    network_mode: "host"
+    networks:
+      rmq:
+        aliases:
+          - rmqnamesrv
+
+
+#  docker run -d -p 10911:10911 -p 10909:10909\
+#  --name rmqbroker --link rmqserver:namesrv\
+#  -e "NAMESRV_ADDR=namesrv:9876" -e "JAVA_OPTS=-Duser.home=/opt"\
+#  -e "JAVA_OPT_EXT=-server -Xms128m -Xmx128m"\
+#  foxiswho/rocketmq:broker-4.5.1
+#
+
+#  rmqbroker:
+#    image: foxiswho/rocketmq:broker
+#    container_name: rmqbroker
+#    ports:
+#      - 10909:10909
+#      - 10911:10911
+##      - 10909
+##      - 10911
+#    volumes:
+#      - ./data/logs:/opt/logs
+#      - ./data/store:/opt/store
+#      - ./data/brokerconf/broker.conf:/etc/rocketmq/broker.conf
+#    links:
+#      - rmqnamesrv:namesrv
+#    environment:
+#      NAMESRV_ADDR: "rmqnamesrv:9876"
+#      JAVA_OPTS: " -Duser.home=/opt"
+#      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
+#    command: mqbroker -c /etc/rocketmq/broker.conf
+#    depends_on:
+#      - rmqnamesrv
+##    network_mode: "host"
+#
+#    networks:
+#      rmq:
+#        aliases:
+#          - rmqbroker
+
+
+#  docker run -d --name rmqconsole -p 8180:8080 --link rmqserver:namesrv\
+#  -e "JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876\
+#  -Dcom.rocketmq.sendMessageWithVIPChannel=false"\
+#  -t styletang/rocketmq-console-ng
+
+  rmqconsole:
+    image: styletang/rocketmq-console-ng
+    container_name: rmqconsole
+    ports:
+      - 8080:8080
+#    links:
+#      - rmqnamesrv:namesrv
+    environment:
+      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    depends_on:
+      - rmqnamesrv
+
+#    network_mode: "host"
+    networks:
+      rmq:
+        aliases:
+          - rmqconsole
+
+networks:
+  rmq:
+    name: rmq
+    driver: bridge

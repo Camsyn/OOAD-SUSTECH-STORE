@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  rmqconsole:
+    image: styletang/rocketmq-console-ng
+    container_name: rmqconsole
+    ports:
+      - 8080:8080
+    environment:
+      JAVA_OPTS: "-Drocketmq.config.namesrvAddr=localhost:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+

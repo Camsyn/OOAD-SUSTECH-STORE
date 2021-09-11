@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "rocketmq.producer.isOnOff",
+      "type": "java.lang.String",
+      "description": "Description for rocketmq.producer.isOnOff."
+  }
+] }

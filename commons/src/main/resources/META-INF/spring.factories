@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    top.camsyn.store.commons.config.RedisConfiguration ,\
+    top.camsyn.store.commons.config.MybatisPlusConfig

@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  rmqbroker:
+    image: foxiswho/rocketmq:broker
+    container_name: rmqbroker
+
+    #      - 10909
+    #      - 10911
+    volumes:
+      - ./data/logs:/opt/logs
+      - ./data/store:/opt/store
+      - ./data/brokerconf/broker.conf:/etc/rocketmq/broker.conf
+    environment:
+      NAMESRV_ADDR: "10.17.92.188:9876"
+      JAVA_OPTS: " -Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
+    network_mode: "host"
+    command: mqbroker -c /etc/rocketmq/broker.conf
