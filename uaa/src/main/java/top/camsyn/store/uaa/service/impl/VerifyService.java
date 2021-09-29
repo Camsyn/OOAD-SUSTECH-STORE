@@ -1,7 +1,6 @@
 package top.camsyn.store.uaa.service.impl;
 
-import org.springframework.cache.annotation.Cacheable;
-import top.camsyn.store.commons.entity.User;
+import top.camsyn.store.commons.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.repository.RedisRepository;
@@ -19,7 +18,7 @@ public class VerifyService {
     private RedisRepository redisRepository;;
 
 
-    public String generateVerifyId(User user){
+    public String generateVerifyId(Account user){
         final String vId = UUID.randomUUID().toString();
         redisRepository.setExpire(vId, user,6, TimeUnit.HOURS);
         return vId;
@@ -39,7 +38,7 @@ public class VerifyService {
 
 
     public boolean verifyUserExist(int sid) {
-        return accountService.findBySid(sid) != null;
+        return accountService.isSidExist(sid);
     }
 
     public boolean verifyUserExist(String email) {

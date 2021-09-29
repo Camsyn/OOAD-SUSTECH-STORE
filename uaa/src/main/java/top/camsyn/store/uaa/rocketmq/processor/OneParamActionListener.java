@@ -8,7 +8,6 @@ import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
-import top.camsyn.store.commons.entity.User;
 
 import java.util.List;
 import java.util.function.Consumer;

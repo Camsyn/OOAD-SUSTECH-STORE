@@ -1,16 +1,16 @@
 package top.camsyn.store.uaa.service;
 
-import top.camsyn.store.commons.entity.User;
+import top.camsyn.store.commons.entity.Account;
 import top.camsyn.store.uaa.model.AuthUser;
 
 public interface IAccountService {
 
 
-    User getLoginUser(AuthUser user);
+    Account getLoginUser(AuthUser user);
 
-    User getLoginUser(String id);
+    Account getLoginUser(String id);
 
-    User findBySid(int sid);
+    Account findBySid(int sid);
 
-    User findByEmail(String email);
+    Account findByEmail(String email);
 }

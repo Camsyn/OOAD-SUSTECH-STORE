@@ -30,6 +30,9 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> of(T data, Integer code, String msg) {
         return new Result<>(data, code, msg);
     }
+    public static <T> Result<T> of(Integer code, String msg) {
+        return new Result<>(null, code, msg);
+    }
 
     public static <T> Result<T> failed(String msg) {
         return of(null, CodeEnum.ERROR.getCode(), msg);

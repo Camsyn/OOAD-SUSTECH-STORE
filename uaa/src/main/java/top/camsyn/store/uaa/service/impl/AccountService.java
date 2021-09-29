@@ -2,13 +2,11 @@ package top.camsyn.store.uaa.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.cache.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import top.camsyn.store.commons.entity.User;
+import top.camsyn.store.commons.entity.Account;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 import top.camsyn.store.uaa.mapper.UserMapper;
@@ -16,9 +14,10 @@ import top.camsyn.store.uaa.model.AuthUser;
 import top.camsyn.store.uaa.service.IAccountService;
 import top.camsyn.store.uaa.util.VerifyUtils;
 
-
+@Slf4j
 @Service
-public class AccountService extends SuperServiceImpl<UserMapper, User> implements IAccountService {
+@CacheConfig(cacheNames = "uaa")
+public class AccountService extends SuperServiceImpl<UserMapper, Account> implements IAccountService {
 
 //    public boolean isAccountExist(String username){
 //        return userMapper.selectCount()
@@ -30,13 +29,20 @@ public class AccountService extends SuperServiceImpl<UserMapper, User> implement
 
     @Caching(
             put = {
-                    @CachePut(value = "uaa", key = "targetClass.toString() + #p0.sid"),
-                    @CachePut(value = "uaa", key = "\"findBySid\"+#p0.sid"),
-                    @CachePut(value = "uaa", key = "\"findByEmail\"+#p0.email")
+                @CachePut(key = "targetClass.toString() + #p0.sid"),
+                @CachePut(key = "\"findBySid\"+#p0.sid"),
+                @CachePut(key = "\"findByEmail\"+#p0.email")
+            },
+            evict = {
+                @CacheEvict(key = "\"isSidExist\"+#p0.sid")
             }
     )
-    public User createAccount(User user) {
+    public Account createAccount(Account user) {
         try {
+            if (isSidExist(user.getSid())) {
+                log.info("账户已存在, 后面完善saveIdempotency方法后去除此判断");
+                return user;
+            }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             saveIdempotency(user, null, null, null, "以后填充");
         } catch (Exception e) {
@@ -46,36 +52,41 @@ public class AccountService extends SuperServiceImpl<UserMapper, User> implement
     }
 
     @Override
-    public User getLoginUser(AuthUser user) {
+    public Account getLoginUser(AuthUser user) {
         final String username = user.getUsername();
-        if (VerifyUtils.isSustechSid(username)){
+        if (VerifyUtils.isSustechSid(username)) {
             return findBySid(Integer.parseInt(username));
-        }else if (VerifyUtils.isSustechEmail(username)){
+        } else if (VerifyUtils.isSustechEmail(username)) {
             return findByEmail(username);
         }
         return null;
     }
 
     @Override
-    public User getLoginUser(String id) {
-        if (VerifyUtils.isSustechSid(id)){
+    public Account getLoginUser(String id) {
+        if (VerifyUtils.isSustechSid(id)) {
             return findBySid(Integer.parseInt(id));
-        }else {
+        } else {
             return findByEmail(id);
         }
 //        return null;
     }
 
-    @Cacheable(value = "uaa", key = "getMethodName() + #p0")
-    @Override
-    public User findBySid(int sid) {
-        return baseMapper.selectOne(new QueryWrapper<User>().eq("sid", sid));
+    @Cacheable(key = "getMethodName()+#p0")
+    public boolean isSidExist(int sid) {
+        return findBySid(sid) != null;
     }
 
-    @Cacheable(value = "uaa", key = "getMethodName() + #p0")
+    @Cacheable(key = "getMethodName() + #p0")
     @Override
-    public User findByEmail(String email) {
-        return baseMapper.selectOne(new QueryWrapper<User>().eq("email", email));
+    public Account findBySid(int sid) {
+        return baseMapper.selectOne(new QueryWrapper<Account>().eq("sid", sid));
+    }
+
+    @Cacheable(key = "getMethodName() + #p0")
+    @Override
+    public Account findByEmail(String email) {
+        return baseMapper.selectOne(new QueryWrapper<Account>().eq("email", email));
     }
 
     public boolean comparePassword(String originalPwd, String encryptedPwd) {

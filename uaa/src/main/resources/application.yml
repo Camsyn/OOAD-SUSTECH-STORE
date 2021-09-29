@@ -3,3 +3,5 @@ spring:
     show-sql: true
   session:
     store-type: redis
+  application:
+    name: uaa

@@ -8,7 +8,7 @@ import com.alibaba.rocketmq.remoting.exception.RemotingException;
 import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.camsyn.store.commons.entity.User;
+import top.camsyn.store.commons.entity.Account;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.uaa.constant.VerifyConstant;
 import top.camsyn.store.uaa.service.impl.VerifyService;
@@ -32,11 +32,11 @@ public class VerifyController {
     VerifyService verifyService;
 
     @GetMapping("/mail")
-    public Result<User> verifyMail(@RequestParam(name = "id") String vId) throws MQBrokerException, RemotingException, InterruptedException, MQClientException {
+    public Result<Account> verifyMail(@RequestParam(name = "id") String vId) throws MQBrokerException, RemotingException, InterruptedException, MQClientException {
         if (verifyService.verifyVidExist(vId)) {
             final Object content = verifyService.getUserByVerifyId(vId);
-            if (content instanceof User) {
-                final User user = (User) content;
+            if (content instanceof Account) {
+                final Account user = (Account) content;
                 final String jsonString = JSON.toJSONString(user);
                 Message message = new Message(VerifyConstant.VERIFY_TOPIC, VerifyConstant.VERIFY_MAIL_TAGS, jsonString.getBytes());
                 mqProducer.send(message);

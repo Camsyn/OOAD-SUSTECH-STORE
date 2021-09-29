@@ -7,7 +7,8 @@ package top.camsyn.store.commons.model;
 public enum CodeEnum {
     SUCCESS(0),
     ERROR(1),
-    PwdError(2);
+    LoginFail(2),
+    NoPermission(3);
 
     private Integer code;
     CodeEnum(Integer code){

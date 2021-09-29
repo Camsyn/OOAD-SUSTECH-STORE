@@ -9,16 +9,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="uaa" />
         <module name="test" />
+        <module name="auth" />
         <module name="chat" />
         <module name="commons-spring-boot-starter" />
+        <module name="authn" />
+        <module name="client2" />
         <module name="config" />
+        <module name="client1" />
         <module name="commons" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="account-service" target="1.8" />
+      <module name="auth" target="1.8" />
+      <module name="authn" target="1.8" />
       <module name="chat" target="1.8" />
+      <module name="client1" target="1.8" />
+      <module name="client2" target="1.8" />
       <module name="commons" target="1.8" />
       <module name="commons-spring-boot-starter" target="8" />
       <module name="config" target="1.8" />
