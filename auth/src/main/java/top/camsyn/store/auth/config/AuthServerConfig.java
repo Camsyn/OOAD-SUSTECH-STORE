@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
@@ -33,26 +35,51 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private TokenStore redisTokenStore;
 
+    @Autowired
+    private UserDetailsService userDetailService;
+
+    @Autowired
+    private ClientDetailsService clientDetailsService;
+
+    @Bean
+    AuthorizationServerTokenServices tokenServices() {
+        DefaultTokenServices services = new DefaultTokenServices();
+        services.setClientDetailsService(clientDetailsService);
+        services.setSupportRefreshToken(true);
+        services.setTokenStore(redisTokenStore);
+
+        return services;
+    }
+
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+
         endpoints.authenticationManager(authenticationManager)
-                .tokenStore(redisTokenStore)/*.tokenServices(tokenServices())*/;
+                .tokenServices(tokenServices())
+                /*.userDetailsService(userDetailService)*//*.tokenServices(tokenServices())*/;
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 //        clients.inMemory()
-//                .withClient("test")
-//                .secret(passwordEncoder.encode("camsyn-client"))
+//                .withClient("store")
+//                .secret(passwordEncoder.encode("123456"))
 //                .autoApprove(true)
-//                .redirectUris("http://localhost:8000/login")
 //                .scopes("all")
 //                .accessTokenValiditySeconds(7200)
-//                .authorizedGrantTypes("authorization_code");
+//                .authorizedGrantTypes("password","refresh_token");
         clients.jdbc(dataSource).passwordEncoder(passwordEncoder);
 
     }
-/*
+
+//    @Override
+//    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//        security.tokenKeyAccess("permitAll()")
+//                .allowFormAuthenticationForClients()
+////                .checkTokenAccess("isAuthenticated()")
+//        ;
+//    }
+    /*
     @Bean
     ClientDetailsService clientDetailsService() {
         final JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(dataSource);

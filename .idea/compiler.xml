@@ -16,6 +16,7 @@
         <module name="client2" />
         <module name="config" />
         <module name="client1" />
+        <module name="user" />
         <module name="commons" />
         <module name="gateway" />
       </profile>
@@ -35,6 +36,7 @@
       <module name="sustech-store" target="1.8" />
       <module name="test" target="1.8" />
       <module name="uaa" target="1.8" />
+      <module name="user" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

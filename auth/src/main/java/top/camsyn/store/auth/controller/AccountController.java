@@ -84,6 +84,7 @@ public class AccountController {
         }
         return Result.succeed("修改密码成功");
     }
+
     @RequestMapping("/modify/password/oldPassword")
     public Result publishModifyPasswordMsg(@RequestParam(name = "username") String username,
                                            @RequestParam("captcha") String captcha,

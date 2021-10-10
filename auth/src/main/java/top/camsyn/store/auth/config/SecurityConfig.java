@@ -57,15 +57,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(authProperties.loginPage, "/css/**", "/js/**", "/images/**");
+        web.ignoring().antMatchers(authProperties.loginPage, "/css/**", "/js/**", "/images/**","/oauth/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http
+            .requestMatchers()
             .antMatchers(authProperties.logoutProcessingUrl)
             .antMatchers(authProperties.loginProcessingUrl)
             .antMatchers("/oauth/authorize")
+        .and()
+            .authorizeRequests().antMatchers("/oauth/**").permitAll()
         .and()
             .authorizeRequests().anyRequest().authenticated()
         .and()
@@ -78,11 +81,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
             .logout().logoutUrl(authProperties.logoutProcessingUrl)
                 .logoutRequestMatcher(new AntPathRequestMatcher(authProperties.logoutProcessingUrl,"POST"))
-                .logoutSuccessHandler(logoutSuccessHandler).deleteCookies()
+                .logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID")
                 .clearAuthentication(true).invalidateHttpSession(true).permitAll()
         .and()
             .csrf().disable()
             .exceptionHandling().authenticationEntryPoint(authEntryPoint);
+
+
+//        http.requestMatchers()
+//                .antMatchers("/login")
+//                .antMatchers("/oauth/authorize")
+//                .and()
+//                .authorizeRequests().anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/custom-login.html")
+//                .loginProcessingUrl("/login")
+//                .permitAll()
+//                .and()
+//                .csrf().disable();
     }
 
     @Override

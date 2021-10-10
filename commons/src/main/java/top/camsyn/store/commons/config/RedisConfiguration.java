@@ -5,6 +5,7 @@ import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -16,6 +17,8 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import top.camsyn.store.commons.repository.RedisRepository;
 
 @Configuration
@@ -23,6 +26,8 @@ import top.camsyn.store.commons.repository.RedisRepository;
 //@EnableAutoConfiguration
 //@ComponentScan(value = "top.camsyn.store.commons.repository")
 public class RedisConfiguration {
+    @Autowired
+    RedisConnectionFactory redisConnectionFactory;
 
     @Bean(name = "redisTemplate<String,Object>")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
@@ -57,6 +62,12 @@ public class RedisConfiguration {
     @Bean(name = "redisRepository")
     public RedisRepository redisRepository(){
         return new RedisRepository();
+    }
+
+
+    @Bean
+    public TokenStore tokenStore(){
+        return new RedisTokenStore(redisConnectionFactory);
     }
 
 }
