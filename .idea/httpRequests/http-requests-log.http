@@ -1,0 +1,6 @@
+GET http://localhost:8001/auth/user
+
+<> 2021-09-26T201906.401.json
+
+###
+
