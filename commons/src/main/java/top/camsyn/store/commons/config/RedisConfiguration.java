@@ -64,10 +64,10 @@ public class RedisConfiguration {
         return new RedisRepository();
     }
 
-
-    @Bean
-    public TokenStore tokenStore(){
-        return new RedisTokenStore(redisConnectionFactory);
-    }
+//
+//    @Bean
+//    public TokenStore tokenStore(){
+//        return new RedisTokenStore(redisConnectionFactory);
+//    }
 
 }

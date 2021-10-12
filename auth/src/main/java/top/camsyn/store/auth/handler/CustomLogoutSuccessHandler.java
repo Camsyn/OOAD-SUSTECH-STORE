@@ -22,22 +22,22 @@ import java.io.PrintWriter;
 @Slf4j
 @Component
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
-    @Autowired
-    private TokenStore tokenStore;
+//    @Autowired
+//    private TokenStore tokenStore;
 
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        String accessToken = httpServletRequest.getHeader("authorization");
-        if(StringUtils.isNotBlank(accessToken)){
-            OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(accessToken.replace("Bearer ",""));
-            if(oAuth2AccessToken != null){
-                log.info("处理登出请求, 删除redisToken中的值");
-                tokenStore.removeAccessToken(oAuth2AccessToken);
-                OAuth2RefreshToken oAuth2RefreshToken = oAuth2AccessToken.getRefreshToken();
-                tokenStore.removeRefreshToken(oAuth2RefreshToken);
-                tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
-            }
-        }
+//        String accessToken = httpServletRequest.getHeader("authorization");
+//        if(StringUtils.isNotBlank(accessToken)){
+//            OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(accessToken.replace("Bearer ",""));
+//            if(oAuth2AccessToken != null){
+//                log.info("处理登出请求, 删除redisToken中的值");
+//                tokenStore.removeAccessToken(oAuth2AccessToken);
+//                OAuth2RefreshToken oAuth2RefreshToken = oAuth2AccessToken.getRefreshToken();
+//                tokenStore.removeRefreshToken(oAuth2RefreshToken);
+//                tokenStore.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
+//            }
+//        }
 
 
         httpServletResponse.setContentType("text/json;charset=utf-8");

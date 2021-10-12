@@ -26,18 +26,20 @@ import top.camsyn.store.auth.props.AuthProperties;
  * @author Chen_Kunqiu
  */
 @Configuration
-@EnableConfigurationProperties(AuthProperties.class)
+//@EnableConfigurationProperties(AuthProperties.class)
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    AuthProperties authProperties;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthProperties authProperties;
+//
+    @Autowired
+    private UserDetailsService userDetailsService;
+
 
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
@@ -49,15 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthEntryPoint authEntryPoint;
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+//    @Override
+//    @Bean
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(authProperties.loginPage, "/css/**", "/js/**", "/images/**","/oauth/**");
+        web.ignoring().antMatchers("/custom-login.html", "/css/**", "/js/**", "/images/**");
     }
 
     @Override
@@ -89,15 +91,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 //        http.requestMatchers()
-//                .antMatchers("/login")
+//                .antMatchers("/uaa/login")
 //                .antMatchers("/oauth/authorize")
 //                .and()
 //                .authorizeRequests().anyRequest().authenticated()
 //                .and()
 //                .formLogin()
 //                .loginPage("/custom-login.html")
-//                .loginProcessingUrl("/login")
+//                .loginProcessingUrl("/uaa/login")
 //                .permitAll()
+//                .and()
+//                .csrf().disable();
+
+//        http.requestMatchers()
+//                .antMatchers("/uaa/login")
+//                .antMatchers("/oauth/authorize")
+//                .and()
+//                .authorizeRequests().anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/custom-login.html")
+//                .loginProcessingUrl("/uaa/login")
+//                .permitAll()
+//                .and()
+//                .logout().logoutUrl("/uaa/logout").clearAuthentication(true).deleteCookies("JSESSIONID")
 //                .and()
 //                .csrf().disable();
     }
@@ -105,9 +122,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
-//                .withUser("sang")
-//                .password(passwordEncoder().encode("123"))
+//                .withUser("11911626")
+//                .password(passwordEncoder.encode("123456"))
 //                .roles("admin");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+
+
     }
+
 }

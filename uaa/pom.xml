@@ -2,16 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>top.camsyn.store</groupId>
     <artifactId>uaa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>uaa</name>
     <description>Demo project for Spring Boot</description>
 
-    <parent>
-        <groupId>top.camsyn.store</groupId>
-        <artifactId>sustech-store</artifactId>
-        <version>1.0.0</version>
-    </parent>
 
 
     <properties>
@@ -24,11 +20,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>top.camsyn.store</groupId>
-            <artifactId>commons-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
-        </dependency>
 
         <dependency>
             <groupId>javax.mail</groupId>
@@ -41,10 +32,14 @@
 <!--            <artifactId>spring-context-support</artifactId>-->
 <!--        </dependency>-->
 
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!--用户资格认证-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
         <dependency>
@@ -84,13 +79,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -111,7 +99,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>top.camsyn.store.uaa.UaaApplication</mainClass>
+                    <mainClass>com.example.uaa1.UaaApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -24,7 +24,7 @@ public class MailService {
 
     private static JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     private static final String verifyRegisterLinkInfo = "欢迎注册SUSTECH STORE账号, 请点击以下链接完成认证!\n" +
-            "http://camsyn.top:8001/verify/register?id=%s";
+            "http://camsyn.cn:8001/verify/register?id=%s";
     private static final String verifyPassWordModificationCaptcha = "你正在尝试修改SUSTECH STORE账户的密码, 请确认是本人的操作, 复制下面的验证码到修改密码页面完成验证\n" +
             "验证码: %s";
     private static final String verifyRegisterCodeInfo = "欢迎注册SUSTECH STORE账号, 以下是验证码, 请复制后填写到账户注册界面!\n" +

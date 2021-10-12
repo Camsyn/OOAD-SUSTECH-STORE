@@ -7,13 +7,13 @@
 //import org.springframework.security.oauth2.provider.token.TokenStore;
 //import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 //
-////@Configuration
-////public class RedisExtConfig {
-////    @Autowired
-////    RedisConnectionFactory redisConnectionFactory
-////            ;
-////    @Bean
-////    TokenStore tokenStore() {
-////        return new RedisTokenStore(redisConnectionFactory);
-////    }
-////}
+//@Configuration
+//public class RedisExtConfig {
+//    @Autowired
+//    RedisConnectionFactory redisConnectionFactory
+//            ;
+//    @Bean
+//    TokenStore tokenStore() {
+//        return new RedisTokenStore(redisConnectionFactory);
+//    }
+//}

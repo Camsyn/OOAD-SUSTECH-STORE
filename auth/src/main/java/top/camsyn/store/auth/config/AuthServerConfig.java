@@ -23,41 +23,42 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    AuthenticationManager authenticationManager;
+//    @Autowired
+//    AuthenticationManager authenticationManager;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private DataSource dataSource;
+//
+////    @Autowired
+////    private TokenStore redisTokenStore;
+//
+//    @Autowired
+//    private UserDetailsService userDetailService;
+//
+//    @Autowired
+//    private ClientDetailsService clientDetailsService;
 
-    @Autowired
-    private TokenStore redisTokenStore;
+//    @Bean
+//    AuthorizationServerTokenServices tokenServices() {
+//        DefaultTokenServices services = new DefaultTokenServices();
+//        services.setClientDetailsService(clientDetailsService);
+//        services.setSupportRefreshToken(true);
+//        services.setTokenStore(redisTokenStore);
+//
+//        return services;
+//    }
 
-    @Autowired
-    private UserDetailsService userDetailService;
-
-    @Autowired
-    private ClientDetailsService clientDetailsService;
-
-    @Bean
-    AuthorizationServerTokenServices tokenServices() {
-        DefaultTokenServices services = new DefaultTokenServices();
-        services.setClientDetailsService(clientDetailsService);
-        services.setSupportRefreshToken(true);
-        services.setTokenStore(redisTokenStore);
-
-        return services;
-    }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-
-        endpoints.authenticationManager(authenticationManager)
-                .tokenServices(tokenServices())
-                /*.userDetailsService(userDetailService)*//*.tokenServices(tokenServices())*/;
-    }
+//    @Override
+//    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+//
+//        endpoints
+////                .authenticationManager(authenticationManager)
+//                .tokenServices(tokenServices())
+//                /*.userDetailsService(userDetailService)*//*.tokenServices(tokenServices())*/;
+//    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -65,9 +66,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 //                .withClient("store")
 //                .secret(passwordEncoder.encode("123456"))
 //                .autoApprove(true)
+//                .redirectUris("http://localhost:8002/login", "http://localhost:8003/login","http://localhost:8004/login")
 //                .scopes("all")
 //                .accessTokenValiditySeconds(7200)
-//                .authorizedGrantTypes("password","refresh_token");
+//                .authorizedGrantTypes("authorization_code","password","refresh_token");
         clients.jdbc(dataSource).passwordEncoder(passwordEncoder);
 
     }
@@ -76,7 +78,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 //    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 //        security.tokenKeyAccess("permitAll()")
 //                .allowFormAuthenticationForClients()
-////                .checkTokenAccess("isAuthenticated()")
+//                .checkTokenAccess("permitAll()")
 //        ;
 //    }
     /*

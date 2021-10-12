@@ -10,5 +10,4 @@ import org.springframework.context.annotation.Primary;
 @EnableDiscoveryClient
 public class NacosConfig {
 
-
 }
