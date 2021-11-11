@@ -27,6 +27,7 @@ public class MqConsumerConfiguration {
 
     @Bean(name = "creatAccountConsumer")
     public DefaultMQPushConsumer creatAccountConsumer() throws RocketMqException {
+
         return consumerFactory.getRunningConsumer(MQConstants.CREATE, MQConstants.ACCOUNT,
                 new OneParamActionListener<Account>(accountService::createAccount, Account.class));
     }
