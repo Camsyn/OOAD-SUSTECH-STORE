@@ -3,6 +3,7 @@ package top.camsyn.store.chat.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.camsyn.store.chat.entity.ChatRecord;
@@ -19,7 +20,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RestController("/chat")
+@RestController()
+@RequestMapping("/chat")
 public class ChatController {
 
     @Autowired
@@ -28,12 +30,13 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
+
+    @GetMapping("/")
+    public String hello(){
+        return "hello";
+    }
     /**
      * 多发送一条记录， 以表明是否有别以前还有未读的消息
-     * @param sendSid
-     * @param recvSid
-     * @param count
-     * @return
      */
     @GetMapping("/record/getLatest")
     public Result<List<ChatRecord>> getChatListFromSid(@RequestParam("sendSid")Integer sendSid,
@@ -138,7 +141,7 @@ public class ChatController {
 
     }
 
-    private void updateRecords(@RequestParam("count") Integer count, List<ChatRecord> chatRecords) {
+    private void updateRecords(Integer count, List<ChatRecord> chatRecords) {
         chatRecords.stream().filter(i->!i.isRead()).forEach(i->
         {
             i.setSendTime(LocalDateTime.now());

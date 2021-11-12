@@ -1,2 +1,5 @@
-package top.camsyn.store.chat.component;public class CustomConfig {
+package top.camsyn.store.chat.component;
+
+
+public class CustomConfig {
 }

@@ -11,10 +11,6 @@ import java.util.Map;
 
 public class Test {
     public static void main(String[] args) {
-        Map<String, LocalDateTime> map = new HashMap<>();
-        map.put("time",LocalDateTime.now());
-        System.out.println(JSON.toJSONString(map));
-        LocalDateTime localDateTime = JSON.parseObject("\"2021-11-11T19:45:15.445\"", LocalDateTime.class);
-        System.out.println(localDateTime.getDayOfMonth());
+        System.out.println(JSON.toJSONString(null));
     }
 }

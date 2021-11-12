@@ -5,6 +5,8 @@ import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import top.camsyn.store.chat.entity.ChatRecord;
 import top.camsyn.store.chat.entity.ChatState;
@@ -58,19 +60,22 @@ public class WebSocket {
     {
         System.out.println(this);
         onlineNumber.addAndGet(1);
-        log.info("现在来连接的客户id："+session.getId()+"用户名："+sendId);
+        log.info("现在来连接的客户id："+session.getId()+" 用户名："+sendId);
         this.sid = sendId;
         this.session = session;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.warn("现在获取的用户id：{}", JSON.toJSONString(authentication));
         log.info("有新连接加入！ 当前在线人数" + onlineNumber);
         try {
             //messageType 1代表上线 2代表下线 3代表在线名单 4代表普通消息
             //先给所有人发送通知，说我上线了
 //            sendMessageAll(JSON.toJSONString(map1),sendId);
+            //把自己的信息加入到map当中去
+            clients.put(sendId, this);
+
             sendMessageTo(JSON.toJSONString(ChatState.builder().sid(sendId).state(0).msg("成功连接")),sendId);
             reply(ChatState.builder().msg("成功登录").sid(sendId).state(0).build().toString());
 
-            //把自己的信息加入到map当中去
-            clients.put(sendId, this);
 //            //给自己发一条消息：告诉自己现在都有谁在线
 //            Map<String,Object> map2 = Maps.newHashMap();
 //            map2.put("messageType",3);
@@ -90,7 +95,7 @@ public class WebSocket {
     @OnError
     public void onError(Session session, Throwable error) {
         log.info("服务端发生了错误"+error.getMessage());
-        //error.printStackTrace();
+        error.printStackTrace();
     }
     /**
      * 连接关闭
