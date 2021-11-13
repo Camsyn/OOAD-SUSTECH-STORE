@@ -1,0 +1,74 @@
+server:
+  port: 8001
+spring:
+  profiles:
+    active: dev
+    include: common
+  application:
+    name: chat
+  cloud:
+    nacos:
+      discovery:
+        server-addr: camsyn.cn:8848
+        namespace: d2b044ed-b880-4cd9-904f-5cca114fb4e0
+      config:
+        name: ${spring.application.name} # 使用的 Nacos 配置集的 dataId，默认为 spring.application.name
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml   #nacos配置文件后缀，下文配置发布的时候会用到。注意是yaml，不是yml
+#        group: sustech-store  #配置分组，默认分组是DEFAULT_GROUP
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        refresh-enabled: true
+        shared-configs:
+          - data-id: common-security.yaml
+            group: DEFAULT_GROUP # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP
+            refresh: true # 是否自动刷新配置，默认为 false
+          - data-id: common-datasource.yaml
+            group: DEFAULT_GROUP # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP
+            refresh: true # 是否自动刷新配置，默认为 false
+#        prefix: aservice-rbac
+
+#    gateway:
+#      discovery:
+#        locator:
+#          lowerCaseServiceId: true
+#          enabled: true
+#      routes:
+#        - id: test
+#          uri: https://www.baidu.com
+#          predicates:
+#            - Path=/search
+#          filters:
+#            - StripPrefix=1
+#        - id: uaa-verify-sid
+#          uri: lb://uaa
+#          predicates:
+#            - Path=/uaa/verify/**
+#            - Query=sid
+#          filters:
+#            - StripPrefix=1
+#            - PreserveHostHeader
+#        - id: uaa-verify-register-email
+#          uri: lb://uaa
+#          predicates:
+#            - Path=/uaa/verify/**
+#            - Query=id,[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}
+#          filters:
+#            - StripPrefix=1
+#            - PreserveHostHeader
+#        - id: uaa-verify-email
+#          uri: lb://uaa
+#          predicates:
+#            - Path=/uaa/verify/**
+#            - Query=email,\w+@(mail\.)?sustech\.edu\.cn
+#          filters:
+#            - StripPrefix=1
+#            - PreserveHostHeader
+#        - id: uaa-aacount
+#          uri: lb://uaa
+#          predicates:
+#            - Path=/uaa/account/**
+#          filters:
+#            - StripPrefix=1
+#            - PreserveHostHeader
+#server:
+#  port: 8000

@@ -4,45 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="2.0 简单实现登录注册；基本搭起微服务框架">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_24_1_1_jre.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_netflix_netflix_commons_netflix_commons_util_0_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_netflix_servo_servo_core_0_10_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_netflix_servo_servo_internal_0_10_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_53_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_3_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_3_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_3_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_commons_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_context_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_archaius_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_ribbon_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_netflix_archaius_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_netflix_ribbon_2_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_3_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_3_2_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_3_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_3_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_9_25_21_03__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_9_25_21_03__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_websocket_2_3_7_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_4_0_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_12_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_4_0_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_5_2_12_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/component/CustomConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/component/CustomConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/config/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/ChatApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/ChatApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client1/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client1/src/main/resources/bootstrap.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +32,9 @@
       <list>
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -99,8 +77,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/file/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../course/CS309-OOAD/lab/lab9/observer-original" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -136,14 +115,14 @@
       <recent name="com.camsyn.top.uaa" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.camsyn.store.chat.component" />
       <recent name="camsyn.top.store.file.config" />
       <recent name="com.example.client3.config" />
       <recent name="com.example.client3.controller" />
       <recent name="top.camsyn.store.uaa.controller" />
-      <recent name="top.camsyn.store.auth.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Client2Application">
+  <component name="RunManager" selected="Spring Boot.ChatApplication (1)">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -170,6 +149,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.chat.Test" />
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.chat.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.test.Test" />
       <module name="test" />
@@ -179,17 +171,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="mqbroker" type="BatchConfigurationType" factoryName="Batch" temporary="true">
-      <module name="sustech-store" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="WORKING_DIRECTORY" value="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\third-part\rocket-mq\rocketmq-all-4.9.1-bin-release\bin" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="mqbroker.cmd" />
-      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -363,12 +344,14 @@
       <item itemvalue="Spring Boot.Uaa1Application" />
       <item itemvalue="Spring Boot.FileApplication" />
       <item itemvalue="Spring Boot.AuthApplication" />
+      <item itemvalue="Application.Test (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test (2)" />
+        <item itemvalue="Spring Boot.AuthApplication" />
         <item itemvalue="Application.Test (1)" />
         <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
-        <item itemvalue="Spring Boot.AuthApplication" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -409,6 +392,8 @@
       <workItem from="1633174766066" duration="2073000" />
       <workItem from="1633845701551" duration="20505000" />
       <workItem from="1633947081841" duration="22245000" />
+      <workItem from="1636442146000" duration="348000" />
+      <workItem from="1636442519583" duration="24381000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -438,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634036684353</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒">
+      <created>1636636285839</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636636285839</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +451,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.0 简单实现登录注册；基本搭起微服务框架" />
     <MESSAGE value="2.0 简单实现登录注册；基本搭起微服务框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.0 简单实现登录注册；基本搭起微服务框架" />
+    <MESSAGE value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

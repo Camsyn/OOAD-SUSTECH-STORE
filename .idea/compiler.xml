@@ -40,7 +40,7 @@
       <module name="OOAD-SUSTECH-STORE" target="1.8" />
       <module name="sustech-store" target="1.8" />
       <module name="test" target="1.8" />
-      <module name="uaa" target="1.8" />
+      <module name="uaa" target="1.5" />
       <module name="uaa1" target="1.8" />
       <module name="user" target="1.8" />
     </bytecodeTargetLevel>
