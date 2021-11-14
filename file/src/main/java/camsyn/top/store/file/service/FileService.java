@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -72,6 +75,32 @@ public class FileService {
             if (ex.getMessage().equals("file too big")) throw new FileException("file too big");
             else throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
         }
+    }
+
+    public String storeFileByURL(String url_s) {
+
+        String[] label = url_s.split("\\.");
+        String[] name = url_s.split("/");
+        String fileName = name[name.length-1].replace("."+label[label.length-1], "_") + getTime() + "." + label[label.length-1];
+        //根据url获取输入流
+        try {
+            URL url = new URL(url_s);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //设置超时间为3秒
+            conn.setConnectTimeout(3 * 1000);
+            //防止屏蔽程序抓取而返回403错误
+            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+
+            //得到输入流
+            InputStream inputStream = conn.getInputStream();
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Files.copy(inputStream, targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            return fileName;
+        } catch (IOException ex) {
+            throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
+        }
+
     }
 
     public Resource loadFileAsResource(String fileName) {
