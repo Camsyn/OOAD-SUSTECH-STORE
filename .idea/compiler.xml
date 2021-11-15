@@ -16,7 +16,6 @@
         <module name="client1" />
         <module name="commons" />
         <module name="file" />
-        <module name="uaa" />
         <module name="chat" />
         <module name="commons-spring-boot-starter" />
         <module name="config" />

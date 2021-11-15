@@ -20,17 +20,18 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class RedisRepository {
+@Repository
+public class MyRedisRepository {
     /**
      * Spring Redis Template
      */
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    public RedisRepository() {
+    public MyRedisRepository() {
     }
 
-    public RedisRepository(RedisTemplate<String, Object> redisTemplate) {
+    public MyRedisRepository(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 

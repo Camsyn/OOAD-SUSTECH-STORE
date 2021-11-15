@@ -1,6 +1,7 @@
 package top.camsyn.store.commons.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -15,7 +16,7 @@ import java.util.Date;
 @Data
 @Builder
 public class User extends Model<User> {
-    @TableId()
+    @TableId(value = "sid",type = IdType.AUTO)
     private Integer sid;
     @TableField(value = "pwd")
     private String password;
@@ -27,4 +28,6 @@ public class User extends Model<User> {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+
+    private Integer deleted;
 }

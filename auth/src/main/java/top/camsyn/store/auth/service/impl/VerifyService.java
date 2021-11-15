@@ -4,7 +4,7 @@ package top.camsyn.store.auth.service.impl;
 import top.camsyn.store.commons.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.camsyn.store.commons.repository.RedisRepository;
+import top.camsyn.store.commons.repository.MyRedisRepository;
 
 
 import java.util.Random;
@@ -18,7 +18,7 @@ public class VerifyService {
     private AccountService accountService;
 
     @Autowired
-    private RedisRepository redisRepository;;
+    private MyRedisRepository myRedisRepository;;
 
     private static final String CHAR = "asdfghjkklqwertyuiopzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
     private static final int CHAR_NUM = 62;
@@ -26,7 +26,7 @@ public class VerifyService {
 
     public String generateVerifyId(Account user){
         final String vId = UUID.randomUUID().toString();
-        redisRepository.setExpire(vId, user,6, TimeUnit.HOURS);
+        myRedisRepository.setExpire(vId, user,6, TimeUnit.HOURS);
         return vId;
     }
 
@@ -35,20 +35,20 @@ public class VerifyService {
         for (int i = 0; i < 6; i++) {
             sb.append(CHAR.charAt(random.nextInt(CHAR_NUM)));
         }
-        redisRepository.setExpire(key,sb.toString(),6, TimeUnit.HOURS);
+        myRedisRepository.setExpire(key,sb.toString(),6, TimeUnit.HOURS);
         return sb.toString();
     }
 
     public void terminateVerifying(String vid){
-        redisRepository.del(vid);
+        myRedisRepository.del(vid);
     }
 
     public boolean isKeyExist(String key){
-        return redisRepository.exists(key);
+        return myRedisRepository.exists(key);
     }
 
     public Object getValByKey(String key){
-        return redisRepository.get(key);
+        return myRedisRepository.get(key);
     }
 
 

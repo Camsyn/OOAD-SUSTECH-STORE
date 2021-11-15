@@ -26,7 +26,7 @@ public class Role extends Model<Role> implements GrantedAuthority {
     Date updateTime;
     Date remainTime;
 
-
+    private Integer deleted;
     @Override
     public String getAuthority() {
         return role;

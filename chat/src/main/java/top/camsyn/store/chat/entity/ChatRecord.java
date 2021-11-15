@@ -1,10 +1,7 @@
 package top.camsyn.store.chat.entity;
 
 import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
 
@@ -13,14 +10,21 @@ import java.util.Date;
 @Data
 @TableName(value = "chat_record")
 public class ChatRecord {
-    int id;
+    // （生成）
+    @TableId(value = "id",type = IdType.AUTO)
+    Integer id;
+    // （生成）
     int sendId;
     int recvId;
     String content;
     int type;
 
+    // （生成）
+    @TableField(fill = FieldFill.INSERT)
     LocalDateTime sendTime;
+    // （生成）
     LocalDateTime recvTime;
+    // （生成）
     boolean isRead;
 
     @Override

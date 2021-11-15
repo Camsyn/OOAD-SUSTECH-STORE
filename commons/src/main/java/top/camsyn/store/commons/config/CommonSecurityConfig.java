@@ -15,11 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @ConditionalOnMissingClass({"top.camsyn.store.gateway.GatewayApplication","top.camsyn.store.auth.AuthApplication"})
 public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().csrf().disable();
+//        http.authorizeRequests().anyRequest().authenticated().and().csrf().disable();
+        http.authorizeRequests().anyRequest().permitAll();
     }
-
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers( "/css/**", "/js/**","/html/**", "{static:\\S+\\..*}");

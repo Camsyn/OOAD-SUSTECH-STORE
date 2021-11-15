@@ -1,28 +1,56 @@
 package com.example.test.controller;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Controller
+@RestController
 public class DemoController {
 
-    @RequestMapping("/")
-    @ResponseBody
-    public String hello(@RequestParam("name") String name){
-        return "Hello "+name+"!";
-    }
-    @RequestMapping("/")
-    @ResponseBody
-    public String hi(@RequestParam("hi") String hi){
-        return "Hi "+hi+"!";
-    }
-    @RequestMapping("/")
-    @ResponseBody
-    public String hello(){
-        return "Hello world!";
+    static class Data{
+        int id=1;
+        LocalDateTime localDate = LocalDateTime.now();
+
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public LocalDateTime getLocalDate() {
+            return localDate;
+        }
+
+        public void setLocalDate(LocalDateTime localDate) {
+            this.localDate = localDate;
+        }
     }
 
+    @RequestMapping("/")
+    @ResponseBody
+    public Data hello(){
+        return new Data();
+    }
+
+
+    @RequestMapping("/time")
+    @ResponseBody
+    public Data testTime(@RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime time){
+        System.out.println(time);
+        Data data = new Data();
+        if (time!=null)
+        data.localDate = time;
+        return data;
+    }
 /*
     @RequestMapping("/send")
     @PreAuthorize("hasAnyRole('ROLE_selector')")

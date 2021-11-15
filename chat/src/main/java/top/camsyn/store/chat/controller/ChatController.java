@@ -2,10 +2,8 @@ package top.camsyn.store.chat.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.chat.entity.ChatRecord;
 import top.camsyn.store.chat.service.ChatRecordService;
 import top.camsyn.store.chat.service.ChatService;
@@ -21,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RestController()
-@RequestMapping("/chat")
+@RequestMapping("/private-talk")
 public class ChatController {
 
     @Autowired
@@ -54,13 +52,16 @@ public class ChatController {
             return Result.failed("服务器错误");
         }
     }
+
+
     /**
      * 多发送一条记录， 以表明是否有别以前还有未读的消息
      */
     @GetMapping("/record/getElse")
     public Result<List<ChatRecord>> getChatListFromSidAndTime(@RequestParam("sendSid")Integer sendSid,
                                                        @RequestParam("recvSid") Integer recvSid,
-                                                       @RequestParam("before") LocalDateTime timeBefore,
+                                                       @RequestParam("before") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                                                LocalDateTime timeBefore,
                                                        @RequestParam("count") Integer count){
         log.info("请求更多聊天记录， s_sid: {}, r_sid: {}, before: {},  count: {}",sendSid,recvSid,timeBefore,count);
 //        chatRecordService.page()
@@ -130,7 +131,7 @@ public class ChatController {
 
     }
     @GetMapping("/are/online")
-    public Result<List<Boolean>> areOnline(@RequestParam("sid") List<Integer> sid){
+    public Result<List<Boolean>> areOnline(@RequestBody List<Integer> sid){
         log.info("查询用户是否online, sid: {}",sid);
         try{
             return Result.succeed(sid.stream().map(WebSocket::isOnline).collect(Collectors.toList()));
@@ -142,12 +143,19 @@ public class ChatController {
     }
 
     private void updateRecords(Integer count, List<ChatRecord> chatRecords) {
+        boolean flag=false;
+        if (chatRecords.size() == count +1){
+            ChatRecord record = chatRecords.get(count);
+            if (!record.isRead()){
+                flag = true;
+            }
+        }
         chatRecords.stream().filter(i->!i.isRead()).forEach(i->
         {
             i.setSendTime(LocalDateTime.now());
             i.setRead(true);
         });
-        if (chatRecords.size() == count +1){
+        if (flag){
             chatRecords.get(count).setRead(false);
             chatRecords.get(count).setRecvTime(null);
         }

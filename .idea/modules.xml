@@ -16,7 +16,6 @@
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/sustech-store.iml" filepath="$PROJECT_DIR$/sustech-store.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/uaa/uaa.iml" filepath="$PROJECT_DIR$/uaa/uaa.iml" />
       <module fileurl="file://$PROJECT_DIR$/uaa1/uaa1.iml" filepath="$PROJECT_DIR$/uaa1/uaa1.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>

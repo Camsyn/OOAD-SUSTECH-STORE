@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @Component
-@ServerEndpoint("/chat/one2one/{username}")
+@ServerEndpoint("/websocket/one2one/{username}")
 public class WebSocket {
 
     @Autowired
@@ -73,7 +73,7 @@ public class WebSocket {
             //把自己的信息加入到map当中去
             clients.put(sendId, this);
 
-            sendMessageTo(JSON.toJSONString(ChatState.builder().sid(sendId).state(0).msg("成功连接")),sendId);
+            sendMessageTo(JSON.toJSONString(ChatState.builder().sid(sendId).state(0).msg("成功连接").build()),sendId);
             reply(ChatState.builder().msg("成功登录").sid(sendId).state(0).build().toString());
 
 //            //给自己发一条消息：告诉自己现在都有谁在线
@@ -132,6 +132,7 @@ public class WebSocket {
         try {
             log.info("来自客户端消息：" + message+"客户端的id是："+session.getId());
             ChatRecord chatRecord = JSON.parseObject(message, ChatRecord.class);
+
             //messageType 1代表上线 2代表下线 3代表在线名单  4代表普通消息
             int recvId = chatRecord.getRecvId();
             if (isOnline(recvId)) {
@@ -140,9 +141,10 @@ public class WebSocket {
                 sendMessageTo(JSON.toJSONString(chatRecord), recvId);
                 reply(ChatState.builder().sid(recvId).state(2).msg("目标已接收").build().toString());
             }else {
-                chatRecordService.save(chatRecord);
                 reply(ChatState.builder().sid(recvId).state(3).msg("目标未在线").build().toString());
             }
+            chatRecordService.save(chatRecord);
+
         }
         catch (Exception e){
             log.info("发生了错误了");

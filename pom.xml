@@ -461,7 +461,7 @@
         <!-- 公共 -->
         <module>commons</module>
         <!-- 认证/登录 -->
-        <module>uaa</module>
+        <module>auth</module>
         <!-- 网关 -->
 
         <!-- 业务 -->
@@ -477,7 +477,7 @@
         <!-- chat -->
         <module>chat</module>
         <!-- 配置 -->
-        <module>config</module>
+
         <module>commons-spring-boot-starter</module>
         <!-- demo -->
 
