@@ -18,8 +18,8 @@
         <module name="file" />
         <module name="chat" />
         <module name="commons-spring-boot-starter" />
-        <module name="config" />
         <module name="user" />
+        <module name="config" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -42,6 +42,8 @@
       <module name="uaa" target="1.5" />
       <module name="uaa1" target="1.8" />
       <module name="user" target="1.8" />
+      <module name="wrapper (1)" target="1.5" />
+      <module name="wrapper (2)" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
