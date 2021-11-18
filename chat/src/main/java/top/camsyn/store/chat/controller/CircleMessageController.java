@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-import top.camsyn.store.chat.entity.CircleMessage;
-import top.camsyn.store.chat.entity.Comment;
 import top.camsyn.store.chat.service.CircleMessageService;
 import top.camsyn.store.chat.service.CommentService;
+import top.camsyn.store.commons.entity.chat.CircleMessage;
+import top.camsyn.store.commons.entity.chat.Comment;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 
@@ -22,6 +22,12 @@ public class CircleMessageController {
     CircleMessageService circleMessageService;
     @Autowired
     CommentService commentService;
+
+
+    @GetMapping("/get")
+    public Result<CircleMessage> getCircleMessage(Integer cmId){
+        return Result.succeed(circleMessageService.getById(cmId));
+    }
 
     @PostMapping("/post")
     public Result<CircleMessage> publishCircleMessage(@RequestBody CircleMessage message){

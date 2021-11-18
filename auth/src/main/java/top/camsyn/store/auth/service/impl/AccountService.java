@@ -2,12 +2,11 @@ package top.camsyn.store.auth.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.mapper.AccountMapper;
 import top.camsyn.store.auth.model.AuthUser;
 import top.camsyn.store.auth.service.IAccountService;

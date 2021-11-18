@@ -15,4 +15,6 @@ public interface AuthClient {
     @PostMapping("/oauth/token")
     @ResponseBody
     Map<String,String> token(@RequestParam MultiValueMap<String, String> params);
+
+
 }

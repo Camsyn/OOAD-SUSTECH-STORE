@@ -2,7 +2,7 @@ package top.camsyn.store.auth.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 
 import java.util.Collection;
 

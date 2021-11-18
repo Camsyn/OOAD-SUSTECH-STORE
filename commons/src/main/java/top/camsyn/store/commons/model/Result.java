@@ -15,6 +15,10 @@ public class Result<T> implements Serializable {
     private Integer resp_code;
     private String resp_msg;
 
+    public boolean isSuccess(){
+        return resp_code == 0;
+    }
+
     public static <T> Result<T> succeed(String msg) {
         return of(null, CodeEnum.SUCCESS.getCode(), msg);
     }

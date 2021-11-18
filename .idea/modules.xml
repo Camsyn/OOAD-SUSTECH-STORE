@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/OOAD-SUSTECH-STORE.iml" filepath="$PROJECT_DIR$/.idea/OOAD-SUSTECH-STORE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/after-sale/after-sale.iml" filepath="$PROJECT_DIR$/after-sale/after-sale.iml" />
       <module fileurl="file://$PROJECT_DIR$/auth/auth.iml" filepath="$PROJECT_DIR$/auth/auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/authn/authn.iml" filepath="$PROJECT_DIR$/authn/authn.iml" />
       <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
@@ -14,6 +15,8 @@
       <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
       <module fileurl="file://$PROJECT_DIR$/file/file.iml" filepath="$PROJECT_DIR$/file/file.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/request/request.iml" filepath="$PROJECT_DIR$/request/request.iml" />
+      <module fileurl="file://$PROJECT_DIR$/review/review.iml" filepath="$PROJECT_DIR$/review/review.iml" />
       <module fileurl="file://$PROJECT_DIR$/sustech-store.iml" filepath="$PROJECT_DIR$/sustech-store.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/uaa1/uaa1.iml" filepath="$PROJECT_DIR$/uaa1/uaa1.iml" />

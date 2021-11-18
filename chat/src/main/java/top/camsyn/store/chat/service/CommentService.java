@@ -1,8 +1,8 @@
 package top.camsyn.store.chat.service;
 
 import org.springframework.stereotype.Service;
-import top.camsyn.store.chat.entity.Comment;
 import top.camsyn.store.chat.mapper.CommentMapper;
+import top.camsyn.store.commons.entity.chat.Comment;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 
 import java.time.LocalDateTime;

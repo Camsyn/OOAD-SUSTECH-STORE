@@ -1,7 +1,7 @@
 package top.camsyn.store.auth.service;
 
 import top.camsyn.store.auth.model.AuthUser;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 
 public interface IAccountService {
 

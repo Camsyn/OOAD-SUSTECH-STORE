@@ -8,7 +8,7 @@ import top.camsyn.store.auth.exception.RocketMqException;
 import top.camsyn.store.auth.factory.MQConsumerFactory;
 import top.camsyn.store.auth.rocketmq.processor.OneParamActionListener;
 import top.camsyn.store.auth.service.impl.AccountService;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 
 
 import javax.annotation.Resource;

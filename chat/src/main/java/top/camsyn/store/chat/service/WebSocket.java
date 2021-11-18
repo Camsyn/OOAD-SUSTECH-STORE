@@ -2,23 +2,20 @@ package top.camsyn.store.chat.service;
 
 
 import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import top.camsyn.store.chat.entity.ChatRecord;
 import top.camsyn.store.chat.entity.ChatState;
+import top.camsyn.store.commons.entity.chat.ChatRecord;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,7 +1,7 @@
 package top.camsyn.store.auth.service.impl;
 
 
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.repository.MyRedisRepository;

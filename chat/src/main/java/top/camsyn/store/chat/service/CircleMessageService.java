@@ -1,10 +1,8 @@
 package top.camsyn.store.chat.service;
 
 import org.springframework.stereotype.Service;
-import top.camsyn.store.chat.entity.ChatRecord;
-import top.camsyn.store.chat.entity.CircleMessage;
-import top.camsyn.store.chat.mapper.ChatRecordMapper;
 import top.camsyn.store.chat.mapper.CircleMessageMapper;
+import top.camsyn.store.commons.entity.chat.CircleMessage;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 
 import java.time.LocalDateTime;
