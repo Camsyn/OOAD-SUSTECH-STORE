@@ -55,7 +55,6 @@ public class WebSocket {
     @OnOpen
     public void onOpen(@PathParam("username") Integer sendId, Session session)
     {
-        System.out.println(this);
         onlineNumber.addAndGet(1);
         log.info("现在来连接的客户id："+session.getId()+" 用户名："+sendId);
         this.sid = sendId;

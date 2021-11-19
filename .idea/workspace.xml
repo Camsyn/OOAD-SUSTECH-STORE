@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append 修复了common包的bug">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_websocket_2_3_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_12_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_5_2_12_RELEASE.xml" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append 修炼commons的bug">
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/TomcatConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/LabelRequestRelation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/CsrfFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/MyCorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/LabelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/dto/FilterSortDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/dto/SearchDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/LabelMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/authn.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/CommonSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/CommonSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/RequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/RequestService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +121,7 @@
       <recent name="com.example.client3.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChatApplication (1)">
+  <component name="RunManager" selected="Spring Boot.AuthApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -405,7 +419,7 @@
       <workItem from="1633947081841" duration="22245000" />
       <workItem from="1636442146000" duration="348000" />
       <workItem from="1636442519583" duration="66472000" />
-      <workItem from="1637222967821" duration="18110000" />
+      <workItem from="1637222967821" duration="43694000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -470,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637238993623</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="append 修炼commons的bug">
+      <created>1637302646965</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637302646965</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +515,8 @@
     <MESSAGE value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒" />
     <MESSAGE value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒&#10;&#10;append 改进commmons， 增加逻辑删除， 验证了mybatis-plus" />
     <MESSAGE value="append 修复了common包的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="append 修复了common包的bug" />
+    <MESSAGE value="append 修炼commons的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="append 修炼commons的bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

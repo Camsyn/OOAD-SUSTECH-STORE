@@ -29,6 +29,8 @@ public class SecurityConfig {
         http.oauth2Login().authenticationManager(new OAuth2LoginReactiveAuthenticationManager(
                 oAuth2AccessTokenResponseClient,oAuth2UserService));
 
+        http.cors().disable();
+        http.csrf().disable();
         return http.build();
     }
 }

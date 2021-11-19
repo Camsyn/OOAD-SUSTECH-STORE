@@ -71,4 +71,9 @@ public class Request {
     List<String> images;
     @TableField(typeHandler = FastjsonTypeHandler.class)
     List<String> video;
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    List<String> labels;
+
+    private Integer deleted;
+
 }
