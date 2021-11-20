@@ -12,6 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootApplication
 @Scope(value = WebApplicationContext.SCOPE_SESSION)
 public class Client1Application {
+
     @Autowired
     PasswordEncoder passwordEncoder;
 

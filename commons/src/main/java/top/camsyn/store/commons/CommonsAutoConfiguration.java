@@ -1,31 +1,19 @@
 package top.camsyn.store.commons;
 
-import io.lettuce.core.dynamic.codec.RedisCodecResolver;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
-import org.springframework.boot.context.TypeExcludeFilter;
-
-import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.redis.core.RedisTemplate;
-import top.camsyn.store.commons.annotation.Exclude;
-import top.camsyn.store.commons.config.RedisConfiguration;
-import top.camsyn.store.commons.repository.RedisRepository;
+import org.springframework.core.annotation.Order;
 
 
 /**
  * @author Chen_Kunqiu
  */
-//@Configuration
+@Configuration
+@ComponentScan
+@EnableFeignClients
 //@Exclude
 //@EnableAutoConfiguration
 //@ComponentScan(excludeFilters = {
@@ -33,6 +21,7 @@ import top.camsyn.store.commons.repository.RedisRepository;
 //        @ComponentScan.Filter(type = FilterType.CUSTOM, classes = {AutoConfigurationExcludeFilter.class}),
 //        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Exclude.class)
 //        })
+//@ConditionalOnMissingBean(value = CommonsAutoConfiguration.class)
 //@ConditionalOnProperty(value = "ckq.hello.name")
 //@EnableCaching
 //@Import(value = {RedisConfiguration.class, RedisRepository.class})

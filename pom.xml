@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
 
     <properties>
+        <commons.version>0.0.1</commons.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,15 +87,15 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
-        </dependency>
-        <!--用户资格认证-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-security</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;用户资格认证&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -142,7 +143,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- 自定义 starter -->
-
+            <dependency>
+                <groupId>top.camsyn.store</groupId>
+                <artifactId>commons-spring-boot-starter</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
 
 
 <!--            <dependency>
@@ -398,6 +403,11 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot-dependencies.version}</version>
+
+                    <configuration>
+<!--                        <skip>true</skip>-->
+                        <classifier>exec</classifier>
+                    </configuration>
                 </plugin>
 <!--                <plugin>
                     <groupId>com.spotify</groupId>
@@ -461,7 +471,7 @@
         <!-- 公共 -->
         <module>commons</module>
         <!-- 认证/登录 -->
-        <module>uaa</module>
+        <module>auth</module>
         <!-- 网关 -->
 
         <!-- 业务 -->
@@ -477,7 +487,7 @@
         <!-- chat -->
         <module>chat</module>
         <!-- 配置 -->
-        <module>config</module>
+
         <module>commons-spring-boot-starter</module>
         <!-- demo -->
 

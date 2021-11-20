@@ -8,10 +8,8 @@ import top.camsyn.store.auth.service.impl.AccountService;
 import top.camsyn.store.auth.service.impl.MailService;
 import top.camsyn.store.auth.service.impl.VerifyService;
 import top.camsyn.store.auth.util.VerifyUtils;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.model.Result;
-
-import java.sql.ResultSet;
 
 
 /**

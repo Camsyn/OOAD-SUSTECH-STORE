@@ -1,4 +1,4 @@
-package top.camsyn.store.commons.entity;
+package top.camsyn.store.commons.entity.auth;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -26,7 +26,7 @@ public class Role extends Model<Role> implements GrantedAuthority {
     Date updateTime;
     Date remainTime;
 
-
+    private Integer deleted;
     @Override
     public String getAuthority() {
         return role;

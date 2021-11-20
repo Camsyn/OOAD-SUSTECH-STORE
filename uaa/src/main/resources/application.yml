@@ -1,9 +1,0 @@
-spring:
-#  jpa:
-#    show-sql: true
-#  session:
-#    store-type: redis
-  application:
-    name: uaa
-server:
-  port: 9000

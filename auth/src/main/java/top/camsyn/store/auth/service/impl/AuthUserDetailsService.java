@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.auth.model.AuthUser;
-import top.camsyn.store.commons.entity.Role;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Role;
+import top.camsyn.store.commons.entity.auth.Account;
 
 
 import java.util.List;

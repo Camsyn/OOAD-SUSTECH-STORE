@@ -1,0 +1,86 @@
+<script>
+    select r.* from request r
+    inner join request_label_relation rlr on r.id = rlr.request_id
+    inner join label l on rlr.label_id = l.id
+    <where>
+        (
+        ( r.exact_price between ${s.priceFrom} and ${s.priceTo} )
+        or
+        ( r.float_price_from &gt;= ${s.priceFrom} and r.float_price_to &lt;= ${s.priceTo} )
+        )
+        <choose>
+            <when test='s.isAmbiguous = false'>
+                <choose>
+                    <when test='s.type=0' >
+                        and r.title = #{s.queryStr}
+                    </when>
+                    <when test='s.type=1' >
+                        and ( r.title = #{s.queryStr} or r.desc = #{s.queryStr} )
+                    </when>
+                    <when test='s.type=2' >
+                        and l.label_name = #{s.queryStr}
+                    </when>
+                    <when test='s.type=3' >
+                        and ( r.title = #{s.queryStr} or r.desc = #{s.queryStr} or l.label_name = #{s.queryStr})
+                    </when>
+                </choose>
+            </when>
+            <otherwise>
+                <choose>
+                    <when test='s.type=0' >
+                        and r.title regexp #{s.queryStr}
+                    </when>
+                    <when test='s.type=1' >
+                        and ( r.title regexp #{s.queryStr} or r.desc regexp #{s.queryStr} )
+                    </when>
+                    <when test='s.type=2' >
+                        and l.label_name regexp #{s.queryStr}
+                    </when>
+                    <when test='s.type=3' >
+                        and ( r.title regexp #{s.queryStr} or r.desc regexp #{s.queryStr} or l.label_name regexp #{s.queryStr})
+                    </when>
+                </choose>
+            </otherwise>
+        </choose>
+
+        <if test='s.labels != null and s.label.isEmpty() != true'>
+            and
+            l.label in
+            <foreach collection="s.labels" item="label" open="(" close=")" separator="," index="i">
+                #{label}
+            </foreach>
+        </if>
+
+        <choose>
+            <when test='s.isRandom == true'>
+                order by rand()
+            </when>
+            <otherwise>
+                <choose>
+                    <when test='s.firstOder != null and s.firstOder.trim() != &quot;&quot;'>
+                        order by ${s.firstOder}
+                        <if test='s.isFirstOrderAsc != null and s.isFirstOrderAsc != true'>
+                            desc
+                        </if>
+                        <if test='s.secondOrder != null and s.secondOrder.trim() != &quot;&quot;'>
+                            , ${s.secondOrder}
+                            <if test='s.isSecondOrderAsc != null and s.isSecondOrderAsc != true'>
+                                desc
+                            </if>
+                            <if test='s.thirdOrder != null and s.thirdOrder.trim() != &quot;&quot;'>
+                                , ${s.thirdOrder}
+                                <if test='s.isThirdOrderAsc != null and s.isThirdOrderAsc != true'>
+                                    desc
+                                </if>
+                            </if>
+                        </if>
+                    </when>
+                    <otherwise>
+                        order by r.update_time desc
+                    </otherwise>
+                </choose>
+            </otherwise>
+        </choose>
+
+    </where>
+</script>

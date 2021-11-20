@@ -12,7 +12,7 @@ import top.camsyn.user.rpc.AuthClient;
 
 import java.util.Map;
 
-public class UaaController {
+public class UserController {
     @Autowired
     AuthClient authClient;
 

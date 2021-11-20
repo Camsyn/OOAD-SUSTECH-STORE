@@ -14,7 +14,7 @@ import top.camsyn.store.auth.constant.MQConstants;
 import top.camsyn.store.auth.model.AuthUser;
 import top.camsyn.store.auth.service.impl.AccountService;
 import top.camsyn.store.auth.service.impl.VerifyService;
-import top.camsyn.store.commons.entity.Account;
+import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.model.CodeEnum;
 import top.camsyn.store.commons.model.Result;
 

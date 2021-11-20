@@ -1,4 +1,4 @@
-package com.example._12_websocket.config;
+package top.camsyn.store.chat.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +15,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 public class WebSocketConfig {
     /**
      * 有了这 Bean 可以使用 ServerEndpoint 一个端点服务类。在这 站点服务类中，还
-     * 可以定义 WebSocket 的打开、关闭、错误和发送消息的方法。 例如，代码清单 13-25 就是定 个服
-     * 务器 的功能
+     * 可以定义 WebSocket 的打开、关闭、错误和发送消息的方法。
      * @return
      */
     @Bean

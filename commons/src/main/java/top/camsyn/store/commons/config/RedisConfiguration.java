@@ -1,25 +1,14 @@
 package top.camsyn.store.commons.config;
 
 
-import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
-import top.camsyn.store.commons.repository.RedisRepository;
+import top.camsyn.store.commons.repository.MyRedisRepository;
 
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)
@@ -60,8 +49,8 @@ public class RedisConfiguration {
     }
 
     @Bean(name = "redisRepository")
-    public RedisRepository redisRepository(){
-        return new RedisRepository();
+    public MyRedisRepository redisRepository(){
+        return new MyRedisRepository();
     }
 
 //

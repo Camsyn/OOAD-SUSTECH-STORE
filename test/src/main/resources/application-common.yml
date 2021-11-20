@@ -1,8 +1,10 @@
 spring:
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
-        server-addr: camsyn.top:8848
+        server-addr: camsyn.cn:8848
         namespace: d2b044ed-b880-4cd9-904f-5cca114fb4e0
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
