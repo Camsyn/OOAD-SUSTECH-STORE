@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
-import top.camsyn.store.commons.filter.CsrfFilter;
+import top.camsyn.store.commons.filter.CsrfSameSiteFilter;
 import top.camsyn.store.commons.filter.MyCorsFilter;
 
 @Configuration
@@ -21,7 +21,7 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
     MyCorsFilter corsFilter;
 
     @Autowired
-    CsrfFilter csrfFilter;
+    CsrfSameSiteFilter csrfFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
