@@ -18,7 +18,9 @@
         <spring-boot-dependencies.version>2.3.11.RELEASE</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>Hoxton.SR9</spring-cloud-dependencies.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-<!--        <swagger.version>2.9.2</swagger.version>-->
+        <hutool-version>5.3.5</hutool-version>
+
+        <!--        <swagger.version>2.9.2</swagger.version>-->
 <!--        <swagger.ui.version>1.8.7</swagger.ui.version>-->
 <!--        <swagger.mg.ui.version>1.0.6</swagger.mg.ui.version>-->
 <!--        <swagger.butler.version>2.0.1</swagger.butler.version>-->
@@ -86,7 +88,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-version}</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-security</artifactId>-->

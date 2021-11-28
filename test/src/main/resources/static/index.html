@@ -27,9 +27,10 @@
     }
     function local_login(){
         $.ajax({
-            url: 'http://localhost:7000/uaa/login?username=11911626&password=123456',
+            url: 'http://localhost:8000/auth/oauth/token?username=11911626&password=123456',
             type: "POST",
             xhrFields: {withCredentials: true},
+            headers: {'Authorization':'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMTkxMTYyNiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2MzgwOTY4NDQsImF1dGhvcml0aWVzIjpbImFkbWluIl0sImp0aSI6IjNlNDM4MTgyLTZmMjItNDdiMi05MjU2LTMwYWZjM2VlZmU3NCIsImNsaWVudF9pZCI6InN0b3JlIiwic2lkIjoiMTE5MTE2MjYifQ.gIns-xTNh5ZazkOvMTFzCQzb57jNvVqW9Z_pma3GQExtjbObrBsn2jA3RBevVVJJNk4PFlKQ5625R2X9LrsoBoVhVXIxWCG6DnfyJHwBCyM7m7TLOSDCAxv3bh_iPalUXaHDo-baK3B4xaxdBIOFXOmebyfeFvPpyqwMSzPo3-k'},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data['resp_msg']);
                 console.dir(data)
