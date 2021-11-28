@@ -24,11 +24,7 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
+
         <dependency>
             <groupId>top.camsyn.store</groupId>
             <artifactId>commons-spring-boot-starter</artifactId>

@@ -3,6 +3,7 @@ package top.camsyn.store.commons.entity.request;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @TableName(value = "request", autoResultMap = true)
+@ToString
 public class Request {
     /**
      * 主键id （生成）
@@ -40,7 +42,7 @@ public class Request {
      */
     Integer tradeType;
     /**
-     * '0: 未审核  1: 审核中 2：开启， 3：关闭  4. 封禁'  （生成）
+     * '0: 未审核  1: 审核中 2：开启， 3：关闭   4. 撤回   5. 封禁'  （生成）
      */
     Integer state;
     /**
@@ -63,6 +65,11 @@ public class Request {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     LocalDateTime updateTime;
+    /**
+     * 生成, 审核通过，正式发布的时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    LocalDateTime publishTime;
 
     /**
      * 路径序列
@@ -76,4 +83,10 @@ public class Request {
 
     private Integer deleted;
 
+    public boolean isLiyuanPaySellReq(){
+        return tradeType==1 && type==1;
+    }
+    public boolean isLiyuanPayBuyReq(){
+        return tradeType==1 && type==0;
+    }
 }

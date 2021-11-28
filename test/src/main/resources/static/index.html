@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>前台系统</h2>
+<p id="info"></p>
+
+</body>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    function login(){
+        $.ajax({
+            url: 'http://camsyn.cn:7000/uaa/login?username=11911626&password=123456',
+            type: "POST",
+            xhrFields: {withCredentials: true},
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data['resp_msg']);
+                console.dir(data)
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!");
+            }
+        })
+    }
+    function local_login(){
+        $.ajax({
+            url: 'http://localhost:7000/uaa/login?username=11911626&password=123456',
+            type: "POST",
+            xhrFields: {withCredentials: true},
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data['resp_msg']);
+                console.dir(data)
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!");
+            }
+        })
+    }
+
+    function test(){
+        $.ajax({
+            // url: 'http://localhost:8001/hello',
+            url: 'http://camsyn.top:8001/hello',
+            type: "GET",
+            xhrFields: {withCredentials: true},
+
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+                console.dir(data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!");
+            }
+
+        })
+    }
+    function testGateway(){
+        $.ajax({
+            // url: 'http://localhost:8001/hello',
+            url: 'http://camsyn.top:8000/chat/demo1',
+            type: "GET",
+            xhrFields: {withCredentials: true},
+
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+                console.dir(data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!");
+            }
+
+        })
+    }
+    function local_test(){
+        $.ajax({
+            url: 'http://localhost:8001/hello',
+            // url: 'http://camsyn.top:8001/demo1',
+            type: "GET",
+            xhrFields: {withCredentials: true},
+
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+                console.dir(data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!");
+            }
+
+        })
+    }
+
+</script>
+</html>

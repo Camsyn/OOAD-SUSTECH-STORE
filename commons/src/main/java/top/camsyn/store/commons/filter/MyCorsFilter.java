@@ -10,11 +10,15 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Slf4j
 @Component
 public class MyCorsFilter implements Filter {
+    static Pattern url = Pattern.compile("(https?:\\/\\/.*?)\\/.*");
+
     static Set<String> allowedOrigins = new HashSet<>();
 
     static {
@@ -35,6 +39,18 @@ public class MyCorsFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String origin = httpRequest.getHeader("Origin");
+        String referer = httpRequest.getHeader("Referer");
+        if (referer != null) {
+            Matcher matcher = url.matcher(referer);
+            if (origin.equals("null") && matcher.find()) {
+                origin = matcher.group(1);
+            }
+        }
+        if (origin!=null && origin.equals("null")) {
+            origin = null;
+        }
+
+
         log.info("收到请求： url: {}, origin: {}", httpRequest.getRequestURI(), httpRequest.getHeader("Origin"));
 //        if (allowedOrigins.contains(origin)){
 //            response.setHeader("Access-Control-Allow-Origin", origin);
@@ -43,7 +59,6 @@ public class MyCorsFilter implements Filter {
 //        }
 
         response.setHeader("Access-Control-Allow-Origin", origin == null ? "*" : origin);
-
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
@@ -51,6 +66,4 @@ public class MyCorsFilter implements Filter {
         chain.doFilter(request, response);
     }
 
-    public void destroy() {
-    }
 }

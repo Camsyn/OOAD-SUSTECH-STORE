@@ -1,0 +1,4 @@
+<choose>
+    <when test='s.openState=0'>3</when>
+    <when test='s.openState=1'>2</when>
+</choose>

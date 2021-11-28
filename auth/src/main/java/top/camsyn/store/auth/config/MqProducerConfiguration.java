@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.StringUtils;
-import top.camsyn.store.auth.enumeration.RocketMqErrorEnum;
-import top.camsyn.store.auth.exception.RocketMqException;
+import top.camsyn.store.commons.enumeration.RocketMqErrorEnum;
+import top.camsyn.store.commons.exception.RocketMqException;
 
 
 /**

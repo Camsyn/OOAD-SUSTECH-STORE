@@ -3,25 +3,22 @@
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.web.cors.CorsConfiguration;
-//import org.springframework.web.cors.reactive.CorsWebFilter;
-//import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-//import org.springframework.web.util.pattern.PathPatternParser;
+//import org.springframework.web.cors.CorsConfigurationSource;
+//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 //
 //
 //@Configuration
 //public class CorsConfig {
 //
 //    @Bean
-//    public CorsWebFilter corsWebFilter() {
-//        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.addAllowedHeader("*");
-//        corsConfiguration.addAllowedMethod("*");
-////        corsConfiguration.addAllowedOrigin("*");
-//        corsConfiguration.setAllowCredentials(true);
-//        // 配置前端js允许访问的自定义响应头
-//        corsConfiguration.addExposedHeader("setToken");
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
-//        source.registerCorsConfiguration("/**", corsConfiguration);
-//        return new CorsWebFilter(source);
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.addAllowedOrigin("*");//修改为添加而不是设置，* 最好改为实际的需要，我这是非生产配置，所以粗暴了一点
+//        configuration.addAllowedMethod("*");//修改为添加而不是设置
+//        configuration.addAllowedHeader("*");//这里很重要，起码需要允许 Access-Control-Allow-Origin
+//        configuration.setAllowCredentials(true);
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
 //    }
 //}

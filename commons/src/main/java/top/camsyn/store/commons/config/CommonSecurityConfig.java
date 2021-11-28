@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
-import top.camsyn.store.commons.filter.CsrfFilter;
+import org.springframework.security.web.session.SessionManagementFilter;
+import top.camsyn.store.commons.filter.CsrfSameSiteFilter;
 import top.camsyn.store.commons.filter.MyCorsFilter;
+import top.camsyn.store.commons.filter.RedirectFilter;
 
 @Configuration
 @ConditionalOnMissingClass({"top.camsyn.store.gateway.GatewayApplication","top.camsyn.store.auth.AuthApplication"})
@@ -21,7 +24,10 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
     MyCorsFilter corsFilter;
 
     @Autowired
-    CsrfFilter csrfFilter;
+    CsrfSameSiteFilter csrfFilter;
+
+    @Autowired
+    RedirectFilter redirectFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,4 +40,6 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers( "/css/**", "/js/**","/html/**", "{static:\\S+\\..*}");
     }
+
+
 }

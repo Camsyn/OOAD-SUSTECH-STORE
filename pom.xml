@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
 
     <properties>
+        <commons.version>0.0.1</commons.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -142,7 +143,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- 自定义 starter -->
-
+            <dependency>
+                <groupId>top.camsyn.store</groupId>
+                <artifactId>commons-spring-boot-starter</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
 
 
 <!--            <dependency>

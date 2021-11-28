@@ -1,4 +1,4 @@
-package top.camsyn.store.auth.factory;
+package top.camsyn.store.commons.factory;
 
 import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;
 import com.alibaba.rocketmq.client.consumer.listener.MessageListenerConcurrently;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import top.camsyn.store.auth.enumeration.RocketMqErrorEnum;
-import top.camsyn.store.auth.exception.RocketMqException;
-import top.camsyn.store.auth.props.MqConsumerProperties;
+import top.camsyn.store.commons.enumeration.RocketMqErrorEnum;
+import top.camsyn.store.commons.exception.RocketMqException;
+import top.camsyn.store.commons.props.MqConsumerProperties;
 
 
 /**

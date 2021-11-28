@@ -1,6 +1,8 @@
 package top.camsyn.store.commons;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -14,6 +16,7 @@ import org.springframework.core.annotation.Order;
 @Configuration
 @ComponentScan
 @EnableFeignClients
+@ConfigurationPropertiesScan("top.camsyn.store.commons.props")
 //@Exclude
 //@EnableAutoConfiguration
 //@ComponentScan(excludeFilters = {

@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 public class ChatApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(ChatApplication.class, args);
     }
 

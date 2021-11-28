@@ -10,6 +10,7 @@ import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.mapper.AccountMapper;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
+import top.camsyn.store.request.dto.SearchDto;
 import top.camsyn.store.request.mapper.RequestMapper;
 
 import java.util.ArrayList;
@@ -37,9 +38,9 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request>  {
        return page(new Page<>(page,pageSize)).getRecords();
     }
 
-    public List<Request> search(int page, int pageSize, String pattern){
-
-        return new ArrayList<>();
+    public List<Request> search(SearchDto searchDto){
+        final IPage<Request> result = baseMapper.search(new Page<>(searchDto.page, searchDto.limit), searchDto);
+        return result.getRecords();
     }
 
 

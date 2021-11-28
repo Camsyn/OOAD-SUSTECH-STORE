@@ -18,7 +18,6 @@
         <module name="commons" />
         <module name="file" />
         <module name="chat" />
-        <module name="after-sale" />
         <module name="review" />
         <module name="commons-spring-boot-starter" />
         <module name="user" />

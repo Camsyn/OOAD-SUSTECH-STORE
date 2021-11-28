@@ -28,6 +28,7 @@ public class UserController {
         return Result.succeed(user);
     }
 
+    // TODO: 2021/11/22 这个方法的请求源受限
     @GetMapping("/get/{sid}")
     public Result<User> getUser(@PathVariable("sid") Integer sid) {
         log.info("获取其他用户");

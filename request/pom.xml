@@ -19,7 +19,6 @@
         <dependency>
             <groupId>top.camsyn.store</groupId>
             <artifactId>commons-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
         </dependency>
 
         <dependency>

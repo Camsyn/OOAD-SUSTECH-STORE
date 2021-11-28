@@ -21,11 +21,14 @@
         <option value="$PROJECT_DIR$/client3/pom.xml" />
         <option value="$PROJECT_DIR$/uaa1/pom.xml" />
         <option value="$PROJECT_DIR$/file/pom.xml" />
-        <option value="$PROJECT_DIR$/after-sale/pom.xml" />
         <option value="$PROJECT_DIR$/request/pom.xml" />
         <option value="$PROJECT_DIR$/review/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://mybatis.org/dtd/mybatis-3-config.dtd" location="$PROJECT_DIR$" />
+    <resource url="http://mybatis.org/dtd/mybatis-3-mapper.dtd" location="$PROJECT_DIR$" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

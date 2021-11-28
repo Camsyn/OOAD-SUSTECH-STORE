@@ -4,12 +4,11 @@ import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import top.camsyn.store.auth.constant.MQConstants;
-import top.camsyn.store.auth.exception.RocketMqException;
-import top.camsyn.store.auth.factory.MQConsumerFactory;
 import top.camsyn.store.auth.rocketmq.processor.OneParamActionListener;
 import top.camsyn.store.auth.service.impl.AccountService;
 import top.camsyn.store.commons.entity.auth.Account;
-
+import top.camsyn.store.commons.exception.RocketMqException;
+import top.camsyn.store.commons.factory.MQConsumerFactory;
 
 import javax.annotation.Resource;
 
