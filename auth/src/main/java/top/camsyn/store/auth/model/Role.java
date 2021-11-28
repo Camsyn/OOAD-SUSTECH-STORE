@@ -1,4 +1,4 @@
-package top.camsyn.store.commons.entity.auth;
+package top.camsyn.store.auth.model;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

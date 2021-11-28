@@ -7,6 +7,7 @@ import top.camsyn.store.auth.service.impl.UserService;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
+import top.camsyn.store.commons.model.UserDto;
 
 import javax.websocket.server.PathParam;
 
@@ -19,6 +20,7 @@ public class UserController {
     UserService userService;
 
 
+
     @GetMapping("/get")
     public Result<User> getLoginUser() {
         log.info("获取登录用户");
@@ -26,6 +28,13 @@ public class UserController {
         User user = userService.getOne(loginSid);
         if (user == null) return Result.failed("无此用户");
         return Result.succeed(user);
+    }
+
+
+    @GetMapping("/")
+    public Result<UserDto> getCurrentUser() {
+        log.info("获取登录用户");
+        return Result.succeed(UaaHelper.getCurrentUser());
     }
 
     @GetMapping("/get/{sid}")

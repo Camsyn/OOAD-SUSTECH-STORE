@@ -1,6 +1,8 @@
 //package top.camsyn.store.gateway.config;
 //
 //
+//
+//
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.web.cors.CorsConfiguration;
@@ -9,6 +11,9 @@
 //import org.springframework.web.util.pattern.PathPatternParser;
 //
 //
+///**
+// * @author Chen_Kunqiu
+// */
 //@Configuration
 //public class CorsConfig {
 //
