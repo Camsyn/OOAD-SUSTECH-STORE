@@ -1,6 +1,7 @@
 package top.camsyn.store.commons;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableFeignClients
+//@EnableBinding({MQProducerSource.class, MQConsumerSource.class})
 //@Exclude
 //@EnableAutoConfiguration
 //@ComponentScan(excludeFilters = {

@@ -4,86 +4,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append search接口基本确认可行">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_3_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_resource_server_5_3_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/component/JwtTokenEnhancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/KeyPairController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/OAuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/exception/Oauth2ExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/model/Oauth2TokenDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/model/SecurityUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/src/main/resources/jwt.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/constant/AuthConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/constant/MessageConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/constant/RedisConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/model/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/authorization/AuthorizationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestfulAccessDeniedHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/RedisRepositoryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/ResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/constant/AuthConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/constant/MessageConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/constant/RedisConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/dto/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/filter/AuthGlobalFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/filter/IgnoreUrlsRemoveJwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/filter/MyCorsFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/helper/CorsHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/props/OAuthProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uaa/uaa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_8_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_8_19.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_jakarta_mail_1_6_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_client_2_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_3_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_3_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_2_2_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_3_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_3_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_3_2_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_3_9_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_3_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_3_9_RELEASE.xml" beforeDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="V2 重写了授权登录的逻辑">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_4_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_cloud_spring_cloud_starter_stream_rocketmq_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_cloud_spring_cloud_starter_stream_rocketmq_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_78.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_0_42_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_1_55_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_1_65_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_tcnative_boringssl_static_1_1_33_Fork26.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_tcnative_boringssl_static_2_0_35_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_tcnative_boringssl_static_2_0_39_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_jodah_typetools_0_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_acl_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_client_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_common_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_logging_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_remoting_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_spring_boot_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_spring_boot_starter_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_rocketmq_rocketmq_srvutil_4_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_7_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_11_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_context_3_0_11_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_context_3_0_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_core_3_0_11_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_core_3_0_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_stream_3_0_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_stream_3_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_core_5_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_core_5_3_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_core_5_3_7_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_jmx_5_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_jmx_5_3_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_jmx_5_3_7_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_retry_spring_retry_1_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_15_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_29_20_38_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mq/consumer/ReviewRequestConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mq/source/RequestMqConsumerSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mq/source/RequestMqProducerSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/mq/consumer/RequestOrderConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/mq/source/OrderMqConsumerSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/user.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_rocketmq_rocketmq_client_3_6_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/AuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/AuthApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/AuthServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/AuthServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AuthUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AuthUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/ChatApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/ChatApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/after-sale/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/src/main/java/top/camsyn/store/aftersale/AfterSaleApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/src/main/java/top/camsyn/store/aftersale/client/UserClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/after-sale/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/after-sale/src/test/java/top/camsyn/store/aftersale/AfterSaleApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/MqConsumerConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/config/MqProducerConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/exception/RocketMqException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/factory/MQConsumerFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomAccessDenyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomAccessDenyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomAuthEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomAuthEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/LoginFailHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/LoginFailHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/LoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/handler/LoginSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/props/MqConsumerProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/rocketmq/processor/OneParamActionListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/entity/ChatState.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/entity/ChatState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/CommonsAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/CommonsAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/UserClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/CommonSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/config/CommonSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/auth/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/auth/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/AuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/CsrfFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/CsrfFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/CsrfSameSiteFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/CsrfSameSiteFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/MyCorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/filter/MyCorsFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/chat/ChatRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/chat/ChatRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/UaaHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/UaaHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/model/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/props/MqConsumerProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/props/MqConsumerProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/CustomReactiveAccessTokenResponseClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/FilterConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/nacosdiscovery/NacosDiscoveryConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/service/CustomReactiveOAuth2UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/top/camsyn/store/gateway/GatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/top/camsyn/store/gateway/GatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestfulAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway/component/RestfulAccessDeniedHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/request/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/RequestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/RequestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/review/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/ReviewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/ReviewApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/resources/bootstrap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sustech-store.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sustech-store.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uaa1/uaa1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/top/camsyn/user/UserApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/top/camsyn/user/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/top/camsyn/user/rpc/AuthClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/top/camsyn/user/rpc/fallback/AuthHystrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/resources/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/test/java/top/camsyn/user/UserApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,9 +136,9 @@
       <list>
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -144,7 +185,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gateway/src/main/java/top/camsyn/store/gateway" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -160,11 +201,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\request\src\main\java\top\camsyn\store\request" />
+      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\review\src\main\java\top\camsyn\store\review" />
+      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\order\src\main\resources" />
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\gateway\src\main\java\top\camsyn\store\gateway" />
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\gateway\src\main\resources" />
-      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\commons\src\main\java\top\camsyn\store\commons" />
-      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\auth\src\main\resources" />
-      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\review\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\commons\src\main\resources" />
@@ -175,17 +216,18 @@
       <recent name="top.camsyn.store.uaa.service.impl" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="top.camsyn.store.gateway" />
       <recent name="com.example.uaa1" />
       <recent name="top.camsyn.store" />
       <recent name="com.camsyn.top.uaa" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="review" />
       <recent name="top.camsyn.store.auth.model" />
       <recent name="top.camsyn.store.commons.constant" />
       <recent name="top.camsyn.store.auth.component" />
       <recent name="top.camsyn.store.chat.config" />
-      <recent name="top.camsyn.store.chat.component" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ChatApplication (1)">
@@ -202,13 +244,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration name="UaaHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.commons.helper.UaaHelper" />
+      <module name="commons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.commons.helper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -225,21 +282,6 @@
       <option name="MAIN_CLASS_NAME" value="top.camsyn.store.gateway.GatewayApplicationTests" />
       <option name="METHOD_NAME" value="contextLoads" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RequestApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="request" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.request.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -361,7 +403,7 @@
     </configuration>
     <configuration name="ReviewApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="review" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.review.ReviewApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="review.ReviewApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -416,7 +458,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.RequestApplicationTests" />
-      <item itemvalue="JUnit.RequestApplicationTests" />
+      <item itemvalue="Application.UaaHelper" />
       <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
       <item itemvalue="JUnit.GatewayApplicationTests.contextLoads" />
       <item itemvalue="Spring Boot.ChatApplication" />
@@ -442,10 +484,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.AuthApplication" />
+        <item itemvalue="Application.UaaHelper" />
         <item itemvalue="JUnit.GatewayApplicationTests.contextLoads" />
         <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
         <item itemvalue="Application.RequestApplicationTests" />
-        <item itemvalue="JUnit.RequestApplicationTests" />
       </list>
     </recent_temporary>
   </component>

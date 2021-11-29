@@ -1,7 +1,7 @@
 package top.camsyn.store.commons.helper;
 
-import cn.hutool.core.convert.Convert;
-import cn.hutool.json.JSONObject;
+
+import com.alibaba.fastjson.JSON;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.camsyn.store.commons.entity.auth.Account;
@@ -18,14 +18,16 @@ public class UaaHelper {
     public static UserDto getCurrentUser(){
         //从Header中获取用户信息
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (servletRequestAttributes == null) {
+            return new UserDto();
+        }
         HttpServletRequest request = servletRequestAttributes.getRequest();
         String userStr = request.getHeader("user");
-        JSONObject userJsonObject = new JSONObject(userStr);
-        UserDto userDTO = new UserDto();
-        userDTO.setUsername(userJsonObject.getStr("user_name"));
-        userDTO.setSid(Convert.toInt(userJsonObject.get("sid")));
-        userDTO.setRoles(Convert.toList(String.class,userJsonObject.get("authorities")));
-        return userDTO;
+        return JSON.parseObject(userStr, UserDto.class);
+    }
+
+    public static UserDto getUser(String userStr){
+        return JSON.parseObject(userStr, UserDto.class);
     }
 
     public static boolean checkUser(User user){
@@ -34,4 +36,6 @@ public class UaaHelper {
     public static boolean checkAccount(Account account){
         return getLoginSid()==account.getSid();
     }
+
+
 }

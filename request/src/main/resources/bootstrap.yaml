@@ -18,7 +18,7 @@ spring:
 
 
         shared-configs:
-          - data-id: common-security.yaml
+          - data-id: common.yaml
             group: DEFAULT_GROUP # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP
             refresh: true # 是否自动刷新配置，默认为 false
           - data-id: common-datasource.yaml

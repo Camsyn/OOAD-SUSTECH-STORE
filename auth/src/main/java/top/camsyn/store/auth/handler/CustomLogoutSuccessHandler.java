@@ -1,14 +1,9 @@
 package top.camsyn.store.auth.handler;
 
-import com.alibaba.nacos.common.model.RestResult;
-import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.common.OAuth2RefreshToken;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 import top.camsyn.store.commons.model.Result;

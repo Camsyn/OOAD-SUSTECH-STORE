@@ -1,6 +1,6 @@
 package top.camsyn.store.gateway.component;
 
-import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
@@ -36,7 +36,8 @@ public class RestAuthenticationEntryPoint implements ServerAuthenticationEntryPo
 
         response.setStatusCode(HttpStatus.OK);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        String body= JSONUtil.toJsonStr(Result.failed(e.getMessage()));
+        String body= JSON.toJSONString(Result.failed(e.getMessage()));
+
         DataBuffer buffer =  response.bufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(buffer));
     }

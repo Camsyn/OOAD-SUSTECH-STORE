@@ -17,7 +17,6 @@
         <option value="$PROJECT_DIR$/authn/pom.xml" />
         <option value="$PROJECT_DIR$/auth/pom.xml" />
         <option value="$PROJECT_DIR$/test/pom.xml" />
-        <option value="$PROJECT_DIR$/user/pom.xml" />
         <option value="$PROJECT_DIR$/client3/pom.xml" />
         <option value="$PROJECT_DIR$/uaa1/pom.xml" />
         <option value="$PROJECT_DIR$/file/pom.xml" />

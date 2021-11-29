@@ -1,7 +1,7 @@
 package top.camsyn.store.chat.entity;
 
 
-import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSON;
 import lombok.Builder;
 import lombok.Data;
 

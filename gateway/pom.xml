@@ -30,6 +30,7 @@
 <!--            <groupId>top.camsyn.store</groupId>-->
 <!--            <artifactId>commons-spring-boot-starter</artifactId>-->
 <!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
