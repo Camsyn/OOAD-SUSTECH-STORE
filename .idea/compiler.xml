@@ -22,6 +22,7 @@
         <module name="commons-spring-boot-starter" />
         <module name="config" />
         <module name="gateway" />
+        <module name="order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
