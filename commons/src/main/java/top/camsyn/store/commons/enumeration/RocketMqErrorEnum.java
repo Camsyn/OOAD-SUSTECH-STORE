@@ -1,5 +1,4 @@
-package top.camsyn.store.commons.enumeration;
-
+package top.camsyn.store.auth.enumeration;
 
 public enum RocketMqErrorEnum {
     PARAMM_NULL

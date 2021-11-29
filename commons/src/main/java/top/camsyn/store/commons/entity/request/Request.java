@@ -42,7 +42,7 @@ public class Request {
      */
     Integer tradeType;
     /**
-     * '0: 未审核  1: 审核中 2：开启， 3：关闭   4. 撤回   5. 封禁'  （生成）
+     * '0: 未审核  1: 审核中 2：开启， 3：关闭   4. 隐藏   5. 封禁'  （生成）
      */
     Integer state;
     /**
@@ -83,10 +83,4 @@ public class Request {
 
     private Integer deleted;
 
-    public boolean isLiyuanPaySellReq(){
-        return tradeType==1 && type==1;
-    }
-    public boolean isLiyuanPayBuyReq(){
-        return tradeType==1 && type==0;
-    }
 }

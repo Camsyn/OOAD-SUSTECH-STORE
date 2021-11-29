@@ -126,19 +126,14 @@ public interface RequestMapper extends BaseMapper<Request> {
             "            </foreach>\n" +
             "        </if>\n" +
             "        \n" +
-            "        <choose>" +
-            "           <when test='s.openState != null and (s.openState=0 or s.openState=1)'>\n" +
-            "               and\n" +
-            "               r.state = \n" +
-            "                   <choose>\n" +
-            "                       <when test='s.openState==0'>3</when>\n" +
-            "                       <when test='s.openState==1'>2</when>\n" +
-            "                   </choose>" +
-            "           </when>\n" +
-            "           <otherwise>\n" +
-            "               and r.state in (2, 3)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 n" +
-            "           </otherwise>\n" +
-            "        </choose>\n" +
+            "        <if test='s.openState != null and (s.openState=0 or s.openState=1)'>\n" +
+            "            and\n" +
+            "            r.state = \n" +
+            "               <choose>\n" +
+            "                   <when test='s.openState==0'>3</when>\n" +
+            "                   <when test='s.openState==1'>2</when>\n" +
+            "               </choose>" +
+            "        </if>\n" +
             "        \n" +
             "        <if test='s.after != null'>\n" +
             "            and\n" +

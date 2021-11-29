@@ -8,7 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @SpringBootApplication
-@EnableResourceServer
 @EnableCaching
 @EnableDiscoveryClient
 @MapperScan("top.camsyn.store.auth.mapper")

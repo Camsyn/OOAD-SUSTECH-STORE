@@ -18,11 +18,12 @@
         <module name="commons" />
         <module name="file" />
         <module name="chat" />
+        <module name="after-sale" />
         <module name="review" />
         <module name="commons-spring-boot-starter" />
-        <module name="user" />
         <module name="config" />
         <module name="gateway" />
+        <module name="order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -40,6 +41,7 @@
       <module name="file" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="OOAD-SUSTECH-STORE" target="1.8" />
+      <module name="order" target="1.8" />
       <module name="request" target="1.8" />
       <module name="review" target="1.8" />
       <module name="sustech-store" target="1.8" />

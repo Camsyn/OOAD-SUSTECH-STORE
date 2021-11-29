@@ -1,6 +1,7 @@
 package top.camsyn.store.commons.client;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import top.camsyn.store.commons.model.Result;
 @RequestMapping("/user")
 @ResponseBody
 public interface UserClient {
+
     @GetMapping("/get")
     Result<User> getLoginUser();
 

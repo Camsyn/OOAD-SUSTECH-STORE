@@ -1,6 +1,6 @@
 package top.camsyn.store.commons.entity.chat;
 
-import com.alibaba.rocketmq.shade.com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
