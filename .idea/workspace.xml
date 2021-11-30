@@ -5,16 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_20_17_18_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_29_20_38_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons-spring-boot-starter/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/order/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RelationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/LabelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/RelationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_cloud_spring_cloud_starter_stream_rocketmq_2_2_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_0_42_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_1_55_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_tcnative_boringssl_static_1_1_33_Fork26.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_tcnative_boringssl_static_2_0_35_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_31.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_11_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_context_3_0_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_function_core_3_0_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_stream_3_0_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_core_5_2_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_core_5_3_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_jmx_5_2_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_integration_spring_integration_jmx_5_3_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/ChatApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/test/java/top/camsyn/store/chat/ChatApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/CommonsAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/CommonsAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/LabelRequestRelation.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/LabelRequestRelation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/request/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/LabelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/LabelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/LabelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/LabelMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mq/source/RequestMqConsumerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mq/source/RequestMqConsumerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/review/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sustech-store.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sustech-store.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +59,8 @@
         <option value="Enum" />
         <option value="AnnotationType" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,7 +152,7 @@
       <recent name="top.camsyn.store.chat.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChatApplication (1)">
+  <component name="RunManager" selected="JUnit.ChatApplicationTests.contextLoads">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -128,19 +160,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RequestApplicationTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
-      <module name="request" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.request.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,6 +173,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.chat.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.chat" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.chat.ChatApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -345,7 +380,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.RequestApplicationTests" />
       <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
       <item itemvalue="JUnit.GatewayApplicationTests.contextLoads" />
       <item itemvalue="Spring Boot.ChatApplication" />
@@ -368,14 +402,15 @@
       <item itemvalue="Spring Boot.ReviewApplication" />
       <item itemvalue="Spring Boot.AuthApplication" />
       <item itemvalue="Application.UaaHelper" />
+      <item itemvalue="JUnit.ChatApplicationTests.contextLoads" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ChatApplicationTests.contextLoads" />
         <item itemvalue="Spring Boot.AuthApplication" />
         <item itemvalue="Application.UaaHelper" />
         <item itemvalue="JUnit.GatewayApplicationTests.contextLoads" />
         <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
-        <item itemvalue="Application.RequestApplicationTests" />
       </list>
     </recent_temporary>
   </component>
@@ -506,11 +541,29 @@
       <option name="project" value="LOCAL" />
       <updated>1637429502225</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录">
+      <created>1638189590235</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638189590235</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -533,7 +586,8 @@
     <MESSAGE value="append 修炼commons的bug" />
     <MESSAGE value="5.0 开始编写请求微服务, 初步搭建了search逻辑" />
     <MESSAGE value="append search接口基本确认可行" />
-    <option name="LAST_COMMIT_MESSAGE" value="append search接口基本确认可行" />
+    <MESSAGE value="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录" />
+    <option name="LAST_COMMIT_MESSAGE" value="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

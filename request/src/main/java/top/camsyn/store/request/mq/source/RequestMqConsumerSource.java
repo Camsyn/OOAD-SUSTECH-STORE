@@ -8,7 +8,7 @@ public interface RequestMqConsumerSource {
 
 
     /**
-     * 接收请求微服务的的消息
+     * 接收review微服务的的消息
      */
     @Input(REVIEW_INPUT)
     SubscribableChannel reviewInput();

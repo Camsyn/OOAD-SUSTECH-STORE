@@ -82,5 +82,10 @@ public class Request {
     List<String> labels;
 
     private Integer deleted;
-
+    public boolean isLiyuanPaySellReq(){
+        return tradeType==1 && type==1;
+    }
+    public boolean isLiyuanPayBuyReq(){
+        return tradeType==1 && type==0;
+    }
 }

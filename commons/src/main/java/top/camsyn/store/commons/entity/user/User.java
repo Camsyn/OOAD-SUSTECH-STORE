@@ -31,7 +31,7 @@ public class User extends Model<User> {
 
     private Integer credit;
 
-    private Integer liyuan;
+    private Double liyuan;
 
     private String headImage;
 
