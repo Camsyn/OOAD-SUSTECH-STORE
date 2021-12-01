@@ -5,10 +5,7 @@ import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.model.Result;
 
 public class UserHystrix implements UserClient {
-    @Override
-    public Result<User> getLoginUser() {
-        return null;
-    }
+
 
     @Override
     public Result<User> getUser(Integer sid) {

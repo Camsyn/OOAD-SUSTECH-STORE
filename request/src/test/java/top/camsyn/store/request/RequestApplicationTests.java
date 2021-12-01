@@ -1,5 +1,7 @@
 package top.camsyn.store.request;
 
+import com.alibaba.fastjson.JSON;
+import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +19,8 @@ class RequestApplicationTests {
     RequestService requestService;
     @Test
     void contextLoads() {
-
+        System.out.println(requestService.getById(1));
+        System.out.println(requestService.getById(1111));
     }
 
     @Test
@@ -59,6 +62,7 @@ class RequestApplicationTests {
     }
 
     public static void main(String[] args) {
-        System.out.println(SearchDto.builder().before(LocalDateTime.now()).build());
+        List<String> strings = JSON.parseArray("'[\"asd\",\"qwe\"]'", String.class);
+        System.out.println(strings);
     }
 }

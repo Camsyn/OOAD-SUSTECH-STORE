@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.entity.request.Label;
 import top.camsyn.store.commons.entity.request.Request;
+import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.request.service.LabelService;
 import top.camsyn.store.request.service.RelationService;
@@ -38,9 +39,7 @@ public class LabelController {
         log.info("修改请求的label标签");
         Integer id = newRequest.getId();
         Request oldRequest = requestService.getById(id);
-        if (oldRequest == null) {
-            return Result.failed("查无此请求");
-        }
+        UaaHelper.assertAdmin(oldRequest.getPusher());
         List<String> oldLabels = oldRequest.getLabels();
         List<String> newLabels = newRequest.getLabels();
         Collection<String> labels2append = CollectionUtils.subtract(newLabels, oldLabels);

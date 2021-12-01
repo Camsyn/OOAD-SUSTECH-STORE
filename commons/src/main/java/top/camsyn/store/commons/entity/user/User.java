@@ -2,9 +2,11 @@ package top.camsyn.store.commons.entity.user;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
@@ -38,4 +40,13 @@ public class User extends Model<User> {
     private String payCode;
 
     private Integer deleted;
+
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    private List<Integer> collection;
+
+    public User dePrivacy(){
+        liyuan = -1.0;
+        collection = null;
+        return this;
+    }
 }

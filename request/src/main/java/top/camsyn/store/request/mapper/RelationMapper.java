@@ -1,13 +1,14 @@
 package top.camsyn.store.request.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import top.camsyn.store.commons.entity.request.LabelRequestRelation;
 
 import java.util.List;
 
+@Mapper
 public interface RelationMapper extends BaseMapper<LabelRequestRelation> {
     @Update("<script>\n" +
             "    update request_label_relation rlr set deleted = 1 " +

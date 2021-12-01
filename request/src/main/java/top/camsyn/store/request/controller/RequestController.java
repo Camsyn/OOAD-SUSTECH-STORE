@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@RequestMapping("request")
 public class RequestController {
 
     @Autowired
@@ -36,15 +37,16 @@ public class RequestController {
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request){
         int loginSid = UaaHelper.getLoginSid();
-        request.setPublisher(loginSid).setState(0);
+        request.setPusher(loginSid).setState(0);
         requestService.save(request);
         // TODO: 2021/11/22 审核
+        // TODO: 邮件提醒
         return Result.succeed(request,"已发往审核");
     }
 
     @PutMapping("/update")
     public Result<Request> updateRequest(@RequestBody Request request){
-        int loginSid = UaaHelper.getLoginSid();
+        UaaHelper.assertAdmin(request.getId());
         Request req = requestService.getById(request.getId());
         if (req == null){
             return Result.failed("请求不存在");
@@ -52,9 +54,7 @@ public class RequestController {
         if (req.getState() != 3 && req.getState()!=0){
             return Result.failed("只能修改审核中或关闭中的请求");
         }
-        if (req.getPublisher()!=loginSid) {
-            return Result.failed("非发布者，无权修改");
-        }
+
         if (req.getSaleCount() > request.getCount()) {
             return Result.failed("总数量不得小于已售数量");
         }
@@ -80,9 +80,8 @@ public class RequestController {
         if (req.getState() != 3 && req.getState()!=2){
             return Result.failed("只有open或close的请求有权撤回");
         }
-        if (req.getPublisher()!=loginSid) {
-            return Result.failed("非发布者，无权修改");
-        }
+        UaaHelper.assertAdmin(req.getPusher());
+
 
         req.setState(4);
 
@@ -106,11 +105,24 @@ public class RequestController {
         if (req == null || req.getState() != 2){
             return Result.failed("请求不存在或请求无权关闭");
         }
-        if (req.getPublisher()!=loginSid) {
-            return Result.failed("非发布者，无权修改");
-        }
+        UaaHelper.assertAdmin(req.getPusher());
 
         req.setState(3);
+        requestService.updateById(req);
+
+        return Result.succeed(req,"已成功关闭请求");
+    }
+
+
+    @PutMapping("/open")
+    public Result<Request> openRequest(@RequestParam("requestId") Integer requestId){
+        Request req = requestService.getById(requestId);
+        if (req == null || req.getState() != 2){
+            return Result.failed("请求不存在或请求无权关闭");
+        }
+        UaaHelper.assertAdmin(req.getPusher());
+
+        req.setState(2);
         requestService.updateById(req);
 
         return Result.succeed(req,"已成功关闭请求");
@@ -147,11 +159,34 @@ public class RequestController {
         }
         // TODO: 2021/11/22 第三方支付
         // TODO: 2021/11/22 订单微服务
-        Order order = Order.builder().requestId(requestId).puller(loginSid).pusher(req.getPublisher()).state(0).count(count).build();
+        Order order = Order.builder().requestId(requestId).puller(loginSid).pusher(req.getPusher()).state(0).count(count).build();
         log.info("发送订单生成请求至消息队列，order: {}", order);
         mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
         return Result.succeed("已成功下单， 订单生成中");
     }
 
 
+    @PutMapping("/rpc/update/state")
+    public Result<Request> updateRequestState(@RequestParam("requestId") Integer requestId, @RequestParam("state") Integer state){
+        log.info("审核后处理request");
+        Request request = requestService.getById(requestId);
+        request.setState(state);
+        requestService.updateById(request);
+        return Result.succeed(request,"成功修改审核状态");
+    }
+
+
+    @PutMapping("/rpc/drop")
+    Result<Request> dropRequest(@RequestParam("requestId") Integer requestId){
+        return updateRequestState(requestId, 5);
+    }
+    @GetMapping("/rpc/get")
+    Result<Request> getRequest(@RequestParam("requestId") Integer requestId){
+        return Result.succeed(requestService.getById(requestId));
+    }
+
+    @PutMapping("/rpc/update")
+    Result<Boolean> updateRequestForRpc(@RequestBody Request request){
+        return Result.succeed(requestService.updateById(request));
+    }
 }

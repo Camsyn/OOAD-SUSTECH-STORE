@@ -6,6 +6,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.entity.user.User;
+import top.camsyn.store.commons.exception.NotSelfException;
 import top.camsyn.store.commons.model.UserDto;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,5 +38,9 @@ public class UaaHelper {
         return getLoginSid()==account.getSid();
     }
 
+    public static boolean assertAdmin(Integer sid){
+        if (getLoginSid() == sid) return true;
+        throw new NotSelfException();
+    }
 
 }

@@ -11,13 +11,16 @@
 </body>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
+    var gateway = '120.77.145.246:8000'
+    var token = ''
     function login(){
         $.ajax({
-            url: 'http://120.77.145.246:8000/auth/oauth/token?username=11911626&password=123456',
+            url: 'http://'+gateway+'/auth/oauth/token?username=11911626&password=123456',
             type: "POST",
             xhrFields: {withCredentials: true},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data['resp_msg']);
+                token = data['data']['token']
                 console.dir(data)
             },
             error: function (data) {
@@ -44,10 +47,10 @@
     function test(){
         $.ajax({
             // url: 'http://localhost:8001/hello',
-            url: 'http://camsyn.top:8001/demo1',
+            url: 'http://'+gateway+'/chat/demo1',
             type: "GET",
             xhrFields: {withCredentials: true},
-
+            headers: {'Authorization':'Bearer '+token},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data);
                 console.dir(data);
