@@ -15,14 +15,13 @@ import top.camsyn.store.commons.model.Result;
 @ResponseBody
 public interface UserClient {
 
-    @GetMapping("/get")
-    Result<User> getLoginUser();
 
-    @GetMapping("/get/{sid}")
+    @GetMapping("/rpc/get/{sid}")
     Result<User> getUser(@PathVariable("sid") Integer sid);
 
-    @PutMapping("/update")
+    @PutMapping("/rpc/update")
     Result<User> updateUser(@RequestBody User user);
 }
+
 
 

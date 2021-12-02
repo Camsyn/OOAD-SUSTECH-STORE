@@ -11,6 +11,7 @@
         <module name="client3" />
         <module name="test" />
         <module name="auth" />
+        <module name="uaa1" />
         <module name="authn" />
         <module name="client2" />
         <module name="client1" />

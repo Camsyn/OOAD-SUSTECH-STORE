@@ -6,6 +6,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.entity.user.User;
+import top.camsyn.store.commons.exception.NotSelfException;
 import top.camsyn.store.commons.model.UserDto;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ public class UaaHelper {
         return getCurrentUser().getSid();
     }
 
-    public static UserDto getCurrentUser(){
+    public static UserDto getCurrentUser() {
         //从Header中获取用户信息
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (servletRequestAttributes == null) {
@@ -26,16 +27,22 @@ public class UaaHelper {
         return JSON.parseObject(userStr, UserDto.class);
     }
 
-    public static UserDto getUser(String userStr){
+    public static UserDto getUser(String userStr) {
         return JSON.parseObject(userStr, UserDto.class);
     }
 
-    public static boolean checkUser(User user){
-        return getLoginSid()==user.getSid();
-    }
-    public static boolean checkAccount(Account account){
-        return getLoginSid()==account.getSid();
+    public static boolean checkUser(User user) {
+        return getLoginSid() == user.getSid();
     }
 
+    public static boolean checkAccount(Account account) {
+        return getLoginSid() == account.getSid();
+    }
+
+    public static UserDto assertAdmin(Integer sid) {
+        final UserDto user = getCurrentUser();
+        if (user.getSid().equals(sid)) return user;
+        throw new NotSelfException();
+    }
 
 }

@@ -20,11 +20,11 @@ public class Request {
     @TableId(value = "id",type = IdType.AUTO)
     Integer id;
     String title;
-    String desc;
+    String description;
     /**
      * 发布请求者（生成）
      */
-    Integer publisher;
+    Integer pusher;
     /**
      * '0:买， 1:卖,  其他待拓展'
      */
@@ -46,9 +46,17 @@ public class Request {
      */
     Integer state;
     /**
+     * 0: 商品   1：服务
+     */
+    Integer category;
+    /**
      * 准确价格
      */
     Double exactPrice;
+    /**
+     * 原价
+     */
+    Double originalPrice;
     /**
      * 预估价格（用于私下交易）
      */
@@ -69,7 +77,7 @@ public class Request {
      * 生成, 审核通过，正式发布的时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    LocalDateTime publishTime;
+    LocalDateTime pushTime;
 
     /**
      * 路径序列
@@ -82,5 +90,10 @@ public class Request {
     List<String> labels;
 
     private Integer deleted;
-
+    public boolean isLiyuanPaySellReq(){
+        return tradeType==1 && type==1;
+    }
+    public boolean isLiyuanPayBuyReq(){
+        return tradeType==1 && type==0;
+    }
 }

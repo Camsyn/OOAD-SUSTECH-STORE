@@ -11,13 +11,16 @@
 </body>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
+    var gateway = '120.77.145.246:8000'
+    var token = ''
     function login(){
         $.ajax({
-            url: 'http://camsyn.cn:7000/uaa/login?username=11911626&password=123456',
+            url: 'http://'+gateway+'/auth/oauth/token?username=11911626&password=123456',
             type: "POST",
             xhrFields: {withCredentials: true},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data['resp_msg']);
+                token = data['data']['token']
                 console.dir(data)
             },
             error: function (data) {
@@ -30,7 +33,7 @@
             url: 'http://localhost:8000/auth/oauth/token?username=11911626&password=123456',
             type: "POST",
             xhrFields: {withCredentials: true},
-            headers: {'Authorization':'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMTkxMTYyNiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2MzgwOTY4NDQsImF1dGhvcml0aWVzIjpbImFkbWluIl0sImp0aSI6IjNlNDM4MTgyLTZmMjItNDdiMi05MjU2LTMwYWZjM2VlZmU3NCIsImNsaWVudF9pZCI6InN0b3JlIiwic2lkIjoiMTE5MTE2MjYifQ.gIns-xTNh5ZazkOvMTFzCQzb57jNvVqW9Z_pma3GQExtjbObrBsn2jA3RBevVVJJNk4PFlKQ5625R2X9LrsoBoVhVXIxWCG6DnfyJHwBCyM7m7TLOSDCAxv3bh_iPalUXaHDo-baK3B4xaxdBIOFXOmebyfeFvPpyqwMSzPo3-k'},
+            headers: {'Authorization':'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMTkxMTYyNiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2MzgxOTc0NDgsImF1dGhvcml0aWVzIjpbImFkbWluIl0sImp0aSI6IjFkYWRhYjAxLTdlZTgtNDdhZi1hMDlhLTBhZmMyNDRlMTBiNiIsImNsaWVudF9pZCI6InN0b3JlIiwic2lkIjoiMTE5MTE2MjYifQ.L1kpizQ1B44p9k8HYNbMWjDNpP2IRbzKIdrl78ocVN1vequAuvmRcGNFSJasFx70DgOk6etihliCbFKzNyuoQVThfUbp-n5fzSzgxQiZMiTGxk80FCGTgTgC6CNgYrEF_bwHL0WTNwVlkzf93gMA8fRQKkR1axtfWT54Ai15dhY'},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data['resp_msg']);
                 console.dir(data)
@@ -44,10 +47,10 @@
     function test(){
         $.ajax({
             // url: 'http://localhost:8001/hello',
-            url: 'http://camsyn.top:8001/demo1',
+            url: 'http://'+gateway+'/chat/demo1',
             type: "GET",
             xhrFields: {withCredentials: true},
-
+            headers: {'Authorization':'Bearer '+token},
             success: function (data) {
                 $("#info").html("跨域访问成功:"+data);
                 console.dir(data);

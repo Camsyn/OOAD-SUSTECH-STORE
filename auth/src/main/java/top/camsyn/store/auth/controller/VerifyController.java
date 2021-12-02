@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.auth.service.impl.AccountService;
-import top.camsyn.store.auth.service.impl.MailService;
+import top.camsyn.store.auth.service.impl.AuthMailService;
 import top.camsyn.store.auth.service.impl.VerifyService;
 import top.camsyn.store.auth.util.VerifyUtils;
 import top.camsyn.store.commons.entity.auth.Account;
@@ -22,7 +22,7 @@ public class VerifyController {
     public static final Logger LOGGER = LoggerFactory.getLogger(VerifyController.class);
 
     @Autowired
-    MailService mailService;
+    AuthMailService mailService;
 
     @Autowired
     AccountService accountService;

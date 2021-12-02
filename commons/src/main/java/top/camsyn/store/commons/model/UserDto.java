@@ -13,6 +13,7 @@ public class UserDto {
     @JSONField(name = "user_name")
     private String username;
     private String password;
+    private String email;
     private Integer status;
     @JSONField(name = "authorities")
     private List<String> roles;

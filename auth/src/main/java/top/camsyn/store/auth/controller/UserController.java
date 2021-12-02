@@ -10,6 +10,7 @@ import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.commons.model.UserDto;
 
 import javax.websocket.server.PathParam;
+import java.sql.ResultSet;
 
 @RestController
 @Slf4j
@@ -20,13 +21,20 @@ public class UserController {
     UserService userService;
 
 
-
     @GetMapping("/get")
     public Result<User> getLoginUser() {
         log.info("获取登录用户");
         int loginSid = UaaHelper.getLoginSid();
         User user = userService.getOne(loginSid);
         if (user == null) return Result.failed("无此用户");
+        return Result.succeed(user);
+    }
+    @GetMapping("/get/{sid}")
+    public Result<User> getOtherUser(@PathVariable("sid") Integer sid) {
+        log.info("获取指定用户信息（去隐私后的）");
+        User user = userService.getOne(sid);
+        if (user == null) return Result.failed("无此用户");
+        user.dePrivacy();
         return Result.succeed(user);
     }
 
@@ -37,29 +45,30 @@ public class UserController {
         return Result.succeed(UaaHelper.getCurrentUser());
     }
 
-    @GetMapping("/get/{sid}")
-    public Result<User> getUser(@PathVariable("sid") Integer sid) {
-        log.info("获取其他用户");
-        User user = userService.getOne(sid);
-        if (user == null) return Result.failed("无此用户");
-        return Result.succeed(user);
-    }
-
     @PutMapping("/update")
     public Result<User> updateUser(@RequestBody User user) {
         log.info("更新用户信息，user: {}", user.getSid());
-        if (UaaHelper.checkUser(user)) {
-            User oldUser = userService.getOne(user.getSid());
-            if (!oldUser.getHeadImage().equals(user.getHeadImage()) || !oldUser.getPayCode().equals(user.getPayCode())){
-                // TODO: 2021/11/16 文件微服务校验持久化链接
-            }
-            return userService.updateById(user) ? Result.succeed(user, "成功更新") : Result.failed(user, "未知原因，更新失败");
-        } else {
-            return Result.failed(user, "你只能更新自己的用户信息!");
+        UaaHelper.assertAdmin(user.getSid());
+
+        User oldUser = userService.getOne(user.getSid());
+        if (!oldUser.getHeadImage().equals(user.getHeadImage()) || !oldUser.getPayCode().equals(user.getPayCode())) {
+            // TODO: 2021/11/16 文件微服务校验持久化链接
         }
+        return userService.updateById(user) ? Result.succeed(user, "成功更新") : Result.failed(user, "未知原因，更新失败");
+
     }
 
+    @GetMapping("/rpc/get/{sid}")
+    public Result<User> getUser(@PathVariable("sid") Integer sid) {
+        log.info("获取其他用户");
+        User user = userService.getOne(sid);
+        return Result.succeed(user);
+    }
 
+    @PutMapping("/rpc/update")
+    public Result<User> update(@RequestBody User user){
+        return userService.updateById(user) ? Result.succeed(user, "成功更新") : Result.failed(user, "未知原因，更新失败");
+    }
 
 
 }
