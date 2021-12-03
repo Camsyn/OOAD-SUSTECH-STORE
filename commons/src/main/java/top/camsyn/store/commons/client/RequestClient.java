@@ -27,9 +27,6 @@ public interface RequestClient {
     @GetMapping("/rpc/get")
     Result<Request> getRequest(@RequestParam("requestId") Integer requestId);
 
-    @PutMapping("/rpc/update")
-    Result<Request> updateRequest(@RequestBody Request request);
-
     @PutMapping("/rpc/update/state")
     Result<Request> updateRequestState(@RequestParam("requestId") Integer requestId, @RequestParam("state") Integer state);
 

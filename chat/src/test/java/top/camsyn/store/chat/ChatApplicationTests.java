@@ -25,7 +25,7 @@ class ChatApplicationTests {
 
     @Test
     void testDatabase(){
-        ChatRecord chat = ChatRecord.builder().recvId(11910620).sendId(11911626).content("hello, this is a demo for test").type(0).build();
+        ChatRecord chat = ChatRecord.builder().recvId(11911626).sendId(11910620).content("hello, this is another test").type(0).build();
         chatService.save(chat);
     }
 }

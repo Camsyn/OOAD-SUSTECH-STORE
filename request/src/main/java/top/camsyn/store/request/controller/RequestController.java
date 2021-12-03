@@ -43,7 +43,7 @@ public class RequestController {
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
         final UserDto user = UaaHelper.getCurrentUser();
-        request.setPusher(user.getSid()).setState(0);
+        request.setPusher(user.getSid()).setState(0).setPusherEmail(user.getEmail());
         requestService.save(request);
         // TODO: 2021/11/22 审核
         // TODO: 邮件提醒

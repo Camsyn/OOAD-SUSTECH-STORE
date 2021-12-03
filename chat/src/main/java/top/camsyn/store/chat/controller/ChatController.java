@@ -179,7 +179,7 @@ public class ChatController {
         }
         chatRecords.stream().filter(i -> !i.isRead()).forEach(i ->
         {
-            i.setSendTime(LocalDateTime.now());
+            i.setRecvTime(LocalDateTime.now());
             i.setRead(true);
         });
         if (flag) {

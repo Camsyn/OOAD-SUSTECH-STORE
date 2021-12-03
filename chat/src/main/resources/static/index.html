@@ -34,8 +34,9 @@
             console.log("您的浏览器支持WebSocket");
             //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
             var userId = document.getElementById('userId').value;
-            var socketUrl="ws://120.77.145.246:8000/chat/websocket/one2one?token="+token;
+            // var socketUrl="ws://120.77.145.246:8000/chat/websocket/one2one?token="+token;
             // var socketUrl = "ws://localhost:8000/chat/websocket/one2one?token="+token;
+            var socketUrl = "ws://localhost:8001/websocket/one2one?token="+token;
             console.log(socketUrl);
             if (socket != null) {
                 socket.close();

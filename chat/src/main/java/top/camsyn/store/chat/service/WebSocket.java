@@ -28,8 +28,12 @@ import java.util.regex.Pattern;
 @ServerEndpoint("/websocket/one2one")
 public class WebSocket {
     static Pattern token = Pattern.compile("(?<=token=)(?<token>.*)");
+    private static ChatRecordService chatRecordService;
+
     @Autowired
-    private ChatRecordService chatRecordService;
+    public void setChatRecordService(ChatRecordService chatRecordService){
+        WebSocket.chatRecordService = chatRecordService;
+    }
 
     /**
      * 在线人数
@@ -88,13 +92,13 @@ public class WebSocket {
                 session.close();
             }
         } catch (IOException e) {
-            log.info("websocket连接中断");
+            log.error("websocket连接中断");
         }
     }
 
     @OnError
     public void onError(Session session, Throwable error) {
-        log.info("服务端发生了错误" + error.getMessage());
+        log.error("服务端发生了错误" + error.getMessage());
         error.printStackTrace();
     }
 
@@ -145,7 +149,7 @@ public class WebSocket {
             chatRecordService.save(chatRecord);
 
         } catch (Exception e) {
-            log.info("发生了错误了");
+            log.error("发生了错误了", e);
         }
 
     }

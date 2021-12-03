@@ -2,7 +2,9 @@ package top.camsyn.store.commons.entity.request;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
@@ -10,6 +12,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
 @TableName(value = "request", autoResultMap = true)
 @ToString
@@ -25,6 +29,7 @@ public class Request {
      * 发布请求者（生成）
      */
     Integer pusher;
+    String pusherEmail;
     /**
      * '0:买， 1:卖,  其他待拓展'
      */
@@ -76,7 +81,6 @@ public class Request {
     /**
      * 生成, 审核通过，正式发布的时间
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     LocalDateTime pushTime;
 
     /**

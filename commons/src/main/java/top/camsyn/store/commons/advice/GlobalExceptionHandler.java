@@ -19,6 +19,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     Result<Exception> handleException(Exception e){
+        log.error("发生了未知异常",e);
         return Result.failed(e,"未知异常");
     }
 
@@ -28,6 +29,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NotFoundException.class)
     Result<Exception> handleNotFoundException(NotFoundException e){
+        log.error("发生了找不到数据的异常",e);
         return Result.failed(e,"找不到该元素");
     }
 
@@ -39,6 +41,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NotSelfException.class)
     Result<Exception> handleNotSelfException(NotSelfException e){
+        log.error("发生了非自己账户的异常",e);
         return Result.failed(e,"非本人，无权操作");
     }
 
