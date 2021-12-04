@@ -9,4 +9,6 @@ public class AuthConstant {
 
     public static final String AUTHORITY_CLAIM_NAME = "authorities";
 
+    public static final String UAA_HEADER = "user";
+
 }

@@ -217,9 +217,12 @@
         <!-- 认证/登录 -->
         <module>auth</module>
         <!-- 网关 -->
-
+        <module>gateway</module>
         <!-- 业务 -->
-
+        <module>request</module>
+        <module>review</module>
+        <module>order</module>
+        <module>chat</module>
         <!-- 前端 -->
 
         <!-- 任务 -->
@@ -229,11 +232,9 @@
         <!-- 事务 -->
 
         <!-- chat -->
-        <module>chat</module>
         <!-- 配置 -->
 
         <module>commons-spring-boot-starter</module>
-        <module>order</module>
         <!-- demo -->
 
     </modules>

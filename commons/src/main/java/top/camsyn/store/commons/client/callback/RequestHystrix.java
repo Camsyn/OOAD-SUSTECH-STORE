@@ -20,10 +20,6 @@ public class RequestHystrix implements RequestClient {
         return null;
     }
 
-    @Override
-    public Result<Request> updateRequest(Request request) {
-        return null;
-    }
 
     @Override
     public Result<Request> updateRequestState(Integer requestId, Integer state) {

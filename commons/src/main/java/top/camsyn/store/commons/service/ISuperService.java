@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.camsyn.store.commons.lock.DistributedLock;
 
+import java.util.concurrent.locks.Lock;
 import java.util.function.Supplier;
 
 public interface ISuperService<T> extends IService<T> {
@@ -25,9 +26,9 @@ public interface ISuperService<T> extends IService<T> {
      * @param msg          对象已存在提示信息
      * @return
      */
-    boolean saveIdempotency(T entity, DistributedLock locker, String lockKey, Wrapper<T> countWrapper, String msg) throws Exception;
+    boolean saveIdempotency(T entity, Lock locker, String lockKey, Wrapper<T> countWrapper, String msg) throws Exception;
 
-    boolean saveIdempotency(T entity, DistributedLock locker, String lockKey, Wrapper<T> countWrapper) throws Exception;
+    boolean saveIdempotency(T entity, Lock locker, String lockKey, Wrapper<T> countWrapper) throws Exception;
 
     /**
      * 幂等性新增或更新记录
@@ -44,7 +45,7 @@ public interface ISuperService<T> extends IService<T> {
      * @param msg          对象已存在提示信息
      * @return
      */
-    boolean saveOrUpdateIdempotency(T entity, DistributedLock locker, String lockKey, Wrapper<T> countWrapper, String msg) throws Exception;
+    boolean saveOrUpdateIdempotency(T entity, Lock locker, String lockKey, Wrapper<T> countWrapper, String msg) throws Exception;
 
-    boolean saveOrUpdateIdempotency(T entity, DistributedLock locker, String lockKey, Wrapper<T> countWrapper) throws Exception;
+    boolean saveOrUpdateIdempotency(T entity, Lock locker, String lockKey, Wrapper<T> countWrapper) throws Exception;
 }

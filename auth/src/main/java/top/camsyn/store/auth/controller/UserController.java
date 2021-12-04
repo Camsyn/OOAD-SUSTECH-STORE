@@ -2,6 +2,7 @@ package top.camsyn.store.auth.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.auth.service.impl.UserService;
 import top.camsyn.store.commons.entity.user.User;
@@ -19,6 +20,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
 
 
     @GetMapping("/get")
@@ -70,5 +72,17 @@ public class UserController {
         return userService.updateById(user) ? Result.succeed(user, "成功更新") : Result.failed(user, "未知原因，更新失败");
     }
 
+    @PutMapping("/rpc/changeLiyuan")
+    public Result<User> changeLiyuan(@RequestParam("sid") Integer sid, @RequestParam("delta") Double delta){
+        final User user = userService.changeLiyuan(sid, delta);
+        return Result.succeed(user,"修改余额成功");
+    }
+
+    @PutMapping("/rpc/onetrade")
+    public Result<User> changeLiyuan(@RequestParam("adder") Integer adder,
+                                     @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta){
+        userService.changeLiyuan(adder,subscriber, delta);
+        return Result.succeed("修改余额成功");
+    }
 
 }

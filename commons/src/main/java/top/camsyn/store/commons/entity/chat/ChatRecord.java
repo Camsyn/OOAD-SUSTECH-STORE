@@ -2,12 +2,16 @@ package top.camsyn.store.commons.entity.chat;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @TableName(value = "chat_record")
 public class ChatRecord {

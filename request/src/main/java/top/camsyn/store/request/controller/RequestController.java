@@ -7,6 +7,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.client.UserClient;
 import top.camsyn.store.commons.entity.order.Order;
+import top.camsyn.store.commons.entity.order.TradeRecord;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.helper.UaaHelper;
@@ -43,7 +44,7 @@ public class RequestController {
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
         final UserDto user = UaaHelper.getCurrentUser();
-        request.setPusher(user.getSid()).setState(0);
+        request.setPusher(user.getSid()).setState(0).setPusherEmail(user.getEmail());
         requestService.save(request);
         // TODO: 2021/11/22 审核
         // TODO: 邮件提醒
@@ -168,7 +169,12 @@ public class RequestController {
         }
         // TODO: 2021/11/22 第三方支付
         // TODO: 2021/11/22 订单微服务
-        Order order = Order.builder().requestId(requestId).puller(loginSid).pusher(req.getPusher()).state(0).count(count).build();
+        // TODO: 2021/12/4 幂等操作的实现
+        TradeRecord order = TradeRecord.builder().requestId(requestId)
+                .puller(loginSid).pullerEmail(user.getEmail())
+                .pusher(req.getPusher()).pusherEmail(req.getPusherEmail())
+                .type(req.getType()).tradeType(req.getTradeType()).category(req.getCategory())
+                .state(0).tradeCnt(count).singlePrice(req.getExactPrice()).build();
         log.info("发送订单生成请求至消息队列，order: {}", order);
         mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
         mailService.sendWhenPull(user.getEmail(), req);
@@ -177,28 +183,5 @@ public class RequestController {
     }
 
 
-    @PutMapping("/rpc/update/state")
-    public Result<Request> updateRequestState(@RequestParam("requestId") Integer requestId, @RequestParam("state") Integer state) {
-        log.info("审核后处理request");
-        Request request = requestService.getById(requestId);
-        request.setState(state);
-        requestService.updateById(request);
-        return Result.succeed(request, "成功修改审核状态");
-    }
 
-
-    @PutMapping("/rpc/drop")
-    Result<Request> dropRequest(@RequestParam("requestId") Integer requestId) {
-        return updateRequestState(requestId, 5);
-    }
-
-    @GetMapping("/rpc/get")
-    Result<Request> getRequest(@RequestParam("requestId") Integer requestId) {
-        return Result.succeed(requestService.getById(requestId));
-    }
-
-    @PutMapping("/rpc/update")
-    Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
-        return Result.succeed(requestService.updateById(request));
-    }
 }

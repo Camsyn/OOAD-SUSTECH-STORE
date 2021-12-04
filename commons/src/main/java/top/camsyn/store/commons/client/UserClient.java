@@ -21,6 +21,14 @@ public interface UserClient {
 
     @PutMapping("/rpc/update")
     Result<User> updateUser(@RequestBody User user);
+
+    @PutMapping("/rpc/changeLiyuan")
+    Result<User> changeLiyuan(@RequestParam("sid") Integer sid, @RequestParam("delta") Double delta);
+
+    @PutMapping("/rpc/onetrade")
+    Result<User> changeLiyuan(@RequestParam("adder") Integer adder,
+                                     @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta);
+
 }
 
 

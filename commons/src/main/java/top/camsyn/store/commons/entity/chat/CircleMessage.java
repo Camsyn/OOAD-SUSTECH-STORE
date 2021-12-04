@@ -1,12 +1,16 @@
 package top.camsyn.store.commons.entity.chat;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("circle_message")
 public class CircleMessage {
     /**

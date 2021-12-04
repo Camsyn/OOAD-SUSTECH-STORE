@@ -2,10 +2,14 @@ package top.camsyn.store.commons.helper;
 
 
 import com.alibaba.fastjson.JSON;
+import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import top.camsyn.store.commons.constant.AuthConstant;
 import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.entity.user.User;
+import top.camsyn.store.commons.exception.AuthException;
 import top.camsyn.store.commons.exception.NotSelfException;
 import top.camsyn.store.commons.model.UserDto;
 
@@ -16,19 +20,32 @@ public class UaaHelper {
         return getCurrentUser().getSid();
     }
 
+    @SneakyThrows
     public static UserDto getCurrentUser() {
         //从Header中获取用户信息
-        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        if (servletRequestAttributes == null) {
-            return new UserDto();
+        String userStr = getUserStr();
+        try{
+            return JSON.parseObject(userStr, UserDto.class);
+        }catch (Exception e){
+            throw new AuthException("user 格式不对");
         }
-        HttpServletRequest request = servletRequestAttributes.getRequest();
-        String userStr = request.getHeader("user");
-        return JSON.parseObject(userStr, UserDto.class);
     }
 
     public static UserDto getUser(String userStr) {
         return JSON.parseObject(userStr, UserDto.class);
+    }
+    @SneakyThrows
+    public static String getUserStr() {
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (servletRequestAttributes == null) {
+            throw new AuthException("无法得到请求属性");
+        }
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        final String user = request.getHeader(AuthConstant.UAA_HEADER);
+        if (StringUtils.isEmpty(user)) {
+            throw new AuthException("无法得到 user 请求头");
+        }
+        return user;
     }
 
     public static boolean checkUser(User user) {

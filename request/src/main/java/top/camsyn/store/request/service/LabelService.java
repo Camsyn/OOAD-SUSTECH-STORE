@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.entity.request.Label;
-import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 import top.camsyn.store.request.mapper.LabelMapper;
 

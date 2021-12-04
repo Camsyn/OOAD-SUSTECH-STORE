@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.bouncycastle.cert.ocsp.Req;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.request.dto.SearchDto;
 
@@ -27,7 +26,7 @@ public interface RequestMapper extends BaseMapper<Request> {
             "         ${ew.customSqlSegment}"
     )
     List<Request> pageOfRequestByLabel(@Param("page")IPage<Request> page,
-                                        @Param(Constants.WRAPPER) Wrapper<Request> queryWrapper);
+                                       @Param(Constants.WRAPPER) Wrapper<Request> queryWrapper);
 
   /**
      * 联表的分页查询
