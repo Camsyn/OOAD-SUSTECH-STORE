@@ -11,9 +11,6 @@ public class RequestMailService extends MailService {
     public void sendWhenPush(String to, Request request) {
         sendMail(to, SIGNATURE + ": 请求推送确认", String.format("成功推送请求, 请等待审核通过。 请求序列号：%s", request.getId()));
     }
-    public void sendWhenSuccessPush(String to, Request request){
-        sendMail(to, "请求通过审核", String.format("成功推送请求, 审核已通过审核并成功发布。 请求序列号：%s", request.getId()));
-    }
 
     public void sendWhenSuccessPush(String to, Request request) {
         sendMail(to, SIGNATURE + ": 请求通过审核", String.format("成功推送请求, 审核已通过审核并成功发布。 请求序列号：%s", request.getId()));

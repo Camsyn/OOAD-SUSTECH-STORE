@@ -1,5 +1,6 @@
 package com.example.test;
 
+import com.example.test.test.Test1;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,12 +15,17 @@ class TestApplicationTests {
     @Autowired
     private RedisLockRegistry redisLockRegistry;
 
+
+    @Autowired
+    Test1 test1;
+
     int tmp1;
     int tmp2;
     private Lock lock;
     private Lock lock2;
 
-    private void testRedisLock() throws InterruptedException {
+    @Test
+    void testRedisLock() throws InterruptedException {
         tmp1 = 0;
         tmp2 = 0;
         /**
@@ -92,8 +98,12 @@ class TestApplicationTests {
     }
 
     @Test
+    void testBean() {
+        System.out.println(test1.toString());
+    }
+
+    @Test
     void contextLoads() throws InterruptedException {
-        testRedisLock();
     }
 
 }

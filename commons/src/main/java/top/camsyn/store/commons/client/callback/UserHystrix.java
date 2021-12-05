@@ -16,4 +16,14 @@ public class UserHystrix implements UserClient {
     public Result<User> updateUser(User user) {
         return null;
     }
+
+    @Override
+    public Result<User> changeLiyuan(Integer sid, Double delta) {
+        return null;
+    }
+
+    @Override
+    public Result<User> changeLiyuan(Integer adder, Integer subscriber, Double delta) {
+        return null;
+    }
 }

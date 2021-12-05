@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import top.camsyn.store.commons.entity.request.Request;
+import top.camsyn.store.request.controller.RequestController;
+import top.camsyn.store.request.controller.RpcController;
 import top.camsyn.store.request.dto.SearchDto;
 import top.camsyn.store.request.service.RequestService;
 
@@ -16,6 +18,10 @@ import java.util.List;
 class RequestApplicationTests {
     @Autowired
     RequestService requestService;
+
+    @Autowired
+    RpcController rpcController;
+
     @Test
     void contextLoads() {
         System.out.println(requestService.getById(1));
@@ -58,6 +64,12 @@ class RequestApplicationTests {
         System.out.println(search);
         System.out.println(result);
         System.out.println();
+    }
+
+
+    @Test
+    void testApi(){
+        System.out.println(rpcController.getRequest(123124));
     }
 
     public static void main(String[] args) {

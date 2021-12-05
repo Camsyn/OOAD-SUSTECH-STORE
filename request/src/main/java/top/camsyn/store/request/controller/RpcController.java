@@ -47,17 +47,17 @@ public class RpcController {
 
 
     @PutMapping("/request/drop")
-    Result<Request> dropRequest(@RequestParam("requestId") Integer requestId) {
+    public Result<Request> dropRequest(@RequestParam("requestId") Integer requestId) {
         return updateRequestState(requestId, 5);
     }
 
     @GetMapping("/request/get")
-    Result<Request> getRequest(@RequestParam("requestId") Integer requestId) {
+    public Result<Request> getRequest(@RequestParam("requestId") Integer requestId) {
         return Result.succeed(requestService.getById(requestId));
     }
 
     @PutMapping("/request/update")
-    Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
+    public Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
         return Result.succeed(requestService.updateById(request));
     }
 }

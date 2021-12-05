@@ -79,10 +79,10 @@ public class UserController {
     }
 
     @PutMapping("/rpc/onetrade")
-    public Result<User> changeLiyuan(@RequestParam("adder") Integer adder,
+    public Result<Boolean> changeLiyuan(@RequestParam("adder") Integer adder,
                                      @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta){
         userService.changeLiyuan(adder,subscriber, delta);
-        return Result.succeed("修改余额成功");
+        return Result.succeed(true,"修改余额成功");
     }
 
 }

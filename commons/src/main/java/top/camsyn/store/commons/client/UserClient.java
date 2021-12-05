@@ -26,7 +26,7 @@ public interface UserClient {
     Result<User> changeLiyuan(@RequestParam("sid") Integer sid, @RequestParam("delta") Double delta);
 
     @PutMapping("/rpc/onetrade")
-    Result<User> changeLiyuan(@RequestParam("adder") Integer adder,
+    Result<Boolean> changeLiyuan(@RequestParam("adder") Integer adder,
                                      @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta);
 
 }

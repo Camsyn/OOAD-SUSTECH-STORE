@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
 @Builder
 @ToString
 public class TradeRecord {
+    /**
+     * 主键id (生成)
+     */
     @TableId(value = "id", type = IdType.AUTO)
     Integer id;
     /**
@@ -38,8 +41,13 @@ public class TradeRecord {
      */
     Integer category;
 
-
+    /**
+     * 单价
+     */
     Double singlePrice;
+    /**
+     * 交易数量
+     */
     Integer tradeCnt;
     /**
      * 请求的id
@@ -65,12 +73,12 @@ public class TradeRecord {
      * 请求拉取者的状态
      */
     @Builder.Default
-    Integer pullerEnsure = 0;
+    Integer pullerConfirm = 0;
     /**
      * 请求发起者的状态
      */
     @Builder.Default
-    Integer pusherEnsure = 0;
+    Integer pusherConfirm = 0;
 
     /**
      * 订单成功生成时间
@@ -90,6 +98,6 @@ public class TradeRecord {
     Integer deleted;
 
     public boolean isFinished() {
-        return pullerEnsure == 1 && pusherEnsure == 1;
+        return pullerConfirm == 1 && pusherConfirm == 1;
     }
 }
