@@ -55,7 +55,7 @@ public class TradeRecord {
     Integer requestId;
 
     /**
-     * 0：订单准备，  1: 订单正式发布    2：订单正式满足，无法撤回
+     * 0：订单准备，  1: 订单正式发布    2：订单正式满足，无法撤回  3. 订单异常（审核中） 4. 订单中断
      */
     @Builder.Default
     Integer state = 0;

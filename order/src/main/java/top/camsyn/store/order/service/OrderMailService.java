@@ -26,5 +26,8 @@ public class OrderMailService extends MailService {
     public void sendWhenOrderGenerateFail(TradeRecord record, String msg){
         sendMail(record.getPullerEmail(), SIGNATURE+": 订单提醒: 拉取失败", msg);
     }
+    public void sendWhenOrderTerminate(TradeRecord record){
+        sendMail(record.getPullerEmail(), SIGNATURE+": 订单已被终止", "经审核，此订单已被终止，交易行为将回滚");
+    }
 
 }

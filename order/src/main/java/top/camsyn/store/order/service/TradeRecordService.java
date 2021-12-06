@@ -22,6 +22,7 @@ import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 import top.camsyn.store.order.mapper.TradeRecordMapper;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 
 @Service
@@ -38,7 +39,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
     @Autowired
     RedisLockRegistry lockRegistry;
 
-    public List<TradeRecord> pageOfPullOrders(int sid, Integer page, Integer pageSize){
+    public List<TradeRecord> pageOfPullOrders(int sid, Integer page, Integer pageSize) {
         return page(new Page<>(page, pageSize),
                 new LambdaQueryWrapper<TradeRecord>()
                         .eq(TradeRecord::getPuller, sid)
@@ -46,12 +47,85 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
                 .getRecords();
     }
 
-    public List<TradeRecord> pageOfPushOrders(int sid, Integer page, Integer pageSize){
+    public List<TradeRecord> pageOfPushOrders(int sid, Integer page, Integer pageSize) {
         return page(new Page<>(page, pageSize),
                 new LambdaQueryWrapper<TradeRecord>()
                         .eq(TradeRecord::getPusher, sid)
                         .orderByDesc(TradeRecord::getCreateTime))
                 .getRecords();
+    }
+
+
+    @SneakyThrows
+    public void rollbackUnfinishedOrder(TradeRecord record) {
+        final Lock lock = lockRegistry.obtain(record.getRequestId());
+        try {
+            LockHelper.tryLock(lock);
+            final Request request = checkRpcResult(requestClient.getRequest(record.getRequestId()), record);
+            if (request.getCount() - request.getSaleCount() < record.getTradeCnt()) {
+                mailService.sendWhenOrderGenerateFail(record, "目标请求的余量不足");
+                throw new BusinessException("目标请求的余量不足");
+            }
+            switch (record.getType()) {
+                case RequestConstants.BUY:
+                    rollbackBuy(record);
+                    break;
+                case RequestConstants.SELL:
+                    rollbackSell(record);
+                    break;
+                default:
+
+                    break;
+            }
+            request.setSaleCount(request.getSaleCount() - record.getTradeCnt());
+            requestClient.updateRequestForRpc(request);
+            mailService.sendWhenOrderTerminate(record);
+            record.setState(OrderConstants.TERMINATED);
+            saveOrUpdate(record);
+        } finally {
+            LockHelper.unlock(lock);
+        }
+    }
+
+    private void rollbackSell(TradeRecord record) {
+        switch (record.getTradeType()) {
+            case RequestConstants.LIYUAN: {
+                final double totalPrice = record.getSinglePrice() * record.getTradeCnt();
+
+                // 买方先扣钱, 买方等买方确认后再加钱
+                final Result<User> result = userClient.changeLiyuan(record.getPuller(), totalPrice);
+                checkRpcResult(result, record);
+
+            }
+            break;
+
+            case RequestConstants.PAYCODE:
+            case RequestConstants.THIRD_PART:
+            case RequestConstants.PRIVATE: {
+
+            }
+            break;
+            default:
+                break;
+        }
+    }
+
+    private void rollbackBuy(TradeRecord record) {
+        switch (record.getTradeType()) {
+            case RequestConstants.LIYUAN: {
+
+            }
+            break;
+
+            case RequestConstants.PAYCODE:
+            case RequestConstants.THIRD_PART:
+            case RequestConstants.PRIVATE: {
+
+            }
+            break;
+            default:
+                break;
+        }
     }
 
 
@@ -150,18 +224,20 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
         }
 
     }
+
     public void preHandleBuy(TradeRecord record, Request request) {
         switch (record.getTradeType()) {
             case RequestConstants.LIYUAN:
-//            {
+            {
+                record.setPullerConfirm(1);
 //                record.setState(OrderConstants.PUBLISHED);
 //                tradeRecordService.save(record);
-//            }
+            }
+
 
             case RequestConstants.PAYCODE:
             case RequestConstants.THIRD_PART:
-            case RequestConstants.PRIVATE:{
-
+            case RequestConstants.PRIVATE: {
             }
             default:
                 break;
@@ -173,11 +249,11 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
         switch (record.getTradeType()) {
             case RequestConstants.LIYUAN: {
                 final double totalPrice = record.getSinglePrice() * record.getTradeCnt();
-                ;
+
                 // 买方先扣钱, 买方等买方确认后再加钱
                 final Result<User> result = userClient.changeLiyuan(record.getPuller(), -totalPrice);
                 checkRpcResult(result, record);
-
+                record.setPusherConfirm(1);
             }
             break;
 
@@ -194,10 +270,11 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
     }
 
 
-    public List<TradeRecord> getAvailablePullerUnconfirmed(){
+    public List<TradeRecord> getAvailablePullerUnconfirmed() {
         return baseMapper.getAvailablePullerUnconfirmed();
     }
-    public List<TradeRecord> getAvailablePusherUnconfirmed(){
+
+    public List<TradeRecord> getAvailablePusherUnconfirmed() {
         return baseMapper.getAvailablePusherUnconfirmed();
     }
 
@@ -208,5 +285,23 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
             throw new BusinessException("rpc 调用失败");
         }
         return result.getData();
+    }
+
+    public boolean checkPermissionForRollback(Integer sid, TradeRecord record){
+        switch (record.getType()){
+            case RequestConstants.BUY:{
+                if (record.getTradeType() == RequestConstants.LIYUAN){
+                    return Objects.equals(sid, record.getPuller());
+                }
+            }
+
+            case RequestConstants.SELL:{
+                if (record.getTradeType() == RequestConstants.LIYUAN){
+                    return Objects.equals(sid, record.getPusher());
+
+                }
+            }
+        }
+        return false;
     }
 }
