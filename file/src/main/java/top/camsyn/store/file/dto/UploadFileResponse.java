@@ -1,4 +1,4 @@
-package camsyn.top.store.file.dto;
+package top.camsyn.store.file.dto;
 
 
 public class UploadFileResponse {

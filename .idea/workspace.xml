@@ -4,15 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append 修复chat无法存盘的bug， 写了自动化部署的脚本">
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/func/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/controller/RpcController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/constant/OrderConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/constant/OrderConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/order/TradeRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/order/TradeRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/LockHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/LockHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/OrderMailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/OrderMailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append 修复了common包的bug">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_13_19_56__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_13_19_56__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_13_19_59__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_13_19_59__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_9_25_21_03__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_9_25_21_03__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/file/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/FileApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/FileApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/config/FileProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/config/FileProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/dto/UploadFileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/dto/UploadFileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/excepiton/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/excepiton/FileException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/order.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order/order.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,6 +293,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FileApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="file" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.file.FileApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FileApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="file" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="camsyn.top.store.file.FileApplication" />
@@ -385,6 +403,7 @@
       <item itemvalue="Spring Boot.RequestApplication" />
       <item itemvalue="Spring Boot.ReviewApplication" />
       <item itemvalue="Spring Boot.AuthApplication" />
+      <item itemvalue="Spring Boot.FileApplication (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -439,6 +458,8 @@
       <workItem from="1637589841271" duration="5669000" />
       <workItem from="1638000318416" duration="25507000" />
       <workItem from="1638690602888" duration="8876000" />
+      <workItem from="1638882424747" duration="274000" />
+      <workItem from="1639311541823" duration="667000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>

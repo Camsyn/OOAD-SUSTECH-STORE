@@ -1,4 +1,4 @@
-package camsyn.top.store.file.excepiton;
+package top.camsyn.store.file.excepiton;
 
 
 public class FileException extends RuntimeException {

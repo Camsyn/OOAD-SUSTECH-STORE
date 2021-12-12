@@ -1,4 +1,4 @@
-package camsyn.top.store.file.controller;
+package top.camsyn.store.file.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
