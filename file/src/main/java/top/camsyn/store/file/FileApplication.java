@@ -1,7 +1,7 @@
-package camsyn.top.store.file;
+package top.camsyn.store.file;
 
 
-import camsyn.top.store.file.config.FileProperty;
+import top.camsyn.store.file.config.FileProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

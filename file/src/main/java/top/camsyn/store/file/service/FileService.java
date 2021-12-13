@@ -1,10 +1,13 @@
-package camsyn.top.store.file.service;
+package top.camsyn.store.file.service;
 
-import camsyn.top.store.file.excepiton.FileException;
+import top.camsyn.store.commons.helper.UaaHelper;
+import top.camsyn.store.file.excepiton.FileException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -32,6 +35,7 @@ public class FileService {
         this.fileStorageLocation = Paths.get(path).toAbsolutePath().normalize();
         try {
             Files.createDirectories(this.fileStorageLocation);
+            Files.createDirectories(this.fileStorageLocation.resolve("cache"));
         } catch (IOException e) {
             throw new FileException("Could not create the directory", e);
         }
@@ -47,10 +51,9 @@ public class FileService {
 //        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         String[] name = file.getOriginalFilename().split("\\.");
         // 重新命名为学号加当前时间
-        String owner = "11913005";
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String owner = (String)authentication.getOwner();
-        String fileName = owner + getTime() + "." + name[name.length-1];
+//        String owner = "11913005";
+        int owner = UaaHelper.getLoginSid();
+        String fileName = owner + "_" + getTime() + "." + name[name.length-1];
 
 
 
@@ -72,16 +75,29 @@ public class FileService {
 
             return fileName;
         } catch (IOException ex) {
-            if (ex.getMessage().equals("file too big")) throw new FileException("file too big");
+            if (ex.getMessage().equals("file too big")) throw new FileException("file too big: " + fileName, ex);
             else throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
-    public String storeFileByURL(String url_s) {
-
+    public String storeFileByURL(String url_s, String id_s) {
+        int id = Integer.parseInt(id_s);
         String[] label = url_s.split("\\.");
         String[] name = url_s.split("/");
-        String fileName = name[name.length-1].replace("."+label[label.length-1], "_") + getTime() + "." + label[label.length-1];
+
+//        String owner = "11913005";
+        int owner = UaaHelper.getLoginSid();
+        String fileName = owner + "_" + getTime() + "." + label[label.length-1];
+//        String fileName = name[name.length-1].replace("."+label[label.length-1], "_") + getTime() + "." + label[label.length-1];
+
+        if(id>=0) {
+            String path = "";
+            for (int i = 0; i < name.length - 1; i++) {
+                path += name[i] + "/";
+            }
+            url_s = path + "cache/" + name[name.length - 1];
+            fileName = name[name.length - 1];
+        }
         //根据url获取输入流
         try {
             URL url = new URL(url_s);
@@ -93,12 +109,20 @@ public class FileService {
 
             //得到输入流
             InputStream inputStream = conn.getInputStream();
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Path targetLocation = this.fileStorageLocation;
+            if(id==-1) {
+                targetLocation = targetLocation.resolve("cache").resolve(fileName);
+            }else if(id==-2 || id>=0){
+                targetLocation = targetLocation.resolve(fileName);
+            }else {
+                throw new FileException("wrong id");
+            }
             Files.copy(inputStream, targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             return fileName;
         } catch (IOException ex) {
-            throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
+            if (ex.getMessage().equals("wrong id")) throw new FileException("wrong id: " + id, ex);
+            else throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
         }
 
     }

@@ -1,7 +1,9 @@
-package camsyn.top.store.file.controller;
+package top.camsyn.store.file.controller;
 
-import camsyn.top.store.file.dto.UploadFileResponse;
-import camsyn.top.store.file.service.FileService;
+
+
+import top.camsyn.store.file.dto.UploadFileResponse;
+import top.camsyn.store.file.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,20 +45,18 @@ public class FileController {
                 .toUriString();
 
 
-
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
 
-    @PostMapping("/downloadFileByURL")
-    public UploadFileResponse downloadFileByURL(@RequestParam("url") String url_s){
-        String fileName = fileService.storeFileByURL(url_s);
+    @PostMapping("/uploadFileByURL")
+    public UploadFileResponse uploadFileByURL(@RequestParam("url") String url_s, @RequestParam(name="id", required = false, defaultValue = "-1") String id){
+        String fileName = fileService.storeFileByURL(url_s, id);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-
 
 
         return new UploadFileResponse(fileName, fileDownloadUri, "", -1);
@@ -68,6 +68,18 @@ public class FileController {
         if (files != null) {
             for (MultipartFile multipartFile:files) {
                 UploadFileResponse uploadFileResponse = uploadFile(multipartFile);
+                list.add(uploadFileResponse);
+            }
+        }
+        return list;
+    }
+
+    @PostMapping("/uploadMultipleFilesByURL")
+    public List<UploadFileResponse> uploadMultipleFilesByURL(@RequestParam("urls") String[] urls, @RequestParam(name="ids", required = false, defaultValue = "-1") String ids) {
+        List<UploadFileResponse> list = new ArrayList<>();
+        if (urls != null) {
+            for (String url:urls) {
+                UploadFileResponse uploadFileResponse = uploadFileByURL(url, ids);
                 list.add(uploadFileResponse);
             }
         }
