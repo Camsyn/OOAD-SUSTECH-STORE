@@ -4,26 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="append 修复了common包的bug">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/be8682f6-b896-407f-812d-e37afdc07044.xml" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="file微服务变更">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_11_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/CartRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/CartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start_shutdown_build.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/UserHystrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/UserHystrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.py" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/file/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/camsyn/top/store/file/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/camsyn/top/store/file/dto/UploadFileDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/dto/UploadFileDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/FileApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/FileApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/config/FileProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/config/FileProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/dto/UploadFileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/dto/UploadFileResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/excepiton/FileException.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/excepiton/FileException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/order.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order/order.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/request/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +29,8 @@
       <list>
         <option value="Enum" />
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -85,7 +79,7 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -104,11 +98,11 @@
       <recent name="top.camsyn.store.commons.client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE" />
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\test\src\main\resources" />
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\order\src\main\java\top\camsyn\store\order" />
       <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\request\src\main\java\top\camsyn\store\request" />
       <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\review\src\main\java\top\camsyn\store\review" />
-      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE\order\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\commons\src\main\resources" />
@@ -573,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638631741034</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="file微服务变更">
+      <created>1639365444754</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1639365444754</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +672,8 @@
     <MESSAGE value="append 继续完善 request微服务" />
     <MESSAGE value="append 完善了各个feign client， 完善了request，user微服务" />
     <MESSAGE value="append 现在rpc调用可以传递登录信息了(必须要在http触发的接口下的rpc调用)&#10;append 初步搭建好了订单微服务&#10;append 初步搭建了分布式锁(基于redis), 并应用到updateById等方法上&#10;append 修改了一些rpc接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="append 现在rpc调用可以传递登录信息了(必须要在http触发的接口下的rpc调用)&#10;append 初步搭建好了订单微服务&#10;append 初步搭建了分布式锁(基于redis), 并应用到updateById等方法上&#10;append 修改了一些rpc接口" />
+    <MESSAGE value="file微服务变更" />
+    <option name="LAST_COMMIT_MESSAGE" value="file微服务变更" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
