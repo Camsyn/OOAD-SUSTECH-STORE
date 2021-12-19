@@ -1,6 +1,6 @@
 package top.camsyn.store.review.controller;
 
-import top.camsyn.store.review.domain.ReviewLog;
+import top.camsyn.store.commons.entity.review.ReviewLog;
 import top.camsyn.store.review.service.ReviewLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

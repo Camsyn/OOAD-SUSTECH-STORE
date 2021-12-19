@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan
-@EnableFeignClients
+@EnableFeignClients(basePackages = "top.camsyn.store.commons.client")
 //@EnableBinding({MQProducerSource.class, MQConsumerSource.class})
 //@Exclude
 //@EnableAutoConfiguration

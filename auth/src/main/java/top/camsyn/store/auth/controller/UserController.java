@@ -21,8 +21,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
-
     @GetMapping("/get")
     public Result<User> getLoginUser() {
         log.info("获取登录用户");

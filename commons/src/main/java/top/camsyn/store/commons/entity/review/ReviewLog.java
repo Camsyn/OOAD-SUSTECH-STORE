@@ -1,4 +1,4 @@
-package top.camsyn.store.review.domain;
+package top.camsyn.store.commons.entity.review;
 
 import java.util.Date;
 

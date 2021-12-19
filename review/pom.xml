@@ -23,11 +23,6 @@
             <artifactId>commons-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>top.camsyn.store</groupId>
-            <artifactId>commons-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.2.0</version>

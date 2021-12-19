@@ -24,12 +24,12 @@ public class CartRequest extends Request{
      * 生成
      */
     @TableField(value = "cart_item_creat_time",fill = FieldFill.INSERT)
-    LocalDateTime createTime;
+    LocalDateTime cartItemCreateTime;
     /**
      * 生成
      */
     @TableField(value = "cart_item_update_time",fill = FieldFill.INSERT_UPDATE)
-    LocalDateTime updateTime;
+    LocalDateTime cartItemUpdateTime;
 
     public CartItem toCartItem(){
         return CartItem.builder().id(cartItemId).requestId(id).count(cartItemCount).owner(owner).build();

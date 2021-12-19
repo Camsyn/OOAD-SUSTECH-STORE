@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import top.camsyn.store.commons.client.OrderClient;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.request.controller.RequestController;
 import top.camsyn.store.request.controller.RpcController;
@@ -15,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 @SpringBootTest
+@EnableDiscoveryClient
 class RequestApplicationTests {
     @Autowired
     RequestService requestService;
@@ -22,12 +25,20 @@ class RequestApplicationTests {
     @Autowired
     RpcController rpcController;
 
+    @Autowired
+    OrderClient orderClient;
+
     @Test
     void contextLoads() {
         System.out.println(requestService.getById(1));
         System.out.println(requestService.getById(1111));
     }
 
+
+    @Test
+    void testOpenFeign(){
+        System.out.println(orderClient.test(0));
+    }
     @Test
     void testSearch(){
         SearchDto search = SearchDto.builder().queryStr("te").searchStrategy(1).page(1).limit(10).build();

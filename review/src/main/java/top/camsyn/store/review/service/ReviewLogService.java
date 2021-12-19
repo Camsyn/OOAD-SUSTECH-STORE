@@ -7,7 +7,7 @@ import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.helper.UaaHelper;
 
 import top.camsyn.store.review.Mapper.ReviewLogMapper;
-import top.camsyn.store.review.domain.ReviewLog;
+import top.camsyn.store.commons.entity.review.ReviewLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

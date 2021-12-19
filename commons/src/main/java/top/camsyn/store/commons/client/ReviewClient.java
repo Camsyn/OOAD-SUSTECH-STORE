@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.camsyn.store.commons.client.callback.ReviewHystrix;
-import top.camsyn.store.review.domain.ReviewLog;
+import top.camsyn.store.commons.entity.review.ReviewLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@FeignClient(name = "review", fallback = ReviewHystrix.class)
+@FeignClient(value = "review", fallback = ReviewHystrix.class)
 @ConditionalOnMissingClass("top.camsyn.store.review.controller.ReviewLogContorller")
 @ResponseBody
 public interface ReviewClient {

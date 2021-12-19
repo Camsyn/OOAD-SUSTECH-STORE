@@ -53,6 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 .antMatchers("/rsa/publicKey").permitAll()
                 .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/rpc/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
 //                .anyRequest().authenticated()
                 .and()

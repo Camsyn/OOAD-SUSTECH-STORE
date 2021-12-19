@@ -2,7 +2,7 @@ package top.camsyn.store.commons.client.callback;
 
 
 import top.camsyn.store.commons.client.ReviewClient;
-import top.camsyn.store.review.domain.ReviewLog;
+import top.camsyn.store.commons.entity.review.ReviewLog;
 import java.util.List;
 
 

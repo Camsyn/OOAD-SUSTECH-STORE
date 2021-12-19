@@ -1,6 +1,6 @@
 package top.camsyn.store.review.Mapper;
 
-import top.camsyn.store.review.domain.ReviewLog;
+import top.camsyn.store.commons.entity.review.ReviewLog;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

@@ -4,7 +4,7 @@ import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface OrderMqConsumerSource {
-    String REQUEST_INPUT = "requet_input";
+    String REQUEST_INPUT = "request-input";
 
     @Input(REQUEST_INPUT)
     SubscribableChannel requestInput();
