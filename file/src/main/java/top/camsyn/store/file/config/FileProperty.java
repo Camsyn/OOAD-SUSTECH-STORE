@@ -1,4 +1,4 @@
-package camsyn.top.store.file.config;
+package top.camsyn.store.file.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -47,7 +47,7 @@ public class Request {
      */
     Integer tradeType;
     /**
-     * '0: 未审核  1: 审核中 2：开启， 3：关闭   4. 隐藏   5. 封禁'  （生成）
+     * '未审核  1: 审核中 0: 2：开启， 3：关闭   4. 隐藏   5. 封禁'  （生成）
      */
     Integer state;
     /**

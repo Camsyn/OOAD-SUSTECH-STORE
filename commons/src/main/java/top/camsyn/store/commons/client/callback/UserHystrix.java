@@ -23,7 +23,8 @@ public class UserHystrix implements UserClient {
     }
 
     @Override
-    public Result<User> changeLiyuan(Integer adder, Integer subscriber, Double delta) {
+    public Result<Boolean> changeLiyuan(Integer adder, Integer subscriber, Double delta) {
         return null;
     }
+
 }

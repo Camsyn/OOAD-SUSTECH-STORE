@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("request")
+@RequestMapping("/request")
 public class RequestController {
 
     @Autowired

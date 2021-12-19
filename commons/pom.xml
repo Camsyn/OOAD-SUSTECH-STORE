@@ -107,6 +107,12 @@
             <artifactId>alipay-easysdk</artifactId>
             <version>2.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>top.camsyn.store</groupId>
+            <artifactId>review</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
 
     </dependencies>

@@ -1,7 +1,9 @@
 package top.camsyn.store.commons.helper;
 
 import lombok.SneakyThrows;
+import org.springframework.integration.support.locks.LockRegistry;
 import top.camsyn.store.commons.exception.LockException;
+import top.camsyn.store.commons.func.Supplier;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -26,5 +28,16 @@ public class LockHelper {
 
     public static void unlock(Lock lock){
         lock.unlock();
+    }
+
+    @SneakyThrows
+    public static <T> T lockTask(LockRegistry lockRegistry, Object lockKey, Supplier<T> supplier){
+        Lock lock = lockRegistry.obtain(lockKey);
+        try {
+            tryLock(lock);
+            return supplier.get();
+        }finally {
+            unlock(lock);
+        }
     }
 }

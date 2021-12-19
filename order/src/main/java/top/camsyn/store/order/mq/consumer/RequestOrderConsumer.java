@@ -4,25 +4,12 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import top.camsyn.store.commons.client.RequestClient;
-import top.camsyn.store.commons.client.UserClient;
-import top.camsyn.store.commons.constant.OrderConstants;
-import top.camsyn.store.commons.constant.RequestConstants;
 import top.camsyn.store.commons.entity.order.TradeRecord;
-import top.camsyn.store.commons.entity.request.Request;
-import top.camsyn.store.commons.entity.user.User;
-import top.camsyn.store.commons.exception.BusinessException;
-import top.camsyn.store.commons.helper.LockHelper;
-import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.order.mq.source.OrderMqConsumerSource;
-import top.camsyn.store.order.service.OrderMailService;
 import top.camsyn.store.order.service.TradeRecordService;
-
-import java.util.concurrent.locks.Lock;
 
 @Component
 @Slf4j
