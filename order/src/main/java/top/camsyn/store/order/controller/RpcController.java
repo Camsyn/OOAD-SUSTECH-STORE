@@ -1,19 +1,22 @@
 package top.camsyn.store.order.controller;
 
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.redis.util.RedisLockRegistry;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.constant.OrderConstants;
+import top.camsyn.store.commons.entity.order.Order;
 import top.camsyn.store.commons.entity.order.TradeRecord;
 import top.camsyn.store.commons.exception.BusinessException;
 import top.camsyn.store.commons.helper.LockHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.order.service.TradeRecordService;
 
+import java.sql.ResultSet;
+
+@Slf4j
 @RestController()
 @RequestMapping("/rpc")
 public class RpcController {
@@ -24,7 +27,8 @@ public class RpcController {
 
     @SneakyThrows
     @PutMapping("/order/terminate")
-    public Result<TradeRecord> terminateOrder(Integer orderId) {
+    public Result<TradeRecord> terminateOrder(@RequestParam("orderId") Integer orderId) {
+        log.info("订单终结");
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     TradeRecord order = recordService.getById(orderId);
@@ -47,7 +51,8 @@ public class RpcController {
 
     @SneakyThrows
     @PutMapping("/order/review")
-    public Result<TradeRecord> reviewOrder(Integer orderId) {
+    public Result<TradeRecord> reviewOrder(@RequestParam("orderId") Integer orderId) {
+        log.info("订单审核");
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     TradeRecord order = recordService.getById(orderId);
@@ -60,6 +65,14 @@ public class RpcController {
                 }
         );
     }
+
+    @PostMapping("/order/generate")
+    public Result<TradeRecord> generateOrder(@RequestBody TradeRecord record){
+        log.info("处理请求微服务发送来的订单");
+        recordService.preHandle(record);
+        return Result.succeed(record);
+    }
+
 
     @RequestMapping("/test/{id}")
     public String test(@PathVariable("id") int id){

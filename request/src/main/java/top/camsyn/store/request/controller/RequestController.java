@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
+import top.camsyn.store.commons.client.OrderClient;
 import top.camsyn.store.commons.client.UserClient;
-import top.camsyn.store.commons.entity.order.Order;
 import top.camsyn.store.commons.entity.order.TradeRecord;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
@@ -40,6 +40,9 @@ public class RequestController {
 
     @Autowired
     RequestMailService mailService;
+
+    @Autowired
+    OrderClient orderClient;
 
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
@@ -176,7 +179,8 @@ public class RequestController {
                 .type(req.getType()).tradeType(req.getTradeType()).category(req.getCategory())
                 .state(0).tradeCnt(count).singlePrice(req.getExactPrice()).build();
         log.info("发送订单生成请求至消息队列，order: {}", order);
-        mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
+        System.out.println(orderClient.generateOrder(order));
+//        mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
         mailService.sendWhenPull(user.getEmail(), req);
 
         return Result.succeed("已成功下单， 订单生成中");

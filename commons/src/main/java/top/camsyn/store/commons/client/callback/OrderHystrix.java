@@ -16,6 +16,11 @@ public class OrderHystrix implements OrderClient {
     }
 
     @Override
+    public Result<TradeRecord> generateOrder(TradeRecord record) {
+        return null;
+    }
+
+    @Override
     public String test(int id) {
         return null;
     }

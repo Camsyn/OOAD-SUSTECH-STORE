@@ -31,6 +31,16 @@ public class RequestOrderConsumer {
         tradeRecordService.preHandle(record);
     }
 
+    /**
+     * 监听配置中的相关 topic的消息
+     */
+    @SneakyThrows
+    @Transactional(rollbackFor = Exception.class)
+    @StreamListener(OrderMqConsumerSource.TEST)
+    public void onTestMessage(@Payload TradeRecord record ) {
+        log.info("消息队列测试中: {}", record);
+    }
+
 
 
 

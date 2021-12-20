@@ -233,8 +233,6 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 //                record.setState(OrderConstants.PUBLISHED);
 //                tradeRecordService.save(record);
             }
-
-
             case RequestConstants.PAYCODE:
             case RequestConstants.THIRD_PART:
             case RequestConstants.PRIVATE: {
