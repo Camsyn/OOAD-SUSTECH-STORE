@@ -2,10 +2,10 @@ package top.camsyn.store.order.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.client.RequestClient;
@@ -233,8 +233,6 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 //                record.setState(OrderConstants.PUBLISHED);
 //                tradeRecordService.save(record);
             }
-
-
             case RequestConstants.PAYCODE:
             case RequestConstants.THIRD_PART:
             case RequestConstants.PRIVATE: {

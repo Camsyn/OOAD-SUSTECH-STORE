@@ -11,11 +11,10 @@ import top.camsyn.store.commons.model.Result;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@FeignClient(name = "request", fallback = RequestHystrix.class)
+@FeignClient(value = "request", fallback = RequestHystrix.class)
 @ConditionalOnMissingClass("top.camsyn.store.request.controller.RequestController")
 @ResponseBody
 public interface RequestClient {
-
 
     @PutMapping("/request/close")
     Result<Request> closeRequest(@RequestParam("requestId") Integer requestId);

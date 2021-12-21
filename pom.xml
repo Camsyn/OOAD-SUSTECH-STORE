@@ -213,7 +213,7 @@
 
     <modules>
         <!-- 公共 -->
-        <module>commons</module>
+<!--        <module>commons</module>-->
         <!-- 认证/登录 -->
         <module>auth</module>
         <!-- 网关 -->

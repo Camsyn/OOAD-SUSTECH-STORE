@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/file/pom.xml" />
         <option value="$PROJECT_DIR$/request/pom.xml" />
         <option value="$PROJECT_DIR$/review/pom.xml" />
+        <option value="$PROJECT_DIR$/order/pom.xml" />
       </list>
     </option>
   </component>

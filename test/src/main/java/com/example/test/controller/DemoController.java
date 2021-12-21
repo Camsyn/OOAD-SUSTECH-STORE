@@ -1,9 +1,12 @@
 package com.example.test.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import top.camsyn.store.commons.client.OrderClient;
+import top.camsyn.store.commons.client.UserClient;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,6 +45,11 @@ public class DemoController {
     }
 
 
+    @Autowired
+    OrderClient orderClient;
+    @Autowired
+    UserClient userClient;
+
     @RequestMapping("/time")
     @ResponseBody
     public Data testTime(@RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime time){
@@ -51,6 +59,18 @@ public class DemoController {
         data.localDate = time;
         return data;
     }
+
+    @GetMapping("/test/{id}")
+    public String test(@PathVariable("id") int id){
+        return orderClient.test(id);
+    }
+
+    @GetMapping("/test1/{id}")
+    public String test1(@PathVariable("id") int id){
+        return userClient.getUser(id).toString();
+    }
+
+
 /*
     @RequestMapping("/send")
     @PreAuthorize("hasAnyRole('ROLE_selector')")

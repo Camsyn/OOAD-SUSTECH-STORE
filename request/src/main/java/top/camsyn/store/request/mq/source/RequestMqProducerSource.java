@@ -9,4 +9,7 @@ public interface RequestMqProducerSource {
      */
     @Output("order-output")
     MessageChannel orderOutput();
+
+    @Output("test")
+    MessageChannel testOutput();
 }

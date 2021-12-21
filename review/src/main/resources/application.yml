@@ -1,0 +1,7 @@
+#datasource
+#spring:
+#  datasource:
+#    url: jdbc:mysql://camsyn.cn:3306/review
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.cj.jdbc.Driver

@@ -9,7 +9,7 @@ import top.camsyn.store.commons.client.callback.UserHystrix;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.model.Result;
 
-@FeignClient(name = "auth", fallback = UserHystrix.class)
+@FeignClient(value = "auth",fallback = UserHystrix.class)
 @ConditionalOnMissingClass("top.camsyn.store.auth.controller.UserController")
 @RequestMapping("/user")
 @ResponseBody
