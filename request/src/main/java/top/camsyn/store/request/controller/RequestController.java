@@ -150,7 +150,7 @@ public class RequestController {
     public Result pullRequest(@RequestParam("requestId") Integer requestId, @RequestParam("count") Integer count) {
         log.info("正在拉取请求");
         int loginSid = UaaHelper.getLoginSid();
-        Result<Object> error = requestService.pullRequest(requestId, count, loginSid, this);
+        Result<Object> error = requestService.pullRequest(requestId, count, loginSid);
         if (error != null) return error;
         return Result.succeed("已成功下单， 订单生成中");
     }
