@@ -3,6 +3,7 @@ package top.camsyn.store.commons.helper;
 
 import com.alibaba.fastjson.JSON;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -15,6 +16,7 @@ import top.camsyn.store.commons.model.UserDto;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 public class UaaHelper {
     public static int getLoginSid() {
         return getCurrentUser().getSid();
@@ -24,6 +26,7 @@ public class UaaHelper {
     public static UserDto getCurrentUser() {
         //从Header中获取用户信息
         String userStr = getCurrentUserStr();
+        log.info("userStr: {}", userStr);
         try{
             return JSON.parseObject(userStr, UserDto.class);
         }catch (Exception e){
@@ -37,17 +40,17 @@ public class UaaHelper {
 
     @SneakyThrows
     public static String getCurrentUserStr() {
-//        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-//        if (servletRequestAttributes == null) {
-//            throw new AuthException("无法得到请求属性");
-//        }
-//        HttpServletRequest request = servletRequestAttributes.getRequest();
-//        final String user = request.getHeader(AuthConstant.UAA_HEADER);
-//        if (StringUtils.isEmpty(user)) {
-//            throw new AuthException("无法得到 user 请求头");
-//        }
-//        return user;
-        return "ckq";
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (servletRequestAttributes == null) {
+            throw new AuthException("无法得到请求属性");
+        }
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        final String user = request.getHeader(AuthConstant.UAA_HEADER);
+        if (StringUtils.isEmpty(user)) {
+            throw new AuthException("无法得到 user 请求头");
+        }
+        return user;
+//        return "ckq";
     }
 
     public static boolean checkUser(User user) {

@@ -3,11 +3,9 @@ package top.camsyn.store.request.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.client.OrderClient;
 import top.camsyn.store.commons.client.UserClient;
-import top.camsyn.store.commons.entity.order.TradeRecord;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.helper.UaaHelper;
@@ -150,42 +148,12 @@ public class RequestController {
 
     @PutMapping("/pull")
     public Result pullRequest(@RequestParam("requestId") Integer requestId, @RequestParam("count") Integer count) {
+        log.info("正在拉取请求");
         int loginSid = UaaHelper.getLoginSid();
-        User user = userClient.getUser(loginSid).getData();
-        if (user == null) {
-            return Result.failed("查无此用户");
-        }
-        Request req = requestService.getById(requestId);
-        if (req == null || req.getState() != 2) {
-            return Result.failed("请求不存在或请求未开放");
-        }
-        int restCnt = req.getCount() - req.getSaleCount();
-        if (restCnt < count) {
-            return Result.failed("余量不足，请求拉取失败");
-        }
-        if (req.isLiyuanPaySellReq()) {
-            double consume = req.getExactPrice() * count;
-            Double liyuanBalance = user.getLiyuan();
-            if (liyuanBalance < consume) {
-                return Result.failed("余额不足，请充值");
-            }
-        }
-        // TODO: 2021/11/22 第三方支付
-        // TODO: 2021/11/22 订单微服务
-        // TODO: 2021/12/4 幂等操作的实现
-        TradeRecord order = TradeRecord.builder().requestId(requestId)
-                .puller(loginSid).pullerEmail(user.getEmail())
-                .pusher(req.getPusher()).pusherEmail(req.getPusherEmail())
-                .type(req.getType()).tradeType(req.getTradeType()).category(req.getCategory())
-                .state(0).tradeCnt(count).singlePrice(req.getExactPrice()).build();
-        log.info("发送订单生成请求至消息队列，order: {}", order);
-        System.out.println(orderClient.generateOrder(order));
-//        mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
-        mailService.sendWhenPull(user.getEmail(), req);
-
+        Result<Object> error = requestService.pullRequest(requestId, count, loginSid, this);
+        if (error != null) return error;
         return Result.succeed("已成功下单， 订单生成中");
     }
-
 
 
 }
