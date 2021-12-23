@@ -13,7 +13,6 @@ import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
-import top.camsyn.store.request.controller.RequestController;
 import top.camsyn.store.request.dto.SearchDto;
 import top.camsyn.store.request.mapper.RequestMapper;
 
@@ -71,7 +70,7 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
         if (restCnt < count) {
             return Result.failed("余量不足，请求拉取失败");
         }
-        if (req.isLiyuanPaySellReq()) {
+        if (req.liyuanPaySellReq()) {
             double consume = req.getExactPrice() * count;
             Double liyuanBalance = user.getLiyuan();
             if (liyuanBalance < consume) {

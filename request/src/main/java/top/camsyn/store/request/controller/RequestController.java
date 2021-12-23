@@ -12,7 +12,7 @@ import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.commons.model.UserDto;
 import top.camsyn.store.request.dto.SearchDto;
-import top.camsyn.store.request.mq.source.RequestMqProducerSource;
+//import top.camsyn.store.request.mq.source.RequestMqProducerSource;
 import top.camsyn.store.request.service.LabelService;
 import top.camsyn.store.request.service.RequestMailService;
 import top.camsyn.store.request.service.RequestService;
@@ -30,8 +30,8 @@ public class RequestController {
     @Autowired
     LabelService labelService;
 
-    @Autowired
-    RequestMqProducerSource mqProducer;
+//    @Autowired
+//    RequestMqProducerSource mqProducer;
 
     @Autowired
     UserClient userClient;
@@ -96,7 +96,7 @@ public class RequestController {
 
         req.setState(4);
 
-        if (req.isLiyuanPayBuyReq()) {
+        if (req.liyuanPayBuyReq()) {
             double returnedLiyuan = req.getExactPrice() * (req.getCount() - req.getSaleCount());
             user.setLiyuan(user.getLiyuan() + returnedLiyuan);
         }
@@ -151,7 +151,11 @@ public class RequestController {
         log.info("正在拉取请求");
         int loginSid = UaaHelper.getLoginSid();
         Result<Object> error = requestService.pullRequest(requestId, count, loginSid);
-        if (error != null) return error;
+        if (error != null){
+            log.info("消费失败");
+            return error;
+        }
+        log.info("成功消费");
         return Result.succeed("已成功下单， 订单生成中");
     }
 

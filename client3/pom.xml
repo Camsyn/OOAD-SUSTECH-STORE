@@ -16,18 +16,20 @@
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
     </properties>
 
+<!--    <parent>-->
+<!--        <artifactId>sustech-store</artifactId>-->
+<!--        <groupId>top.camsyn.store</groupId>-->
+<!--        <version>1.0.0</version>-->
+<!--    </parent>-->
+
     <dependencies>
+        <dependency>
+            <groupId>top.camsyn.store</groupId>
+            <artifactId>commons-spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
 
         <dependency>

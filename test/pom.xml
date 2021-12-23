@@ -15,23 +15,25 @@
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
     </properties>
 
+    <parent>
+        <artifactId>sustech-store</artifactId>
+        <groupId>top.camsyn.store</groupId>
+        <version>1.0.0</version>
+    </parent>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>top.camsyn.store</groupId>-->
+<!--            <artifactId>commons-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>top.camsyn.store</groupId>
-            <artifactId>commons-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
-        </dependency>
+
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>jquery</artifactId>
             <version>3.6.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
