@@ -1,14 +1,34 @@
 package top.camsyn.store.commons.entity.review;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@TableName(value = "r_log", autoResultMap = true)
+@ToString
 public class ReviewLog {
+    // 主键
     private int r_id;
+    // 举报者
     private int initiator;
+    //被举报对象
     private int target;
+    // 描述
     private String description;
+    // 最后处理时间
     private Date time;
+    // 状态
     private int state;//0: 审核中  1: 过审  2: 不过审  3: 申诉审核中 4: 申诉失败，确认不过审
+    // 被举报对象类别
     private int category;//0: 用户  1: 请求  2: 订单
 
     public int getR_id() {

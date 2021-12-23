@@ -45,6 +45,7 @@ public class LabelController {
         relationService.unbindRequestAndLabel(deletes, newRequest);
         List<Label> appends = labelService.queryOrCreate(labels2append);
         relationService.bindRequestAndLabel(appends, newRequest);
+        log.info("成功修改请求的label标签");
         return Result.succeed(oldRequest.setLabels(newLabels), "成功");
     }
 
@@ -56,6 +57,7 @@ public class LabelController {
     public Result<List<Label>> getLabelFrequency(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize){
         log.info("请求label频率");
         List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize));
+        log.info("成功请求label频率");
         return Result.succeed(labels,"成功");
     }
 }

@@ -2,6 +2,7 @@ package top.camsyn.store.file.controller;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import top.camsyn.store.file.dto.UploadFileResponse;
 import top.camsyn.store.file.service.FileService;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @RestController
 public class FileController {
 
@@ -37,6 +38,7 @@ public class FileController {
 
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file){
+        log.info("开始上传文件");
         String fileName = fileService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -44,13 +46,14 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
-
+        log.info("上传成功");
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
 
     @PostMapping("/uploadFileByURL")
     public UploadFileResponse uploadFileByURL(@RequestParam("url") String url_s, @RequestParam(name="id", required = false, defaultValue = "-1") String id){
+        log.info("开始通过url上传文件");
         String fileName = fileService.storeFileByURL(url_s, id);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -58,12 +61,13 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
-
+        log.info("上传成功");
         return new UploadFileResponse(fileName, fileDownloadUri, "", -1);
     }
 
     @PostMapping("/uploadMultipleFiles")
     public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+        log.info("开始批量上传文件");
         List<UploadFileResponse> list = new ArrayList<>();
         if (files != null) {
             for (MultipartFile multipartFile:files) {
@@ -71,11 +75,13 @@ public class FileController {
                 list.add(uploadFileResponse);
             }
         }
+        log.info("批量上传成功");
         return list;
     }
 
     @PostMapping("/uploadMultipleFilesByURL")
     public List<UploadFileResponse> uploadMultipleFilesByURL(@RequestParam("urls") String[] urls, @RequestParam(name="ids", required = false, defaultValue = "-1") String ids) {
+        log.info("开始通过url批量上传文件");
         List<UploadFileResponse> list = new ArrayList<>();
         if (urls != null) {
             for (String url:urls) {
@@ -83,11 +89,13 @@ public class FileController {
                 list.add(uploadFileResponse);
             }
         }
+        log.info("批量上传成功");
         return list;
     }
 
     @GetMapping("/downloadFile/{fileName:.*}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+        log.info("开始下载文件");
         Resource resource = fileService.loadFileAsResource(fileName);
         String contentType = null;
         try {
@@ -98,6 +106,7 @@ public class FileController {
         if(contentType == null) {
             contentType = "application/octet-stream";
         }
+        log.info("成功");
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")

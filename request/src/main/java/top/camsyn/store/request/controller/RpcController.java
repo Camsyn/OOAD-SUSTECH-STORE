@@ -42,22 +42,26 @@ public class RpcController {
             mailService.sendWhenSuccessPush(request.getPusherEmail(), request);
         }
         requestService.updateById(request);
+        log.info("成功修改审核状态");
         return Result.succeed(request, "成功修改审核状态");
     }
 
 
     @PutMapping("/request/drop")
     public Result<Request> dropRequest(@RequestParam("requestId") Integer requestId) {
+        log.info("dropRequest");
         return updateRequestState(requestId, 5);
     }
 
     @GetMapping("/request/get")
     public Result<Request> getRequest(@RequestParam("requestId") Integer requestId) {
+        log.info("getRequest");
         return Result.succeed(requestService.getById(requestId));
     }
 
     @PutMapping("/request/update")
     public Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
+        log.info("updateRequestForRpc");
         return Result.succeed(requestService.updateById(request));
     }
 }

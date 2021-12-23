@@ -26,6 +26,7 @@ public class CircleMessageController {
 
     @GetMapping("/get")
     public Result<CircleMessage> getCircleMessage(Integer cmId){
+        log.info("获取圈子消息");
         return Result.succeed(circleMessageService.getById(cmId));
     }
 
@@ -36,9 +37,11 @@ public class CircleMessageController {
             message.setSendId(UaaHelper.getLoginSid());
             circleMessageService.save(message);
             // TODO: 2021/11/15 测试save后是否会自动更新主键
+            log.info("publishCircleMessage成功");
             return Result.succeed(message);
         } catch (Exception e) {
             e.printStackTrace();
+            log.info("非法sid");
             return Result.failed("非法sid");
         }
     }
@@ -49,9 +52,11 @@ public class CircleMessageController {
         try {
             comment.setSendId(UaaHelper.getLoginSid());
             commentService.save(comment);
+            log.info("publishCircleComment成功");
             return Result.succeed(comment);
         } catch (Exception e) {
             e.printStackTrace();
+            log.info("非法sid");
             return Result.failed("非法sid");
         }
     }
@@ -61,12 +66,16 @@ public class CircleMessageController {
         log.info("deleteCircleMessage. id: {}", id);
         CircleMessage cm = circleMessageService.getById(id);
         if (cm == null){
+            log.info("该动态不存在或已删除");
             return Result.failed("该动态不存在或已删除");
         }
         if (cm.getSendId() != UaaHelper.getLoginSid()){
+            log.info("无法删除不属于你的动态");
             return Result.failed("无法删除不属于你的动态");
         }
         boolean isRemoved = circleMessageService.removeById(id);
+        if(isRemoved) log.info("成功删除");
+        else log.info("未知原因，无法删除");
         return isRemoved? Result.succeed(cm,"成功删除"):Result.failed("未知原因，无法删除");
     }
 
@@ -76,12 +85,16 @@ public class CircleMessageController {
         Comment comment = commentService.getById(id);
 
         if (comment == null){
+            log.info("该动态评论不存在或已删除");
             return Result.failed("该动态评论不存在或已删除");
         }
         if (comment.getSendId() != UaaHelper.getLoginSid()){
+            log.info("无法删除不属于你的动态评论");
             return Result.failed("无法删除不属于你的动态评论");
         }
         boolean isRemoved = circleMessageService.removeById(id);
+        if(isRemoved) log.info("成功删除");
+        else log.info("未知原因，无法删除");
         return isRemoved? Result.succeed(comment,"成功删除"):Result.failed("未知原因，无法删除");
     }
 
