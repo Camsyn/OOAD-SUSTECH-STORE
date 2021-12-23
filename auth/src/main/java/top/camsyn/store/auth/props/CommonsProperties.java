@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class CommonsProperties {
-    @Value("${gateway-ip}")
-    String gatewayIp;
+//    @Value("${gateway-ip}")
+    String gatewayIp = "120.77.145.246:8000";
 }

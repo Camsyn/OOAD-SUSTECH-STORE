@@ -37,17 +37,17 @@ public class UaaHelper {
 
     @SneakyThrows
     public static String getCurrentUserStr() {
-//        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-//        if (servletRequestAttributes == null) {
-//            throw new AuthException("无法得到请求属性");
-//        }
-//        HttpServletRequest request = servletRequestAttributes.getRequest();
-//        final String user = request.getHeader(AuthConstant.UAA_HEADER);
-//        if (StringUtils.isEmpty(user)) {
-//            throw new AuthException("无法得到 user 请求头");
-//        }
-//        return user;
-        return "ckq";
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (servletRequestAttributes == null) {
+            throw new AuthException("无法得到请求属性");
+        }
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        final String user = request.getHeader(AuthConstant.UAA_HEADER);
+        if (StringUtils.isEmpty(user)) {
+            throw new AuthException("无法得到 user 请求头");
+        }
+        return user;
+//        return "ckq";
     }
 
     public static boolean checkUser(User user) {
