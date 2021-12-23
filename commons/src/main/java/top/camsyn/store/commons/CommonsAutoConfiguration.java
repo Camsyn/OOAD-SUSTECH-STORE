@@ -1,5 +1,6 @@
 package top.camsyn.store.commons;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan
-@EnableFeignClients(basePackages = "top.camsyn.store.commons.client")
+@EnableFeignClients(basePackages = {"top.camsyn.store.commons.client"})
+@ConditionalOnMissingClass("com.example.test.TestApplication")
 //@EnableBinding({MQProducerSource.class, MQConsumerSource.class})
 //@Exclude
 //@EnableAutoConfiguration

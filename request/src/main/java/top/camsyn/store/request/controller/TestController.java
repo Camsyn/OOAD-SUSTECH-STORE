@@ -6,14 +6,14 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.camsyn.store.commons.entity.order.TradeRecord;
-import top.camsyn.store.request.mq.source.RequestMqProducerSource;
+//import top.camsyn.store.request.mq.source.RequestMqProducerSource;
 
 @RestController
 @Slf4j
 public class TestController {
 
-    @Autowired
-    RequestMqProducerSource source;
+//    @Autowired
+//    RequestMqProducerSource source;
 
     @RequestMapping("/test")
     public String test() {
@@ -23,7 +23,7 @@ public class TestController {
                 .pusher(11910620).pusherEmail("camsyn@foxmail.com")
                 .type(0).tradeType(0).category(1)
                 .state(0).tradeCnt(2).singlePrice(2.0).build();
-        source.testOutput().send(MessageBuilder.withPayload(order).build());
+//        source.testOutput().send(MessageBuilder.withPayload(order).build());
         return "testing message queue...";
     }
 }

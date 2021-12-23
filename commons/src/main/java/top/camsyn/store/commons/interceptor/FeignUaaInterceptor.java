@@ -18,7 +18,8 @@ public class FeignUaaInterceptor implements RequestInterceptor {
         try {
             userStr = UaaHelper.getCurrentUserStr();
         }catch (Exception e){
-            userStr = "{}";
+            log.info("当前线程无user数据, 装填默认user(debug用)");
+            userStr = "{\"sid\":11911626, \"user_name\":\"11911626\", \"password\":\"123456\",\"email\":\"11911626@mail.susetch.edu.cn\",\"status\":0,\"roles\":[\"admin\",\"root\"]}";
         }
         requestTemplate.header(AuthConstant.UAA_HEADER, userStr);
     }

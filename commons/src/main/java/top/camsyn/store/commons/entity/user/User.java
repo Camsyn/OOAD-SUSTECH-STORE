@@ -37,7 +37,7 @@ public class User extends Model<User> {
 
     private String headImage;
 
-    private String payCode;
+    private String paycodePath;
 
     private Integer deleted;
 

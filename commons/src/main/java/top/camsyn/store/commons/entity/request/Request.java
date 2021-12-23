@@ -2,16 +2,14 @@ package top.camsyn.store.commons.entity.request;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -94,10 +92,10 @@ public class Request {
     List<String> labels;
 
     private Integer deleted;
-    public boolean isLiyuanPaySellReq(){
+    public boolean liyuanPaySellReq(){
         return tradeType==1 && type==1;
     }
-    public boolean isLiyuanPayBuyReq(){
+    public boolean liyuanPayBuyReq(){
         return tradeType==1 && type==0;
     }
 }

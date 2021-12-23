@@ -38,4 +38,5 @@ public class IgnoreUrlsRemoveJwtFilter implements WebFilter {
         }
         return chain.filter(exchange);
     }
+
 }
