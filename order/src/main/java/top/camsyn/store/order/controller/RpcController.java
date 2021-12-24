@@ -70,6 +70,7 @@ public class RpcController {
     public Result<TradeRecord> generateOrder(@RequestBody TradeRecord record){
         log.info("处理请求微服务发送来的订单");
         recordService.preHandle(record);
+        log.info("处理完成");
         return Result.succeed(record);
     }
 

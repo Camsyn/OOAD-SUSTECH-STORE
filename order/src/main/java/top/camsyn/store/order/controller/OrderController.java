@@ -32,6 +32,7 @@ public class OrderController {
         log.info("getPullRecords");
         final UserDto user = UaaHelper.getCurrentUser();
         final List<TradeRecord> orders = tradeRecordService.pageOfPullOrders(user.getSid(), page, pageSize);
+        log.info("getPullRecords success");
         return Result.succeed(orders);
     }
 
@@ -40,6 +41,7 @@ public class OrderController {
         log.info("getPushRecords");
         final UserDto user = UaaHelper.getCurrentUser();
         final List<TradeRecord> orders = tradeRecordService.pageOfPushOrders(user.getSid(), page, pageSize);
+        log.info("getPushRecords success");
         return Result.succeed(orders);
     }
 
@@ -61,6 +63,7 @@ public class OrderController {
             if (order.isFinished()) {
                 tradeRecordService.postHandle(order);
             }
+            log.info("ensurePullOrder success");
             return Result.succeed(order);
         }finally {
             LockHelper.unlock(lock);
@@ -88,6 +91,7 @@ public class OrderController {
             if (order.isFinished()) {
                 tradeRecordService.postHandle(order);
             }
+            log.info("ensurePushOrder success");
             return Result.succeed(order);
         } finally {
             LockHelper.unlock(lock);
@@ -99,6 +103,7 @@ public class OrderController {
      */
     @PutMapping("/rollback")
     public Result<TradeRecord> rollbackOrder(@RequestParam("orderId") Integer orderId){
+        log.info("rollbackOrder");
         UserDto currentUser = UaaHelper.getCurrentUser();
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
@@ -110,6 +115,7 @@ public class OrderController {
                         throw new BusinessException("订单已完成，无法中断");
                     }
                     tradeRecordService.rollbackUnfinishedOrder(order);
+                    log.info("rollbackOrder success");
                     return Result.succeed(order);
                 });
     }

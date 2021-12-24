@@ -43,6 +43,7 @@ public class ChatController {
             IPage<ChatRecord> chatPage = chatService.queryChatPage(mySid, other, page, pageSize);
             List<ChatRecord> chatRecords = chatPage.getRecords();
             updateRecords(pageSize, chatRecords);
+            log.info("请求聊天记录成功");
             return Result.succeed(chatRecords);
         } catch (Exception e) {
             log.error("请求聊天记录， mySid: {}, o_sid: {}, pageSize: {}, page: {}", mySid, other, pageSize,page);
@@ -64,6 +65,7 @@ public class ChatController {
         try {
             List<ChatRecord> chatRecords = chatService.queryChatList(mySid, other, count + 1);
             updateRecords(count, chatRecords);
+            log.info("请求聊天记录成功");
             return Result.succeed(chatRecords);
         } catch (Exception e) {
             log.error("发生错误， 请求聊天记录， mySid: {}, o_sid: {}, count: {}", mySid, other, count);
@@ -88,6 +90,7 @@ public class ChatController {
         try {
             List<ChatRecord> chatRecords = chatService.queryChatList(mySid, other, count + 1);
             updateRecords(count, chatRecords);
+            log.info("请求更多聊天记录成功");
             return Result.succeed(chatRecords);
         } catch (Exception e) {
             log.error("错误！ 请求更多聊天记录， s_sid: {}, r_sid: {}, before: {},  count: {}", mySid, other, timeBefore, count);
@@ -138,6 +141,7 @@ public class ChatController {
             result.forEach((key, chatRecords) -> {
                 updateRecords(count, chatRecords);
             });
+            log.info("请求一个用户所有聊天记录成功");
             return Result.succeed(result);
         } catch (Exception e) {
             log.error("发生错误， 请求一个用户所有聊天记录聊天记录， r_sid: {}, user-size: {} ,count: {}", mySid, pageSize, count);

@@ -44,27 +44,33 @@ public class RequestController {
 
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
+        log.info("pushRequest");
         final UserDto user = UaaHelper.getCurrentUser();
         request.setPusher(user.getSid()).setState(0).setPusherEmail(user.getEmail());
         requestService.save(request);
         // TODO: 2021/11/22 审核
         // TODO: 邮件提醒
         mailService.sendWhenPush(user.getEmail(), request);
+        log.info("已发往审核 user{}", user);
         return Result.succeed(request, "已发往审核");
     }
 
     @PutMapping("/update")
     public Result<Request> updateRequest(@RequestBody Request request) {
+        log.info("updateRequest");
         final UserDto user = UaaHelper.assertAdmin(request.getId());
         Request req = requestService.getById(request.getId());
         if (req == null) {
+            log.info("请求不存在 user{}", user);
             return Result.failed("请求不存在");
         }
         if (req.getState() != 3 && req.getState() != 0) {
+            log.info("只能修改审核中或关闭中的请求 user{}", user);
             return Result.failed("只能修改审核中或关闭中的请求");
         }
 
         if (req.getSaleCount() > request.getCount()) {
+            log.info("总数量不得小于已售数量 user{}", user);
             return Result.failed("总数量不得小于已售数量");
         }
         req.setState(0);
@@ -73,22 +79,27 @@ public class RequestController {
         // TODO: 邮件提醒
         mailService.sendWhenModify(user.getEmail(), request);
 
+        log.info("已发往审核 user{}", user);
         return Result.succeed(request, "已发往审核");
     }
 
     @PutMapping("/withdraw")
     public Result<Request> withdrawRequest(@RequestParam("requestId") Integer requestId) {
+        log.info("withdrawRequest");
         int loginSid = UaaHelper.getLoginSid();
         User user = userClient.getUser(loginSid).getData();
         if (user == null) {
+            log.info("查无此用户");
             return Result.failed("查无此用户");
         }
         Request req = requestService.getById(requestId);
 
         if (req == null) {
+            log.info("请求不存在或请求未关闭 user{}", user);
             return Result.failed("请求不存在或请求未关闭");
         }
         if (req.getState() != 3 && req.getState() != 2) {
+            log.info("只有open或close的请求有权撤回 user{}", user);
             return Result.failed("只有open或close的请求有权撤回");
         }
         UaaHelper.assertAdmin(req.getPusher());
@@ -106,11 +117,13 @@ public class RequestController {
         requestService.updateById(req);
 
         mailService.sendWhenWithdraw(user.getEmail(), req);
+        log.info("已成功撤回 user{}", user);
         return Result.succeed(req, "已成功撤回");
     }
 
     @PutMapping("/close")
     public Result<Request> closeRequest(@RequestParam("requestId") Integer requestId) {
+        log.info("开始关闭请求");
         int loginSid = UaaHelper.getLoginSid();
         Request req = requestService.getById(requestId);
         if (req == null || req.getState() != 2) {
@@ -120,29 +133,33 @@ public class RequestController {
 
         req.setState(3);
         requestService.updateById(req);
-
+        log.info("关闭请求成功");
         return Result.succeed(req, "已成功关闭请求");
     }
 
 
     @PutMapping("/open")
     public Result<Request> openRequest(@RequestParam("requestId") Integer requestId) {
+        log.info("开始打开请求");
         Request req = requestService.getById(requestId);
         if (req == null || req.getState() != 2) {
-            return Result.failed("请求不存在或请求无权关闭");
+            log.info("请求不存在或无权打开");
+            return Result.failed("请求不存在或请求无权打开");
         }
         UaaHelper.assertAdmin(req.getPusher());
 
         req.setState(2);
         requestService.updateById(req);
-
-        return Result.succeed(req, "已成功关闭请求");
+        log.info("成功打开请求");
+        return Result.succeed(req, "已成功打开请求");
     }
 
 
     @GetMapping("/search")
     public Result<List<Request>> search(@RequestBody SearchDto searchDto) {
+        log.info("开始搜索");
         final List<Request> search = requestService.search(searchDto);
+        log.info("搜索成功");
         return Result.succeed(search, "搜索成功");
     }
 

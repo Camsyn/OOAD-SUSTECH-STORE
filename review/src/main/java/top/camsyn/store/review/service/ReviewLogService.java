@@ -94,45 +94,6 @@ public class ReviewLogService {
                 return true;
             }
         }
-//        String s = "hello world";
-//        if(category==0) {
-//            switch (t_id) {
-//                case 1:
-//                    s = "你好";
-//                    break;
-//                case 2:
-//                    s = "nt";
-//                    break;
-//                case 3:
-//                    s = "臭屌丝";
-//                    break;
-//                case 4:
-//                    s = "死妈玩意";
-//                    break;
-//                default:
-//                    s = "傻狗";
-//            }
-//        }else{
-//            switch (t_id) {
-//                case 1:
-//                    s = "傻卵";
-//                    break;
-//                case 2:
-//                    s = "那么好";
-//                    break;
-//                case 3:
-//                    s = "我的";
-//                    break;
-//                case 4:
-//                    s = "诶嘿";
-//                    break;
-//                default:
-//                    s = "共产党";
-//            }
-//        }
-//        if(reviewLogMapper.review(s)==0){
-//            return true;
-//        }
         return false;
     }
 

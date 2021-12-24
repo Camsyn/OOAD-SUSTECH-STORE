@@ -1,5 +1,6 @@
 package top.camsyn.store.auth.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
@@ -18,6 +19,7 @@ import java.util.Map;
 /**
  * 自定义Oauth2获取令牌接口
  */
+@Slf4j
 @RestController
 @RequestMapping("/oauth")
 public class OAuthController {
@@ -30,6 +32,7 @@ public class OAuthController {
      */
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public Result<Oauth2TokenDto> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {
+        log.info("开始postAccessToken");
         if (parameters.containsKey("password"))
             parameters.put("grant_type","password");
         else if (parameters.containsKey("refresh_token"))
@@ -40,7 +43,7 @@ public class OAuthController {
                 .refreshToken(oAuth2AccessToken.getRefreshToken().getValue())
                 .expiresIn(oAuth2AccessToken.getExpiresIn())
                 .tokenHead("Bearer ").build();
-
+        log.info("登录成功");
         return Result.succeed(oauth2TokenDto, "登录成功");
     }
 
