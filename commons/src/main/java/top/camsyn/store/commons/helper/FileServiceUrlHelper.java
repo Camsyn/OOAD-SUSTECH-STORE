@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileUrlHelper {
-    private static Pattern urlExtractor = Pattern.compile("");
+public class FileServiceUrlHelper {
+    private static Pattern urlExtractor = Pattern.compile("\\$\\{((?:https?|ftp|file):\\/\\/[-A-Za-z0-9+&@#\\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\\/%=~_|])}");
     public static List<String> getUrlLinkInCircleMessage(CircleMessage circleMessage){
         final String content = circleMessage.getContent();
         final Matcher matcher = urlExtractor.matcher(content);
         final ArrayList<String> urls = new ArrayList<>();
         while (matcher.find()) {
-            urls.add(matcher.group(0));
+            urls.add(matcher.group(1));
         }
         return urls;
     }

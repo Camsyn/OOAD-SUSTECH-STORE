@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import top.camsyn.store.commons.client.callback.ChatHystrix;
 import top.camsyn.store.commons.entity.chat.ChatRecord;
 import top.camsyn.store.commons.entity.chat.CircleMessage;
 import top.camsyn.store.commons.model.Result;
 
-@FeignClient("chat")
+@FeignClient(value = "chat", fallback = ChatHystrix.class)
 @ConditionalOnMissingClass("top.camsyn.store.chat.ChatApplication")
 @RequestMapping("/rpc")
 public interface ChatClient {
