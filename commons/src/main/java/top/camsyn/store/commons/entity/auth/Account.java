@@ -21,6 +21,7 @@ public class Account extends Model<Account> {
     private String password;
     private String email;
 
+    private Integer state;
 
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

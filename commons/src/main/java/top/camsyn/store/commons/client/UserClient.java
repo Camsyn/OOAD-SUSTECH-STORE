@@ -1,7 +1,6 @@
 package top.camsyn.store.commons.client;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +28,9 @@ public interface UserClient {
     Result<Boolean> changeLiyuan(@RequestParam("adder") Integer adder,
                                      @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta);
 
+
+    @PutMapping("/rpc/state/modify")
+    Result<User> modifyUserState(@RequestParam("sid")Integer sid, @RequestParam("state") Integer state);
 }
 
 

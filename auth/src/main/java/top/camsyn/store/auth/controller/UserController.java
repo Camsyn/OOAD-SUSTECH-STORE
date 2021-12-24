@@ -107,4 +107,15 @@ public class UserController {
         return Result.succeed(true,"修改余额成功");
     }
 
+
+    @PutMapping("/rpc/state/modify")
+    public Result<User> modifyUserState(@RequestParam("sid")Integer sid, @RequestParam("state") Integer state){
+        log.info("更新账户的状态");
+        final User one = userService.getOne(sid);
+        one.setSid(state);
+        userService.updateById(one);
+        log.info("修改账户状态成功");
+        return Result.succeed(one);
+    }
+
 }
