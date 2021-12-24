@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="新增了多个feign接口">
-      <change afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/ChatHystrix.java" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="新增了从动态中提取file service的url的helper">
+      <change afterPath="$PROJECT_DIR$/request/src/test/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/FileUrlHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/helper/FileServiceUrlHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/props/CommonsProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/props/CommonsProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AuthMailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/AuthMailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/test/java/top/camsyn/store/AuthApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/test/java/top/camsyn/store/AuthApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/entity/ChatState.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/entity/ChatState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/OrderHystrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/OrderHystrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/auth/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/auth/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/handler/DateMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/handler/DateMetaObjectHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/dto/SearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/dto/SearchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +148,7 @@
       <recent name="top.camsyn.store.commons.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChatApplication (1)">
+  <component name="RunManager" selected="JUnit.AuthApplicationTests.contextLoads (1)">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -157,6 +167,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="request" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthApplicationTests.contextLoads (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.auth" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.auth.AuthApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.AuthApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PostmanTests.testPushRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test" />
       <extension name="coverage">
@@ -168,22 +217,6 @@
       <option name="PACKAGE_NAME" value="com.example.test" />
       <option name="MAIN_CLASS_NAME" value="com.example.test.PostmanTests" />
       <option name="METHOD_NAME" value="testPushRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RequestApplicationTests.testOpenFeign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="request" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.request.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
-      <option name="METHOD_NAME" value="testOpenFeign" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -282,35 +315,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="order" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.order.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.order.OrderApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RequestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="request" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.request.RequestApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReviewApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="review" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.review.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.review.ReviewApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -372,7 +379,6 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.RequestApplicationTests.testOpenFeign" />
       <item itemvalue="JUnit.PostmanTests.testPushRequest" />
       <item itemvalue="Spring Boot.ChatApplication" />
       <item itemvalue="Spring Boot.ChatApplication (1)" />
@@ -394,16 +400,17 @@
       <item itemvalue="Spring Boot.ReviewApplication" />
       <item itemvalue="Spring Boot.AuthApplication" />
       <item itemvalue="Spring Boot.FileApplication (1)" />
-      <item itemvalue="Spring Boot.ReviewApplication (1)" />
-      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.AuthApplicationTests.contextLoads (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AuthApplicationTests.contextLoads (1)" />
+        <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.PostmanTests.testPushRequest" />
-        <item itemvalue="Spring Boot.OrderApplication" />
-        <item itemvalue="JUnit.RequestApplicationTests.testOpenFeign" />
-        <item itemvalue="Spring Boot.ReviewApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -459,7 +466,7 @@
       <workItem from="1640176892166" duration="9206000" />
       <workItem from="1640236001371" duration="8284000" />
       <workItem from="1640315106921" duration="20000" />
-      <workItem from="1640315170188" duration="2795000" />
+      <workItem from="1640315170188" duration="15767000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -615,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640316953651</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="新增了从动态中提取file service的url的helper">
+      <created>1640318151444</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1640318151444</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +731,8 @@
     <MESSAGE value="测试了openfeign的连通性, 修复了一些bug" />
     <MESSAGE value="修复了bug" />
     <MESSAGE value="新增了多个feign接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增了多个feign接口" />
+    <MESSAGE value="新增了从动态中提取file service的url的helper" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增了从动态中提取file service的url的helper" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

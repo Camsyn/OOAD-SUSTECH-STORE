@@ -1,9 +1,6 @@
 package top.camsyn.store.request.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,6 +8,8 @@ import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
 public class SearchDto implements Serializable {
@@ -23,11 +22,13 @@ public class SearchDto implements Serializable {
     /**
      * 当前页数
      */
-    public Integer page;
+    @Builder.Default
+    public Integer page=1;
     /**
      * 每页显示数
      */
-    public Integer limit;
+    @Builder.Default
+    public Integer limit=10;
     /**
      * 搜索类型：0或者null: 不搜索   1: 标题    2: 标题+简介   3: 标签    4: 全局
      */

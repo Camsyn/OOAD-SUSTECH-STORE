@@ -216,7 +216,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
             }
             record.setState(OrderConstants.PUBLISHED);
             save(record);
-            mailService.sendWhenOrderGenerate(record);
+//            mailService.sendWhenOrderGenerate(record);
             request.setSaleCount(request.getSaleCount() + record.getTradeCnt());
             requestClient.updateRequestForRpc(request);
         } finally {

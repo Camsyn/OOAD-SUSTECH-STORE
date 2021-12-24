@@ -124,7 +124,6 @@ public class RequestController {
     @PutMapping("/close")
     public Result<Request> closeRequest(@RequestParam("requestId") Integer requestId) {
         log.info("开始关闭请求");
-        int loginSid = UaaHelper.getLoginSid();
         Request req = requestService.getById(requestId);
         if (req == null || req.getState() != 2) {
             return Result.failed("请求不存在或请求无权关闭");
@@ -156,7 +155,7 @@ public class RequestController {
 
 
     @GetMapping("/search")
-    public Result<List<Request>> search(@RequestBody SearchDto searchDto) {
+    public Result<List<Request>> search(SearchDto searchDto) {
         log.info("开始搜索");
         final List<Request> search = requestService.search(searchDto);
         log.info("搜索成功");
@@ -168,7 +167,7 @@ public class RequestController {
         log.info("正在拉取请求");
         int loginSid = UaaHelper.getLoginSid();
         Result<Object> error = requestService.pullRequest(requestId, count, loginSid);
-        if (error != null){
+        if (error != null) {
             log.info("消费失败");
             return error;
         }
