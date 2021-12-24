@@ -32,7 +32,7 @@ public class LockHelper {
 
     @SneakyThrows
     public static <T> T lockTask(LockRegistry lockRegistry, Object lockKey, Supplier<T> supplier){
-        Lock lock = lockRegistry.obtain(lockKey);
+        Lock lock = lockRegistry.obtain(lockKey.toString());
         try {
             tryLock(lock);
             return supplier.get();

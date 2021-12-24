@@ -72,7 +72,7 @@ public class SuperServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M,
             TableInfo tableInfo = TableInfoHelper.getTableInfo(cls);
             if (null != tableInfo && StrUtil.isNotEmpty(tableInfo.getKeyProperty())) {
                 Object idVal = ReflectionKit.getFieldValue(entity, tableInfo.getKeyProperty());
-                final Lock lock = lockRegistry.obtain(entity);
+                final Lock lock = lockRegistry.obtain(entity.toString());
                 if (StringUtils.checkValNull(idVal) || Objects.isNull(getById((Serializable) idVal))) {
                     return this.saveIdempotency(entity, lock, lockKey, countWrapper, "");
                 } else {
@@ -101,7 +101,7 @@ public class SuperServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M,
                 if (StringUtils.checkValNull(idVal) || Objects.isNull(getById((Serializable) idVal))) {
                     throw new BusinessException("主键缺失, 无法更新");
                 } else {
-                    final Lock lock = lockRegistry.obtain(entity);
+                    final Lock lock = lockRegistry.obtain(entity.toString());
                     try {
                         LockHelper.tryLock(lock);
                         return super.updateById(entity);

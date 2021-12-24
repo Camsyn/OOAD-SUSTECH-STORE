@@ -2,7 +2,7 @@ package top.camsyn.store.auth.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.integration.redis.util.RedisLockRegistry;
+//import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.auth.service.impl.UserService;
 import top.camsyn.store.commons.entity.user.User;
@@ -50,7 +50,7 @@ public class UserController {
         log.info("更新用户信息，user: {}", user.getSid());
         UaaHelper.assertAdmin(user.getSid());
 
-        User oldUser = userService.getOne(user.getSid());
+//        User oldUser = userService.getOne(user.getSid());
 //        if (!oldUser.getHeadImage().equals(user.getHeadImage()) || !oldUser.getPaycodePath().equals(user.getPaycodePath())) {
 //            // TODO: 2021/11/16 文件微服务校验持久化链接
 //        }
