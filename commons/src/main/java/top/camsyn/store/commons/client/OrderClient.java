@@ -24,6 +24,9 @@ public interface OrderClient {
     @PostMapping("/order/generate")
     Result<TradeRecord> generateOrder(@RequestBody TradeRecord record);
 
+    @GetMapping("")
+    Result<TradeRecord> getOrder(@RequestParam("orderId") Integer orderId);
+
     @RequestMapping("/test/{id}")
     String test(@PathVariable("id") int id);
 }
