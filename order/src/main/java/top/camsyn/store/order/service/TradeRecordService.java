@@ -58,7 +58,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 
     @SneakyThrows
     public void rollbackUnfinishedOrder(TradeRecord record) {
-        final Lock lock = lockRegistry.obtain(record.getRequestId());
+        final Lock lock = lockRegistry.obtain(record.getRequestId().toString());
         try {
             LockHelper.tryLock(lock);
             final Request request = checkRpcResult(requestClient.getRequest(record.getRequestId()), record);
@@ -131,7 +131,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 
     @SneakyThrows
     public void postHandle(TradeRecord record) {
-        final Lock lock = lockRegistry.obtain(record.getRequestId());
+        final Lock lock = lockRegistry.obtain(record.getRequestId().toString());
         try {
             LockHelper.tryLock(lock);
             switch (record.getType()) {
@@ -196,7 +196,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 
     @SneakyThrows
     public void preHandle(TradeRecord record) {
-        final Lock lock = lockRegistry.obtain(record.getRequestId());
+        final Lock lock = lockRegistry.obtain(record.getRequestId().toString());
         try {
             LockHelper.tryLock(lock);
             final Request request = checkRpcResult(requestClient.getRequest(record.getRequestId()), record);
@@ -216,7 +216,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
             }
             record.setState(OrderConstants.PUBLISHED);
             save(record);
-            mailService.sendWhenOrderGenerate(record);
+//            mailService.sendWhenOrderGenerate(record);
             request.setSaleCount(request.getSaleCount() + record.getTradeCnt());
             requestClient.updateRequestForRpc(request);
         } finally {

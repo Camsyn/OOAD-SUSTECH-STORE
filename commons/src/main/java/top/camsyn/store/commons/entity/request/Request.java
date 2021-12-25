@@ -22,6 +22,7 @@ public class Request {
     @TableId(value = "id",type = IdType.AUTO)
     Integer id;
     String title;
+    @TableField("desc_")
     String description;
     /**
      * 发布请求者（生成）
@@ -35,6 +36,7 @@ public class Request {
     /**
      * 总量
      */
+    @TableField("count_")
     Integer count;
     /**
      * 已售数量

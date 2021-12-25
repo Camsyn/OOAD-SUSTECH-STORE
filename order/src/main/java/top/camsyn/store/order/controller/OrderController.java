@@ -49,7 +49,7 @@ public class OrderController {
     @PutMapping("/pull/confirm")
     public Result<TradeRecord> confirmPullOrder(@RequestParam("orderId") Integer orderId) {
         log.info("ensurePullOrder");
-        Lock lock = lockRegistry.obtain(orderId);
+        Lock lock = lockRegistry.obtain(orderId.toString());
         try {
             LockHelper.tryLock(lock);
             final TradeRecord order = tradeRecordService.getById(orderId);
@@ -77,7 +77,7 @@ public class OrderController {
     @PutMapping("/push/confirm")
     public Result<TradeRecord> confirmPushOrder(@RequestParam("orderId") Integer orderId) {
         log.info("ensurePushOrder");
-        Lock lock = lockRegistry.obtain(orderId);
+        Lock lock = lockRegistry.obtain(orderId.toString());
         try {
             LockHelper.tryLock(lock);
             final TradeRecord order = tradeRecordService.getById(orderId);

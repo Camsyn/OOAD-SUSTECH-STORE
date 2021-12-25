@@ -17,6 +17,11 @@ public class OrderHystrix implements OrderClient {
     }
 
     @Override
+    public Result<TradeRecord> restoreOrder(Integer orderId) {
+        return null;
+    }
+
+    @Override
     public Result<TradeRecord> generateOrder(TradeRecord record) {
         return null;
     }

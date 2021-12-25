@@ -2,11 +2,15 @@ package top.camsyn.store.chat.entity;
 
 
 import com.alibaba.fastjson.JSON;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChatState {
     /**
      * 0: 上线， 成功连接到chat服务器， 此时sid即你的sid

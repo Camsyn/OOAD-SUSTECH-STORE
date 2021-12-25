@@ -55,15 +55,15 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-security</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;用户资格认证&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-security</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash;用户资格认证&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -74,22 +74,22 @@
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
         </dependency>
-<!--        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils.version}</version>
-        </dependency>-->
+        <!--        <dependency>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                    <version>${commons-beanutils.version}</version>
+                </dependency>-->
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.rocketmq</groupId>-->
-<!--            <artifactId>rocketmq-client</artifactId>-->
-<!--            <version>3.6.2.Final</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.rocketmq</groupId>-->
+        <!--            <artifactId>rocketmq-client</artifactId>-->
+        <!--            <version>3.6.2.Final</version>-->
+        <!--        </dependency>-->
 
         <!--用于配置文件的提示(与 @ConfigurationProperties 配合使用)-->
         <!--会生成 META-INF, 里面有用于 idea自动提示的 元数据-->
@@ -149,39 +149,39 @@
                     <version>${spring-boot-dependencies.version}</version>
 
                     <configuration>
-<!--                        <skip>true</skip>-->
+                        <!--                        <skip>true</skip>-->
                         <classifier>exec</classifier>
                     </configuration>
                 </plugin>
-<!--                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>${docker-maven-plugin.version}</version>
-                </plugin>-->
-<!--                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>2.3.11.RELEASE</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <fork>true</fork>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>-->
+                <!--                <plugin>
+                                    <groupId>com.spotify</groupId>
+                                    <artifactId>docker-maven-plugin</artifactId>
+                                    <version>${docker-maven-plugin.version}</version>
+                                </plugin>-->
+                <!--                <plugin>
+                                    <groupId>org.springframework.boot</groupId>
+                                    <artifactId>spring-boot-maven-plugin</artifactId>
+                                    <version>2.3.11.RELEASE</version>
+                                    <executions>
+                                        <execution>
+                                            <goals>
+                                                <goal>repackage</goal>
+                                            </goals>
+                                        </execution>
+                                    </executions>
+                                    <configuration>
+                                        <fork>true</fork>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-compiler-plugin</artifactId>
+                                    <version>3.8.1</version>
+                                    <configuration>
+                                        <source>1.8</source>
+                                        <target>1.8</target>
+                                    </configuration>
+                                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>
@@ -210,10 +210,9 @@
     </distributionManagement>
 
 
-
     <modules>
         <!-- 公共 -->
-<!--        <module>commons</module>-->
+        <!--        <module>commons</module>-->
         <!-- 认证/登录 -->
         <module>auth</module>
         <!-- 网关 -->

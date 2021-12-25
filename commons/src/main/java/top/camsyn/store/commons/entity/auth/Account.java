@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
@@ -15,18 +17,19 @@ import java.util.Date;
 @Data
 @Builder
 public class Account extends Model<Account> {
-    @TableId(value = "sid",type = IdType.AUTO)
+    @TableId(value = "sid")
     private Integer sid;
     @TableField(value = "pwd")
     private String password;
     private String email;
 
+    private Integer state;
 
     @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     private Integer deleted;
 }

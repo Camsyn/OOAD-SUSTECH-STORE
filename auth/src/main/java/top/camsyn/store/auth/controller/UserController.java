@@ -2,7 +2,7 @@ package top.camsyn.store.auth.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.integration.redis.util.RedisLockRegistry;
+//import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.auth.service.impl.UserService;
 import top.camsyn.store.commons.entity.user.User;
@@ -58,7 +58,7 @@ public class UserController {
         log.info("更新用户信息，user: {}", user.getSid());
         UaaHelper.assertAdmin(user.getSid());
 
-        User oldUser = userService.getOne(user.getSid());
+//        User oldUser = userService.getOne(user.getSid());
 //        if (!oldUser.getHeadImage().equals(user.getHeadImage()) || !oldUser.getPaycodePath().equals(user.getPaycodePath())) {
 //            // TODO: 2021/11/16 文件微服务校验持久化链接
 //        }
@@ -105,6 +105,17 @@ public class UserController {
         userService.changeLiyuan(adder,subscriber, delta);
         log.info("修改余额成功");
         return Result.succeed(true,"修改余额成功");
+    }
+
+
+    @PutMapping("/rpc/state/modify")
+    public Result<User> modifyUserState(@RequestParam("sid")Integer sid, @RequestParam("state") Integer state){
+        log.info("更新账户的状态");
+        final User one = userService.getOne(sid);
+        one.setSid(state);
+        userService.updateById(one);
+        log.info("修改账户状态成功");
+        return Result.succeed(one);
     }
 
 }

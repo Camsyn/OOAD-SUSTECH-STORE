@@ -66,6 +66,24 @@ public class RpcController {
         );
     }
 
+    @PutMapping("/order/restore")
+    Result<TradeRecord> restoreOrder(@RequestParam("orderId") Integer orderId){
+        log.info("订单审核通过，无异常");
+        return LockHelper.lockTask(lockRegistry, orderId,
+                () -> {
+                    TradeRecord order = recordService.getById(orderId);
+                    if (order.isFinished()) {
+                        throw new BusinessException("订单已完成，无法申诉");
+                    }
+                    order.setState(OrderConstants.PUBLISHED);
+                    recordService.updateById(order);
+                    return Result.succeed(order);
+                }
+        );
+    }
+
+
+
     @PostMapping("/order/generate")
     public Result<TradeRecord> generateOrder(@RequestBody TradeRecord record){
         log.info("处理请求微服务发送来的订单");

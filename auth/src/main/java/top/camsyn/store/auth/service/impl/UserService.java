@@ -28,7 +28,7 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
     @SneakyThrows
     public User changeLiyuan(Integer sid, Double delta) {
         User one = null;
-        final Lock lock = lockRegistry.obtain(sid);
+        final Lock lock = lockRegistry.obtain(sid.toString());
         try {
             if (lock.tryLock(10, TimeUnit.SECONDS)) {
                 one = getOne(sid);
@@ -51,8 +51,8 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
     @SneakyThrows
     public boolean changeLiyuan(Integer adder, Integer subscriber, Double delta) {
         User one = null;
-        final Lock lock = lockRegistry.obtain(adder);
-        final Lock lock1 = lockRegistry.obtain(subscriber);
+        final Lock lock = lockRegistry.obtain(adder.toString());
+        final Lock lock1 = lockRegistry.obtain(subscriber.toString());
         try {
             if (lock.tryLock(10, TimeUnit.SECONDS)) {
                 one = getOne(adder);

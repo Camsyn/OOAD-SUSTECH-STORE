@@ -27,4 +27,9 @@ public class UserHystrix implements UserClient {
         return null;
     }
 
+    @Override
+    public Result<User> modifyUserState(Integer sid, Integer state) {
+        return null;
+    }
+
 }

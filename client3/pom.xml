@@ -23,10 +23,10 @@
 <!--    </parent>-->
 
     <dependencies>
-        <dependency>
-            <groupId>top.camsyn.store</groupId>
-            <artifactId>commons-spring-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>top.camsyn.store</groupId>-->
+<!--            <artifactId>commons-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

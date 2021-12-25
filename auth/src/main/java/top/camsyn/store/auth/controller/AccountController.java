@@ -52,9 +52,9 @@ public class AccountController {
             final Object content = verifyService.getValByKey(vId);
             if (content instanceof Account) {
                 final Account user = (Account) content;
+                verifyService.terminateVerifying(vId);
                 accountService.createAccount(user);
                 log.info("创建账户: vid:{}, user:{}", vId, user);
-                verifyService.terminateVerifying(vId);
                 return Result.succeed(user, "验证成功, 创建账户");
             } else {
                 log.info("验证失败, 验证id错误");

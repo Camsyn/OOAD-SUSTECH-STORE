@@ -16,9 +16,19 @@ import java.util.Objects;
 @ResponseBody
 public interface RequestClient {
 
+    /**
+     * 设置请求状态为关闭close
+     * @param requestId
+     * @return
+     */
     @PutMapping("/request/close")
     Result<Request> closeRequest(@RequestParam("requestId") Integer requestId);
 
+    /**
+     * 设置请求状态为 open
+     * @param requestId
+     * @return
+     */
     @PutMapping("/request/open")
     Result<Request> openRequest(@RequestParam("requestId") Integer requestId);
 

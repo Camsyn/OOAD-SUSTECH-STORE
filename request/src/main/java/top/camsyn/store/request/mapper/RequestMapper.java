@@ -63,13 +63,13 @@ public interface RequestMapper extends BaseMapper<Request> {
             "                        and r.title = #{s.queryStr}\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==2' >\n" +
-            "                        and ( r.title = #{s.queryStr} or r.desc = #{s.queryStr} )\n" +
+            "                        and ( r.title = #{s.queryStr} or r.desc_ = #{s.queryStr} )\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==3' >\n" +
             "                        and l.label_name = #{s.queryStr}\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==4' >\n" +
-            "                        and ( r.title = #{s.queryStr} or r.desc = #{s.queryStr} or l.label_name = #{s.queryStr})\n" +
+            "                        and ( r.title = #{s.queryStr} or r.desc_ = #{s.queryStr} or l.label_name = #{s.queryStr})\n" +
             "                    </when>\n" +
             "                    <otherwise></otherwise>\n" +
             "                </choose>\n" +
@@ -80,13 +80,13 @@ public interface RequestMapper extends BaseMapper<Request> {
             "                        and r.title regexp #{s.queryStr}\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==2' >\n" +
-            "                        and ( r.title regexp #{s.queryStr} or r.desc regexp #{s.queryStr} )\n" +
+            "                        and ( r.title regexp #{s.queryStr} or r.desc_ regexp #{s.queryStr} )\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==3' >\n" +
             "                        and l.label_name regexp #{s.queryStr}\n" +
             "                    </when>\n" +
             "                    <when test='s.searchStrategy==4' >\n" +
-            "                        and ( r.title regexp #{s.queryStr} or r.desc regexp #{s.queryStr} or l.label_name regexp #{s.queryStr})\n" +
+            "                        and ( r.title regexp #{s.queryStr} or r.desc_ regexp #{s.queryStr} or l.label_name regexp #{s.queryStr})\n" +
             "                    </when>\n" +
             "                    <otherwise></otherwise>\n" +
             "                </choose>\n" +
@@ -125,7 +125,7 @@ public interface RequestMapper extends BaseMapper<Request> {
             "            </foreach>\n" +
             "        </if>\n" +
             "        \n" +
-            "        <if test='s.openState != null and (s.openState=0 or s.openState=1)'>\n" +
+            "        <if test='s.openState != null and (s.openState==0 or s.openState==1)'>\n" +
             "            and\n" +
             "            r.state = \n" +
             "               <choose>\n" +
