@@ -35,8 +35,7 @@ public class ReviewLogService {
     @Autowired
     ChatClient chatClient;
 
-    @Autowired
-    CircleMessageClient circleMessageClient;
+
 
     public List<ReviewLog> selectAll(){
         return reviewLogMapper.selectAll();
@@ -105,11 +104,11 @@ public class ReviewLogService {
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==4){
-                    CircleMessage circleMessage = circleMessageClient.getCircleMessage(t_id).getData();
+                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==5){
-                    Comment comment = circleMessageClient.getComment(t_id).getData();
+                    Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }
@@ -149,11 +148,11 @@ public class ReviewLogService {
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==4){
-                    CircleMessage circleMessage = circleMessageClient.getCircleMessage(t_id).getData();
+                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==5){
-                    Comment comment = circleMessageClient.getComment(t_id).getData();
+                    Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }
@@ -172,7 +171,7 @@ public class ReviewLogService {
             }
         }else if(category==1){
             Request request = requestClient.getRequest(t_id).getData();
-            if(reviewLogMapper.review(request.getDescription())==0) {
+            if(reviewLogMapper.review(request.getDesc_())==0) {
                 requestClient.updateRequestState(t_id,2);
                 return true;
             }else{
@@ -186,18 +185,18 @@ public class ReviewLogService {
                 chatClient.deleteChatRecord(chatRecord.getId());
             }
         }else if(category==4){
-            CircleMessage circleMessage = circleMessageClient.getCircleMessage(t_id).getData();
+            CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
             if(reviewLogMapper.review(circleMessage.getTopic()+circleMessage.getContent())==0) {
                 return true;
             }else{
-                circleMessageClient.deleteCircleMessage(circleMessage.getId());
+                chatClient.deleteCircleMessage(circleMessage.getId());
             }
         }else if(category==5){
-            Comment comment = circleMessageClient.getComment(t_id).getData();
+            Comment comment = chatClient.getComment(t_id).getData();
             if(reviewLogMapper.review(comment.getContent())==0) {
                 return true;
             }else{
-                circleMessageClient.deleteComment(comment.getId());
+                chatClient.deleteComment(comment.getId());
             }
         }
         return false;
@@ -229,11 +228,11 @@ public class ReviewLogService {
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
                 }else if(category==4){
-                    CircleMessage circleMessage = circleMessageClient.getCircleMessage(t_id).getData();
+                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
                 }else if(category==5){
-                    Comment comment = circleMessageClient.getComment(t_id).getData();
+                    Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
                 }
@@ -257,11 +256,11 @@ public class ReviewLogService {
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==4){
-                    CircleMessage circleMessage = circleMessageClient.getCircleMessage(t_id).getData();
+                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==5){
-                    Comment comment = circleMessageClient.getComment(t_id).getData();
+                    Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
                 }
