@@ -71,6 +71,12 @@ public class ReviewLogController {
         return reviewLogService.autoReview(t_id, 1);
     }
 
+    @PostMapping("/autoReviewOrder")//false: 审核不通过  true: 审核通过
+    public String autoReviewOrder(@RequestParam("t_id") String t_id){
+        log.info("自动审核订单");
+        return reviewLogService.autoReview(t_id, 2);
+    }
+
     @PostMapping("/autoReviewChat")//false: 审核不通过  true: 审核通过
     public String autoReviewChat(@RequestParam("t_id") String t_id){
         log.info("自动审核聊天记录");

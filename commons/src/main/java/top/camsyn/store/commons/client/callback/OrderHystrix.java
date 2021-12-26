@@ -26,8 +26,7 @@ public class OrderHystrix implements OrderClient {
         return null;
     }
 
-    @Override
-    public Result<TradeRecord> getOrder(Integer orderId){return null;}
+
 
     @Override
     public String test(int id) {

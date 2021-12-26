@@ -130,6 +130,7 @@ public class ReviewLogService {
         rL.setTime(new Date());
         if(category==2){
             rL.setState(0);
+            orderClient.reviewOrder(t_id);
         }
         else{
             if (isPassed(t_id, category)){
@@ -209,6 +210,17 @@ public class ReviewLogService {
         int category = rL.getCategory();
         if (rL.getState()==3 && operate.equals("0")){
             rL.setState(4);
+            if(category==1){
+                requestClient.updateRequestState(t_id,5);
+            }else if(category==2){
+                orderClient.terminateOrder(t_id);
+            }else if(category==3){
+                chatClient.deleteChatRecord(t_id);
+            }else if(category==4){
+                chatClient.deleteCircleMessage(t_id);
+            }else if(category==5){
+                chatClient.deleteComment(t_id);
+            }
         }
         else if(operate.equals("1")){
             if(rL.getState()==3 || rL.getState()==2){
@@ -219,22 +231,26 @@ public class ReviewLogService {
                     Request request = requestClient.getRequest(t_id).getData();
                     User user = userClient.getUser(request.getPusher()).getData();
                     user.setCredit(user.getCredit()+1);
+                    requestClient.updateRequestState(t_id,2);
                 }else if(category==2){
-                    TradeRecord tradeRecord = orderClient.getOrder(t_id).getData();
+                    TradeRecord tradeRecord = orderClient.restoreOrder(t_id).getData();
                     User user = userClient.getUser(tradeRecord.getPusher()).getData();
                     user.setCredit(user.getCredit()+1);
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
+                    chatClient.undoDeleteChatRecord(t_id);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
+                    chatClient.undoDeleteCircleMessage(t_id);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()+1);
+                    chatClient.undoDeleteComment(t_id);
                 }
             }
             rL.setState(1);
@@ -247,22 +263,26 @@ public class ReviewLogService {
                     Request request = requestClient.getRequest(t_id).getData();
                     User user = userClient.getUser(request.getPusher()).getData();
                     user.setCredit(user.getCredit()-1);
+                    requestClient.updateRequestState(t_id,5);
                 }else if(category==2){
-                    TradeRecord tradeRecord = orderClient.getOrder(t_id).getData();
+                    TradeRecord tradeRecord = orderClient.terminateOrder(t_id).getData();
                     User user = userClient.getUser(tradeRecord.getPusher()).getData();
                     user.setCredit(user.getCredit()-1);
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
+                    chatClient.deleteChatRecord(t_id);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
+                    chatClient.deleteCircleMessage(t_id);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
                     user.setCredit(user.getCredit()-1);
+                    chatClient.deleteComment(t_id);
                 }
             }
             rL.setState(2);
