@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -65,6 +66,12 @@ public class FileController {
         return new UploadFileResponse(fileName, fileDownloadUri, "", -1);
     }
 
+    @PostMapping("/downloadFileByURL")
+    public File downloadFileByURL(@RequestParam("url") String url_s) throws Exception {
+        log.info("通过url下载文件");
+        return fileService.downloadFileByURL(url_s);
+    }
+
     @PostMapping("/uploadMultipleFiles")
     public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         log.info("开始批量上传文件");
@@ -90,6 +97,20 @@ public class FileController {
             }
         }
         log.info("批量上传成功");
+        return list;
+    }
+
+    @PostMapping("/downloadMultipleFilesByURL")
+    public List<File> downloadMultipleFilesByURL(@RequestParam("url") String[] urls) throws Exception {
+        log.info("开始通过url批量下载文件");
+        List<File> list = new ArrayList<>();
+        if(urls != null){
+            for (String url:urls) {
+                File file = fileService.downloadFileByURL(url);
+                list.add(file);
+            }
+        }
+        log.info("批量下载成功");
         return list;
     }
 

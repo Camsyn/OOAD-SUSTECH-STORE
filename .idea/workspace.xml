@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -447,6 +452,7 @@
       <workItem from="1640236001371" duration="8284000" />
       <workItem from="1640315106921" duration="20000" />
       <workItem from="1640315170188" duration="27493000" />
+      <workItem from="1640528685190" duration="4115000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -637,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640519347261</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="review微服务优化">
+      <created>1640528841060</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1640528841060</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

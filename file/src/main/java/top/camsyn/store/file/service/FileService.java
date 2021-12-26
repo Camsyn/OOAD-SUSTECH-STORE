@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -124,6 +123,48 @@ public class FileService {
             if (ex.getMessage().equals("wrong id")) throw new FileException("wrong id: " + id, ex);
             else throw new FileException("Could not store file " + fileName + ". Please try again!", ex);
         }
+
+    }
+
+    public File downloadFileByURL(String url) throws Exception{
+        //对本地文件命名
+        String[] label = url.split("\\.");
+        String[] name = url.split("/");
+
+        File file = null;
+
+        URL urlfile;
+        InputStream inStream = null;
+        OutputStream os = null;
+        try {
+            file = File.createTempFile("pre"+name[name.length-1], label[label.length-1]);
+            //下载
+            urlfile = new URL(url);
+            inStream = urlfile.openStream();
+            os = new FileOutputStream(file);
+
+            int bytesRead = 0;
+            byte[] buffer = new byte[8192];
+            while ((bytesRead = inStream.read(buffer, 0, 8192)) != -1) {
+                os.write(buffer, 0, bytesRead);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != os) {
+                    os.close();
+                }
+                if (null != inStream) {
+                    inStream.close();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return file;
 
     }
 

@@ -172,7 +172,7 @@ public class ReviewLogService {
             }
         }else if(category==1){
             Request request = requestClient.getRequest(t_id).getData();
-            if(reviewLogMapper.review(request.getDesc_())==0) {
+            if(reviewLogMapper.review(request.getDesc_()+request.getTitle())==0) {
                 requestClient.updateRequestState(t_id,2);
                 return true;
             }else{
