@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.entity.request.CartItem;
 import top.camsyn.store.commons.entity.request.CartRequest;
+import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.exception.BusinessException;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
@@ -34,6 +35,11 @@ public class CartController {
         log.info("addRequestToCart");
         final UserDto currentUser = UaaHelper.getCurrentUser();
         final Integer sid = currentUser.getSid();
+        final Request req = requestService.getById(requestId);
+        if (req.getPusher().equals(sid)){
+            log.info("无法将自己发布的请求纳入请求清单, sid：{}",sid);
+            return Result.failed("无法将自己发布的请求纳入请求清单");
+        }
         final CartItem item = CartItem.builder().owner(sid).requestId(requestId).count(count).build();
         cartService.save(item);
         log.info("成功加入购物车");
@@ -56,7 +62,7 @@ public class CartController {
     }
 
     @SneakyThrows
-    @Delete("/delete")
+    @DeleteMapping("/delete")
     public Result<CartItem> deleteCartItem(@RequestParam("cartItemId") Integer cartItemId) {
         log.info("deleteCartItem");
         final CartItem item = cartService.getById(cartItemId);
@@ -104,6 +110,28 @@ public class CartController {
         final List<CartRequest> cartList = cartService.getCartList(owner, 0);
         List<CartItem> cartItems = new ArrayList<>();
         for (CartRequest cartRequest : cartList) {
+            final Result<Object> error = requestService.pullRequest(cartRequest.getId(), cartRequest.getCartItemCount(), owner);
+            if (error != null) {
+                log.info("消费失败");
+                return Result.failed("消费失败");
+            }
+            final CartItem cartItem = cartRequest.toCartItem();
+            cartItem.setState(1);
+            cartItems.add(cartItem);
+        }
+        cartService.updateBatchById(cartItems);
+        log.info("已批量拉取请求");
+        return Result.succeed(cartItems, "已批量拉取请求");
+    }
+
+    @PutMapping("/satisfy")
+    public Result<List<CartItem>> finishCart(@RequestParam("cartItemId") List<Integer> cartItemIds) {
+        log.info("finishCart");
+        final int owner = UaaHelper.getLoginSid();
+        final List<CartRequest> cartList = cartService.getCartList(owner, 0);
+        List<CartItem> cartItems = new ArrayList<>();
+        for (CartRequest cartRequest : cartList) {
+            if (!cartItemIds.contains(cartRequest.getCartItemId())) continue;
             final Result<Object> error = requestService.pullRequest(cartRequest.getId(), cartRequest.getCartItemCount(), owner);
             if (error != null) {
                 log.info("消费失败");

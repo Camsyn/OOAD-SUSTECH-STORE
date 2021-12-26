@@ -181,11 +181,11 @@ public class ChatController {
                 flag = true;
             }
         }
-        chatRecords.stream().filter(i -> !i.isRead()).forEach(i ->
+        chatRecords.stream().filter(i -> !i.isRead()).peek(i ->
         {
             i.setRecvTime(LocalDateTime.now());
             i.setRead(true);
-        });
+        }).findFirst().ifPresent(i->log.info("更新聊天记录接收状态：send: {}, recv: {}, time: {}", i.getSendId(),i.getRecvId(), i.getRecvTime()));
         if (flag) {
             chatRecords.get(count).setRead(false);
             chatRecords.get(count).setRecvTime(null);

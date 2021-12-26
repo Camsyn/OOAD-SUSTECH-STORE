@@ -66,6 +66,9 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
         if (req == null || req.getState() != 2) {
             return Result.failed("请求不存在或请求未开放");
         }
+        if (req.getPusher().equals(loginSid)) {
+            return Result.failed("无法拉取自己发布的请求");
+        }
         int restCnt = req.getCount() - req.getSaleCount();
         if (restCnt < count) {
             return Result.failed("余量不足，请求拉取失败");

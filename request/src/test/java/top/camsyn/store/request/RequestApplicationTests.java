@@ -1,6 +1,7 @@
 package top.camsyn.store.request;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,14 +9,17 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.client.RestTemplate;
 import top.camsyn.store.commons.client.OrderClient;
+import top.camsyn.store.commons.entity.request.CartRequest;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.request.controller.RequestController;
 import top.camsyn.store.request.controller.RpcController;
 import top.camsyn.store.request.dto.SearchDto;
+import top.camsyn.store.request.service.CartService;
 import top.camsyn.store.request.service.RequestService;
 import top.camsyn.store.request.test.RequestClient;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,6 +40,9 @@ class RequestApplicationTests {
     @Autowired
     OrderClient orderClient;
 
+    @Autowired
+    CartService cartService;
+
 //    @Autowired
 //    RequestClient requestClient;
 
@@ -55,9 +62,10 @@ class RequestApplicationTests {
     void testSearch(){
 //        System.out.println(requestService.getById(7));
         SearchDto search = SearchDto.builder().queryStr("te").searchStrategy(0)
-                .page(1).limit(2).build();
+                .page(1).limit(3).labels(Arrays.asList("汽车", "test")).build();
         List<Request> result = requestService.search(search);
         System.out.println(result.size());
+        System.out.println(JSONArray.toJSONString(result,true));
         System.out.println();
 //        search =  SearchDto.builder().searchStrategy(0).page(1).limit(10).build();
 //        result = requestService.search(search);
@@ -91,6 +99,12 @@ class RequestApplicationTests {
 //        System.out.println();
     }
 
+
+    @Test
+    void testCart(){
+        final List<CartRequest> cart = cartService.getCartList(11910620);
+        System.out.println(JSONArray.toJSONString(cart,true));
+    }
 
     @Test
     void testApi(){

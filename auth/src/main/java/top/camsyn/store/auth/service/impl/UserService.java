@@ -81,4 +81,24 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
         }
         return true;
     }
+
+    @SneakyThrows
+    public User changeCredit(Integer sid, Integer delta) {
+        User one = null;
+        final Lock lock = lockRegistry.obtain(sid.toString());
+        try {
+            if (lock.tryLock(10, TimeUnit.SECONDS)) {
+                one = getOne(sid);
+                one.setCredit(one.getCredit()+delta);
+                updateById(one);
+            } else {
+                throw new LockException("分布式锁获取失败");
+            }
+        } catch (InterruptedException | LockException e) {
+            throw new LockException("分布式锁获取失败");
+        } finally {
+            lock.unlock();
+        }
+        return one;
+    }
 }

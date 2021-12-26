@@ -2,10 +2,8 @@ package top.camsyn.store.commons.entity.request;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,11 +11,14 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName(autoResultMap = true)
 public class CartRequest extends Request{
-    @TableField(value = "cart_item_count")
-    Integer cartItemCount;
     @TableField(value = "cart_item_id")
     Integer cartItemId;
+
+    @TableField(value = "cart_item_count")
+    Integer cartItemCount;
+
     @TableField(value = "cart_item_owner")
     Integer owner;
     /**

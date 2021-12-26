@@ -31,7 +31,7 @@ public class ListTypeHandler<T extends Object> implements TypeHandler<List<T>> {
         if (StringUtils.isEmpty(content)) {
             return new ArrayList<>();
         }
-        log.info("db-json 2 List: {}", content);
+//        log.info("db-json 2 List: {}", content);
         return JSON.parseObject(content, new TypeReference<ArrayList<T>>(){});
     }
 

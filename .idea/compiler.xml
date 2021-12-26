@@ -21,7 +21,6 @@
         <module name="chat" />
         <module name="review" />
         <module name="commons-spring-boot-starter" />
-        <module name="config" />
         <module name="gateway" />
         <module name="order" />
       </profile>

@@ -90,6 +90,15 @@ public class UserController {
         }
     }
 
+
+    @PutMapping("/rpc/changeCredit")
+    public Result<User> changeCredit(@RequestParam("sid") Integer sid, @RequestParam("delta") Integer delta){
+        log.info("开始修改余额");
+        final User user = userService.changeCredit(sid, delta);
+        log.info("修改余额成功");
+        return Result.succeed(user,"修改余额成功");
+    }
+
     @PutMapping("/rpc/changeLiyuan")
     public Result<User> changeLiyuan(@RequestParam("sid") Integer sid, @RequestParam("delta") Double delta){
         log.info("开始修改余额");

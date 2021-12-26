@@ -9,7 +9,6 @@
       <list>
         <option value="$PROJECT_DIR$/commons/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/config/pom.xml" />
         <option value="$PROJECT_DIR$/chat/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/client1/pom.xml" />

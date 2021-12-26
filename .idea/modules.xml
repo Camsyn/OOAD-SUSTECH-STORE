@@ -11,7 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/client3/client3.iml" filepath="$PROJECT_DIR$/client3/client3.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" filepath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
       <module fileurl="file://$PROJECT_DIR$/file/file.iml" filepath="$PROJECT_DIR$/file/file.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/order/order.iml" filepath="$PROJECT_DIR$/order/order.iml" />
