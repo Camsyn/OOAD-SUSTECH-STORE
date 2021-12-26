@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.chat.service.ChatRecordService;
 import top.camsyn.store.chat.service.CircleMessageService;
+import top.camsyn.store.chat.service.CommentService;
 import top.camsyn.store.commons.entity.chat.ChatRecord;
 import top.camsyn.store.commons.entity.chat.CircleMessage;
+import top.camsyn.store.commons.entity.chat.Comment;
 import top.camsyn.store.commons.model.Result;
 
 @Slf4j
@@ -18,6 +20,9 @@ public class RpcController {
 
     @Autowired
     CircleMessageService circleMessageService;
+
+    @Autowired
+    CommentService commentService;
 
     @GetMapping("/chatRecord/get")
     Result<ChatRecord> getChatRecord(@RequestParam("id") Integer id) {
@@ -45,5 +50,17 @@ public class RpcController {
         return Result.succeed(circleMessageService.removeById(id));
     }
 
+
+    @GetMapping("/comment/get")
+    public Result<Comment> getComment(@RequestParam("id") Integer commentId){
+        log.info("getComment, id: {}",commentId);
+        return Result.succeed(commentService.getById(commentId));
+    }
+
+    @DeleteMapping("/comment/delete")
+    public Result<Boolean> deleteComment(@RequestParam("id") Integer commentId){
+        log.info("deleteComment, id: {}",commentId);
+        return Result.succeed(commentService.removeById(commentId));
+    }
 
 }

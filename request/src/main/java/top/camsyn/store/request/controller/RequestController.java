@@ -1,6 +1,7 @@
 package top.camsyn.store.request.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -156,10 +157,10 @@ public class RequestController {
 
     @GetMapping("/search")
     public Result<List<Request>> search(SearchDto searchDto) {
-        log.info("开始搜索");
-        final List<Request> search = requestService.search(searchDto);
+        log.info("开始搜索: {}", JSON.toJSONString(searchDto, true));
+        final List<Request> result = requestService.search(searchDto);
         log.info("搜索成功");
-        return Result.succeed(search, "搜索成功");
+        return Result.succeed(result, "搜索成功");
     }
 
     @PutMapping("/pull")

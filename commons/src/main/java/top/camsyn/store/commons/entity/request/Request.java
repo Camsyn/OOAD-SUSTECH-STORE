@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import lombok.*;
 import lombok.experimental.Accessors;
+import top.camsyn.store.commons.handler.ListTypeHandler;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,11 +20,10 @@ public class Request {
     /**
      * 主键id （生成）
      */
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     Integer id;
     String title;
-    @TableField("desc_")
-    String description;
+    String desc_;
     /**
      * 发布请求者（生成）
      */
@@ -86,18 +86,20 @@ public class Request {
     /**
      * 路径序列
      */
-    @TableField(typeHandler = FastjsonTypeHandler.class)
+    @TableField(typeHandler = ListTypeHandler.class)
     List<String> images;
-    @TableField(typeHandler = FastjsonTypeHandler.class)
+    @TableField(typeHandler = ListTypeHandler.class)
     List<String> video;
-    @TableField(typeHandler = FastjsonTypeHandler.class)
+    @TableField(typeHandler = ListTypeHandler.class)
     List<String> labels;
 
     private Integer deleted;
-    public boolean liyuanPaySellReq(){
-        return tradeType==1 && type==1;
+
+    public boolean liyuanPaySellReq() {
+        return tradeType == 1 && type == 1;
     }
-    public boolean liyuanPayBuyReq(){
-        return tradeType==1 && type==0;
+
+    public boolean liyuanPayBuyReq() {
+        return tradeType == 1 && type == 0;
     }
 }

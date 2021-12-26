@@ -11,6 +11,7 @@ import top.camsyn.store.commons.entity.chat.Comment;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class CircleMessageController {
     }
 
     @DeleteMapping("/comment/delete")
-    public Result<Comment> deleteComment(@RequestParam("id") Integer id){
+    public Result<Comment> deleteYourComment(@RequestParam("id") Integer id){
         log.info("deleteComment. id: {}", id);
         Comment comment = commentService.getById(id);
 
@@ -164,6 +165,7 @@ public class CircleMessageController {
         log.info("getLatestComment，cmId: {}. size：{}, before: {}", cmId, count, timeBefore);
         return Result.succeed(commentService.getLatestComment(cmId, count + 1, timeBefore));
     }
+
 
 
 }
