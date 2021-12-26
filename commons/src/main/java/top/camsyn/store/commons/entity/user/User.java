@@ -42,6 +42,9 @@ public class User extends Model<User> {
 
     private Integer deleted;
 
+    private Double cumConsume;
+    private Double cumEarn;
+
     @TableField(typeHandler = FastjsonTypeHandler.class)
     private List<Integer> follow;
 

@@ -64,7 +64,7 @@ public class CartController {
     @SneakyThrows
     @DeleteMapping("/delete")
     public Result<CartItem> deleteCartItem(@RequestParam("cartItemId") Integer cartItemId) {
-        log.info("deleteCartItem");
+        log.info("deleteCartItem： {}", cartItemId);
         final CartItem item = cartService.getById(cartItemId);
         UaaHelper.assertAdmin(item.getOwner());
         if (item.getState() != 0) throw new BusinessException("已完成的购物车条目不得修改");
@@ -113,7 +113,7 @@ public class CartController {
             final Result<Object> error = requestService.pullRequest(cartRequest.getId(), cartRequest.getCartItemCount(), owner);
             if (error != null) {
                 log.info("消费失败");
-                return Result.failed("消费失败");
+                return Result.failed(error.getResp_msg());
             }
             final CartItem cartItem = cartRequest.toCartItem();
             cartItem.setState(1);
@@ -125,7 +125,7 @@ public class CartController {
     }
 
     @PutMapping("/satisfy")
-    public Result<List<CartItem>> finishCart(@RequestParam("cartItemId") List<Integer> cartItemIds) {
+    public Result<List<CartItem>> satisfyCart(@RequestParam("cartItemId") List<Integer> cartItemIds) {
         log.info("finishCart");
         final int owner = UaaHelper.getLoginSid();
         final List<CartRequest> cartList = cartService.getCartList(owner, 0);
@@ -135,7 +135,8 @@ public class CartController {
             final Result<Object> error = requestService.pullRequest(cartRequest.getId(), cartRequest.getCartItemCount(), owner);
             if (error != null) {
                 log.info("消费失败");
-                return Result.failed("消费失败");
+                cartService.updateBatchById(cartItems);
+                return Result.failed(error.getResp_msg());
             }
             final CartItem cartItem = cartRequest.toCartItem();
             cartItem.setState(1);

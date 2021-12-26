@@ -62,6 +62,9 @@ public class RpcController {
     @PutMapping("/request/update")
     public Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
         log.info("updateRequestForRpc");
+        if (request.getSaleCount().equals(request.getCount())){
+            request.setState(3);
+        }
         return Result.succeed(requestService.updateById(request));
     }
 }

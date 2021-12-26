@@ -28,6 +28,11 @@ public class UserHystrix implements UserClient {
     }
 
     @Override
+    public Result<User> changeCredit(Integer sid, Integer delta) {
+        return null;
+    }
+
+    @Override
     public Result<User> modifyUserState(Integer sid, Integer state) {
         return null;
     }
