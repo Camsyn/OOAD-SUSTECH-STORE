@@ -239,18 +239,15 @@ public class ReviewLogService {
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
-                    user.setCredit(user.getCredit()+1);
-                    chatClient.undoDeleteChatRecord(t_id);
+                    user.setCredit(user.getCredit()+2);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
-                    user.setCredit(user.getCredit()+1);
-                    chatClient.undoDeleteCircleMessage(t_id);
+                    user.setCredit(user.getCredit()+2);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
-                    user.setCredit(user.getCredit()+1);
-                    chatClient.undoDeleteComment(t_id);
+                    user.setCredit(user.getCredit()+2);
                 }
             }
             rL.setState(1);
