@@ -136,26 +136,26 @@ public class ReviewLogService {
                 rL.setState(1);
             }else{
                 rL.setState(2);
-                if(category==0){
-                    User user = userClient.getUser(t_id).getData();
-                    user.setCredit(user.getCredit()-1);
-                }else if(category==1){
-                    Request request = requestClient.getRequest(t_id).getData();
-                    User user = userClient.getUser(request.getPusher()).getData();
-                    user.setCredit(user.getCredit()-1);
-                }else if(category==3){
-                    ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
-                    User user = userClient.getUser(chatRecord.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
-                }else if(category==4){
-                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
-                    User user = userClient.getUser(circleMessage.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
-                }else if(category==5){
-                    Comment comment = chatClient.getComment(t_id).getData();
-                    User user = userClient.getUser(comment.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
-                }
+//                if(category==0){
+//                    User user = userClient.getUser(t_id).getData();
+//                    user.setCredit(user.getCredit()-1);
+//                }else if(category==1){
+//                    Request request = requestClient.getRequest(t_id).getData();
+//                    User user = userClient.getUser(request.getPusher()).getData();
+//                    user.setCredit(user.getCredit()-1);
+//                }else if(category==3){
+//                    ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
+//                    User user = userClient.getUser(chatRecord.getSendId()).getData();
+//                    user.setCredit(user.getCredit()-1);
+//                }else if(category==4){
+//                    CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
+//                    User user = userClient.getUser(circleMessage.getSendId()).getData();
+//                    user.setCredit(user.getCredit()-1);
+//                }else if(category==5){
+//                    Comment comment = chatClient.getComment(t_id).getData();
+//                    User user = userClient.getUser(comment.getSendId()).getData();
+//                    user.setCredit(user.getCredit()-1);
+//                }
             }
         }
         rL.setCategory(category);

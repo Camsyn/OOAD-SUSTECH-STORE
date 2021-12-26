@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/CircleMessageClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/ChatHystrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/ChatHystrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/CircleMessageHystrix.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -623,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640353093676</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="review微服务优化">
+      <created>1640515519795</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1640515519795</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +730,8 @@
     <MESSAGE value="新增了多个feign接口" />
     <MESSAGE value="新增了从动态中提取file service的url的helper" />
     <MESSAGE value="bug repairing" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug repairing" />
+    <MESSAGE value="review微服务优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="review微服务优化" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
