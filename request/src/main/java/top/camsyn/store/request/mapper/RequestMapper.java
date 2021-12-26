@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 import top.camsyn.store.commons.entity.request.Request;
+import top.camsyn.store.commons.handler.ListTypeHandler;
 import top.camsyn.store.request.dto.SearchDto;
 
 import java.util.List;
@@ -22,19 +22,19 @@ public interface RequestMapper extends BaseMapper<Request> {
     @Select("select r.*, l.label_name\n" +
             "from request r\n" +
             "         inner join request_label_relation rlr on r.id = rlr.request_id\n" +
-            "         inner join label l on rlr.label_id = l.id"+
+            "         inner join label l on rlr.label_id = l.id" +
             "         ${ew.customSqlSegment}"
     )
-    List<Request> pageOfRequestByLabel(@Param("page")IPage<Request> page,
+    List<Request> pageOfRequestByLabel(@Param("page") IPage<Request> page,
                                        @Param(Constants.WRAPPER) Wrapper<Request> queryWrapper);
 
-  /**
+    /**
      * 联表的分页查询
      */
     @Select("select r.*\n" +
             "from request r\n" +
             "         inner join request_label_relation rlr on r.id = rlr.request_id\n" +
-            "         inner join label l on rlr.label_id = l.id"+
+            "         inner join label l on rlr.label_id = l.id" +
             "         ${ew.customSqlSegment}"
     )
     List<Request> getRequestByLabel(@Param(Constants.WRAPPER) Wrapper<Request> queryWrapper);
@@ -42,10 +42,17 @@ public interface RequestMapper extends BaseMapper<Request> {
 
     /**
      * 搜索的动态sql实现
-     * @param page 分页
+     *
+     * @param page      分页
      * @param searchDto 搜索凭据
      * @return 搜索的结果
      */
+    @Results(value = {
+            @Result(column = "labels", property = "labels", javaType = List.class, jdbcType = JdbcType.VARCHAR, typeHandler = ListTypeHandler.class),
+            @Result(column = "images", property = "images", javaType = List.class, jdbcType = JdbcType.VARCHAR, typeHandler = ListTypeHandler.class),
+            @Result(column = "video", property = "video", javaType = List.class, jdbcType = JdbcType.VARCHAR, typeHandler = ListTypeHandler.class),
+            @Result(column = "desc_", property = "desc_", javaType = String.class, jdbcType = JdbcType.VARCHAR)
+    })
     @Select("<script>\n" +
             "    select r.* from request r\n" +
             "    left join request_label_relation rlr on r.id = rlr.request_id\n" +
@@ -187,6 +194,6 @@ public interface RequestMapper extends BaseMapper<Request> {
             "\n" +
             "    </where>\n" +
             "</script>")
-    IPage<Request> search(@Param("page")IPage<Request> page, @Param("s") SearchDto searchDto);
+    IPage<Request> search(@Param("page") IPage<Request> page, @Param("s") SearchDto searchDto);
 
 }

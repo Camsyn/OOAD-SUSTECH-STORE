@@ -15,12 +15,12 @@ import java.util.List;
 public interface CartMapper extends BaseMapper<CartItem> {
 
     @Select("select r.*, c.count as cart_item_count, c.create_time as cart_item_create_time, c.update_time as cart_item_update_time, c.id as cart_item_id, c.owner as cart_item_owner\n" +
-            "from cart c\n" +
+            "from cart_item c\n" +
             "         left join request r on c.request_id = r.id " +
             "where c.owner = ${owner} and c.deleted = 0 and c.state = ${state};")
     List<CartRequest> getCart(@Param("owner") Integer sid, @Param("state") Integer state);
 
 
-    @Update("update cart set state = 2 where owner = ${owner} and state = 0;")
+    @Update("update cart_item set state = 2 where owner = ${owner} and state = 0;")
     boolean emptyCart(@Param("owner") Integer sid);
 }

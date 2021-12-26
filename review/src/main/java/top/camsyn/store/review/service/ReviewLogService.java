@@ -90,7 +90,7 @@ public class ReviewLogService {
             }
         }else{
             Request request = requestClient.getRequest(t_id).getData();
-            if(reviewLogMapper.review(request.getDescription())==0){
+            if(reviewLogMapper.review(request.getDesc_())==0){
                 return true;
             }
         }

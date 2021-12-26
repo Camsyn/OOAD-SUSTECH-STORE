@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import lombok.*;
+import top.camsyn.store.commons.handler.ListTypeHandler;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-@TableName("account")
+@TableName(value = "account", autoResultMap = true)
 public class User extends Model<User> {
     /**
      * 生成
@@ -40,6 +41,9 @@ public class User extends Model<User> {
     private String paycodePath;
 
     private Integer deleted;
+
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    private List<Integer> follow;
 
     @TableField(typeHandler = FastjsonTypeHandler.class)
     private List<Integer> collection;
