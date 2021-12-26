@@ -107,7 +107,11 @@
             <artifactId>alipay-easysdk</artifactId>
             <version>2.2.0</version>
         </dependency>
-<!--        <dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--        <dependency>-->
 <!--            <groupId>top.camsyn.store</groupId>-->
 <!--            <artifactId>review</artifactId>-->
 <!--            <version>0.0.1-SNAPSHOT</version>-->

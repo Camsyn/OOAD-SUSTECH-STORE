@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_75.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_56.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_npm_jquery_3_6_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/file/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-spring-boot-starter/commons-spring-boot-starter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/test/java/top/camsyn/store/file/FileApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/test/java/top/camsyn/store/file/FileApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +72,6 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
@@ -138,7 +134,7 @@
       <recent name="top.camsyn.store.commons.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RequestApplicationTests.testPullCart">
+  <component name="RunManager" selected="JUnit.FileApplicationTests.contextLoads">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -150,33 +146,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth" />
+    <configuration name="FileApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="top.camsyn.store.auth.*" />
+          <option name="PATTERN" value="top.camsyn.store.file.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="top.camsyn.store.auth" />
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.auth.AuthApplicationTests" />
+      <option name="PACKAGE_NAME" value="top.camsyn.store.file" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.file.FileApplicationTests" />
       <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChatApplicationTests.testDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chat" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.chat.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.camsyn.store.chat" />
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.chat.ChatApplicationTests" />
-      <option name="METHOD_NAME" value="testDatabase" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -416,8 +396,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
-      <item itemvalue="JUnit.ChatApplicationTests.testDatabase" />
       <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
       <item itemvalue="JUnit.RequestApplicationTests.testCart" />
       <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
@@ -444,14 +422,15 @@
       <item itemvalue="Spring Boot.UserApplication" />
       <item itemvalue="Spring Boot.OrderApplication" />
       <item itemvalue="Spring Boot.ReviewApplication (1)" />
+      <item itemvalue="JUnit.FileApplicationTests.contextLoads" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileApplicationTests.contextLoads" />
         <item itemvalue="JUnit.RequestApplicationTests.testPullCart" />
         <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
         <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
         <item itemvalue="JUnit.RequestApplicationTests.testCart" />
-        <item itemvalue="JUnit.ChatApplicationTests.testDatabase" />
       </list>
     </recent_temporary>
   </component>
@@ -510,7 +489,7 @@
       <workItem from="1640315170188" duration="30685000" />
       <workItem from="1640501660832" duration="9595000" />
       <workItem from="1640518967121" duration="7951000" />
-      <workItem from="1640535080551" duration="350000" />
+      <workItem from="1640535080551" duration="1415000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -694,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640520213140</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="review微服务优化">
+      <created>1640535478081</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1640535478082</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -800,7 +786,8 @@
     <MESSAGE value="bug repairing" />
     <MESSAGE value="增加获取评论删除评论的feign接口" />
     <MESSAGE value="增加了修改credit的feign api" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了修改credit的feign api" />
+    <MESSAGE value="review微服务优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="review微服务优化" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
