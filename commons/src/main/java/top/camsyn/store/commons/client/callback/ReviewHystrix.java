@@ -1,6 +1,9 @@
 package top.camsyn.store.commons.client.callback;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import top.camsyn.store.commons.client.ReviewClient;
 import top.camsyn.store.commons.entity.review.ReviewLog;
 import java.util.List;
@@ -39,14 +42,23 @@ public class ReviewHystrix implements ReviewClient {
     }
 
     @Override
-    public boolean autoReviewUser(String t_id){
-        return false;
+    public String autoReviewUser(String t_id){
+        return null;
     }
 
     @Override
-    public boolean autoReviewRequest(String t_id) {
-        return false;
+    public String autoReviewRequest(String t_id) {
+        return null;
     }
+
+    @Override
+    public String autoReviewChat(String t_id){return null;}
+
+    @Override
+    public String autoReviewCircle(String t_id){return null;}
+
+    @Override
+    public String autoReviewComment(String t_id){return null;}
 
     @Override
     public List<ReviewLog> selectReportsAboutUser(String t_id) {
@@ -60,6 +72,21 @@ public class ReviewHystrix implements ReviewClient {
 
     @Override
     public List<ReviewLog> selectReportsAboutOrder(String t_id) {
+        return null;
+    }
+
+    @Override
+    public List<ReviewLog> selectReportsAboutChat(String t_id) {
+        return null;
+    }
+
+    @Override
+    public List<ReviewLog> selectReportsAboutCircle(String t_id) {
+        return null;
+    }
+
+    @Override
+    public List<ReviewLog> selectReportsAboutComment(String t_id) {
         return null;
     }
 

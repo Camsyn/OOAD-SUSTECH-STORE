@@ -1,13 +1,10 @@
 package top.camsyn.store.review.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.entity.review.ReviewLog;
 import top.camsyn.store.review.service.ReviewLogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,19 +17,19 @@ public class ReviewLogController {
     private ReviewLogService reviewLogService;
 
     //管理员
-    @RequestMapping("/selectAll")
+    @GetMapping("/selectAll")
     public List<ReviewLog> selectAll(){
         log.info("查询所有举报记录");
         return reviewLogService.selectAll();
     }
 
-    @RequestMapping("/selectPassed")
+    @GetMapping("/selectPassed")
     public List<ReviewLog> selectPassed(){
         log.info("查询所有审核通过的举报记录");
         return reviewLogService.selectByState("1");
     }
 
-    @RequestMapping("/selectDeciding")
+    @GetMapping("/selectDeciding")
     public List<ReviewLog> selectDeciding(){
         log.info("查询所有待审核的举报记录");
         List<ReviewLog> list = new ArrayList<>();
@@ -41,7 +38,7 @@ public class ReviewLogController {
         return list;
     }
 
-    @RequestMapping("/selectFailed")
+    @GetMapping("/selectFailed")
     public List<ReviewLog> selectFailed(){
         log.info("查询所有审核未通过的举报记录");
         List<ReviewLog> list = new ArrayList<>();
@@ -50,49 +47,121 @@ public class ReviewLogController {
         return list;
     }
 
-    @PostMapping("/selectByRid")
+    @GetMapping("/selectByRid")
     public ReviewLog selectByRid(@RequestParam("R_id") String R_id){
         log.info("通过R_id查询举报记录");
         return reviewLogService.selectByRid(R_id);
     }
 
-    @PostMapping("/updateByRid")//0: 审核不通过  1: 审核通过
+    @PutMapping("/updateByRid")//0: 审核不通过  1: 审核通过
     public String updateByRid(@RequestParam("R_id") String R_id, @RequestParam("operate") String operate){
         log.info("修改审核记录状态");
         return reviewLogService.updateByRid(R_id, operate);
     }
 
     @PostMapping("/autoReviewUser")//false: 审核不通过  true: 审核通过
-    public boolean autoReviewUser(@RequestParam("t_id") String t_id){
+    public String autoReviewUser(@RequestParam("t_id") String t_id){
         log.info("自动审核用户");
-        return reviewLogService.isPassed(Integer.parseInt(t_id), 0);
+        return reviewLogService.autoReview(t_id, 0);
     }
 
     @PostMapping("/autoReviewRequest")//false: 审核不通过  true: 审核通过
-    public boolean autoReviewRequest(@RequestParam("t_id") String t_id){
+    public String autoReviewRequest(@RequestParam("t_id") String t_id){
         log.info("自动审核请求");
-        return reviewLogService.isPassed(Integer.parseInt(t_id), 1);
+        return reviewLogService.autoReview(t_id, 1);
     }
 
-    @PostMapping("/selectReportsAboutUser")
+    @PostMapping("/autoReviewChat")//false: 审核不通过  true: 审核通过
+    public String autoReviewChat(@RequestParam("t_id") String t_id){
+        log.info("自动审核聊天记录");
+        return reviewLogService.autoReview(t_id, 3);
+    }
+
+    @PostMapping("/autoReviewCircle")//false: 审核不通过  true: 审核通过
+    public String autoReviewCircle(@RequestParam("t_id") String t_id){
+        log.info("自动审核动态");
+        return reviewLogService.autoReview(t_id, 4);
+    }
+
+    @PostMapping("/autoReviewComment")//false: 审核不通过  true: 审核通过
+    public String autoReviewComment(@RequestParam("t_id") String t_id){
+        log.info("自动审核评论");
+        return reviewLogService.autoReview(t_id, 5);
+    }
+
+    @GetMapping("/selectReportsAboutUser")
     public List<ReviewLog> selectReportsAboutUser(@RequestParam("t_id") String t_id){
         log.info("查询某用户的被举报记录");
         return reviewLogService.selectByTC(t_id, "0");
     }
 
-    @PostMapping("/selectReportsAboutRequest")
+    @GetMapping("/selectReportsAboutRequest")
     public List<ReviewLog> selectReportsAboutRequest(@RequestParam("t_id") String t_id){
         log.info("查询某请求的被举报记录");
         return reviewLogService.selectByTC(t_id, "1");
     }
 
-    @PostMapping("/selectReportsAboutOrder")
+    @GetMapping("/selectReportsAboutOrder")
     public List<ReviewLog> selectReportsAboutOrder(@RequestParam("t_id") String t_id){
         log.info("查询某订单的被举报记录");
         return reviewLogService.selectByTC(t_id, "2");
     }
 
-    @PostMapping("/selectReportRecord")
+    @GetMapping("/selectReportsAboutChat")
+    public List<ReviewLog> selectReportsAboutChat(@RequestParam("t_id") String t_id){
+        log.info("查询某聊天记录的被举报记录");
+        return reviewLogService.selectByTC(t_id, "3");
+    }
+
+    @GetMapping("/selectReportsAboutCircle")
+    public List<ReviewLog> selectReportsAboutCircle(@RequestParam("t_id") String t_id){
+        log.info("查询某动态的被举报记录");
+        return reviewLogService.selectByTC(t_id, "4");
+    }
+
+    @GetMapping("/selectReportsAboutComment")
+    public List<ReviewLog> selectReportsAboutComment(@RequestParam("t_id") String t_id){
+        log.info("查询某评论的被举报记录");
+        return reviewLogService.selectByTC(t_id, "5");
+    }
+
+    @GetMapping("/selectSendingAboutUser")
+    public List<ReviewLog> selectSendingAboutUser(@RequestParam("t_id") String t_id){
+        log.info("查询某用户的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "0");
+    }
+
+    @GetMapping("/selectSendingAboutRequest")
+    public List<ReviewLog> selectSendingAboutRequest(@RequestParam("t_id") String t_id){
+        log.info("查询某请求的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "1");
+    }
+
+    @GetMapping("/selectSendingAboutOrder")
+    public List<ReviewLog> selectSendingAboutOrder(@RequestParam("t_id") String t_id){
+        log.info("查询某订单的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "2");
+    }
+
+    @GetMapping("/selectSendingAboutChat")
+    public List<ReviewLog> selectSendingAboutChat(@RequestParam("t_id") String t_id){
+        log.info("查询某聊天记录的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "3");
+    }
+
+    @GetMapping("/selectSendingAboutCircle")
+    public List<ReviewLog> selectSendingAboutCircle(@RequestParam("t_id") String t_id){
+        log.info("查询某动态的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "4");
+    }
+
+    @GetMapping("/selectSendingAboutComment")
+    public List<ReviewLog> selectSendingAboutComment(@RequestParam("t_id") String t_id){
+        log.info("查询某评论的自动审核记录");
+        return reviewLogService.selectSendingByTC(t_id, "5");
+    }
+
+    @GetMapping("/selectReportRecord")
     public List<ReviewLog> selectReportRecord(@RequestParam(name="i_id", required = false, defaultValue = "-1") String i_id){
         log.info("查询某用户的举报记录（默认为当前登录用户）");
         return reviewLogService.selectReportRecord(i_id);
@@ -117,7 +186,7 @@ public class ReviewLogController {
         return reviewLogService.report(t_id, desc, 2);
     }
 
-    @PostMapping("/argue")
+    @PutMapping("/argue")
     public String argue(@RequestParam("R_id") String R_id, @RequestParam("desc") String desc){
         log.info("申诉");
         return reviewLogService.argue(R_id, desc);
