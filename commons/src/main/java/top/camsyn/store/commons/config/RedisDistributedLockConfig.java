@@ -16,7 +16,7 @@ public class RedisDistributedLockConfig {
     @Value("${spring.application.name}")
     String appName;
 
-    @Bean
+    @Bean(destroyMethod = "destroy")
     public RedisLockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {
         final String lockPrefix = String.format(redisLockKeyPrefix, appName);
         log.info("注册Redis分布式锁，key前缀："+ lockPrefix);

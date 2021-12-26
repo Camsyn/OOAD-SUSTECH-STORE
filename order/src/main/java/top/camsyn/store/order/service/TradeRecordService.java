@@ -160,9 +160,10 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
                 // 买方先扣钱, 买方等买方确认后再加钱
                 final Result<User> result = userClient.changeLiyuan(record.getPuller(), totalPrice);
                 checkRpcResult(result, record);
+                User puller = userClient.getUser(record.getPuller()).getData();
+                updateCredit((int) totalPrice, puller);
             }
             break;
-
             case RequestConstants.PAYCODE:
             case RequestConstants.THIRD_PART:
             case RequestConstants.PRIVATE: {
@@ -173,6 +174,26 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
         }
     }
 
+    private void updateCredit(int totalPrice, User user) {
+        final Integer curCredit = user.getCredit();
+        final int creditInc = getCreditIncrease(curCredit, totalPrice);
+        user.setCredit(curCredit+creditInc);
+        userClient.updateUser(user);
+    }
+
+    private int getCreditIncrease(int curCredit, int amount){
+        int totalInc=0;
+        do{
+            int step = amount>1000?10:amount/100;
+            amount -= 1000;
+            final int delta = 100 - curCredit;
+            final int inc = step * (delta / 100);
+            totalInc += inc;
+            curCredit += inc;
+        }while (amount>0);
+
+        return totalInc;
+    }
 
     public void postHandleSell(TradeRecord record) {
         switch (record.getTradeType()) {
@@ -181,6 +202,8 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
                 // 买方先扣钱, 买方等买方确认后再加钱
                 final Result<User> result = userClient.changeLiyuan(record.getPusher(), totalPrice);
                 checkRpcResult(result, record);
+                User pusher = userClient.getUser(record.getPusher()).getData();
+                updateCredit((int) totalPrice, pusher);
             }
             break;
 

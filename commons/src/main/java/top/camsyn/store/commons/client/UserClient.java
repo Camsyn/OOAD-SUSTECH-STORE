@@ -8,7 +8,7 @@ import top.camsyn.store.commons.client.callback.UserHystrix;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.model.Result;
 
-@FeignClient(value = "auth",fallback = UserHystrix.class)
+@FeignClient(value = "auth", fallback = UserHystrix.class)
 @ConditionalOnMissingClass("top.camsyn.store.auth.controller.UserController")
 @RequestMapping("/user")
 @ResponseBody
@@ -26,11 +26,13 @@ public interface UserClient {
 
     @PutMapping("/rpc/onetrade")
     Result<Boolean> changeLiyuan(@RequestParam("adder") Integer adder,
-                                     @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta);
+                                 @RequestParam("subscriber") Integer subscriber, @RequestParam("delta") Double delta);
 
+    @PutMapping("/rpc/changeCredit")
+    Result<User> changeCredit(@RequestParam("sid") Integer sid, @RequestParam("delta") Integer delta);
 
     @PutMapping("/rpc/state/modify")
-    Result<User> modifyUserState(@RequestParam("sid")Integer sid, @RequestParam("state") Integer state);
+    Result<User> modifyUserState(@RequestParam("sid") Integer sid, @RequestParam("state") Integer state);
 }
 
 

@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class ChatRecordService extends SuperServiceImpl<ChatRecordMapper, ChatRecord> {
+
     List<Integer> getRelevantChatUsers(Integer sid) {
         return baseMapper.getRelevantChatUser(sid);
     }

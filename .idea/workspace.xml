@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化">
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="增加了修改credit的feign api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/UserHystrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/client/callback/UserHystrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RpcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RpcController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/RequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/RequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/test/java/top/camsyn/store/request/RequestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/test/java/top/camsyn/store/request/RequestApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +58,9 @@
         <option name="localRepository" value="C:\Users\camsyn\.m2\repository" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1y84hyBs9V9QVf7bE61NHpbDatq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -135,7 +143,7 @@
       <recent name="top.camsyn.store.commons.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.RequestApplicationTests.testPullCart">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -143,36 +151,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="request" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.camsyn.store.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.camsyn.store" />
-      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.AuthApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,6 +166,70 @@
       <option name="PACKAGE_NAME" value="top.camsyn.store.auth" />
       <option name="MAIN_CLASS_NAME" value="top.camsyn.store.auth.AuthApplicationTests" />
       <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatApplicationTests.testDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.chat.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.chat" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.chat.ChatApplicationTests" />
+      <option name="METHOD_NAME" value="testDatabase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testPullCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testPullCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testPullRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testPullRequest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -302,9 +344,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.order.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RequestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="request" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.request.RequestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReviewApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="review" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.review.ReviewApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -365,37 +421,41 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Test" />
-      <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.ChatApplicationTests.testDatabase" />
       <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
-      <item itemvalue="Spring Boot.ChatApplication" />
+      <item itemvalue="JUnit.RequestApplicationTests.testCart" />
+      <item itemvalue="Spring Boot.AfterSaleApplication" />
+      <item itemvalue="Spring Boot.AuthApplication" />
+      <item itemvalue="Spring Boot.AuthnApplication" />
       <item itemvalue="Spring Boot.ChatApplication (1)" />
-      <item itemvalue="Spring Boot.CommonsApplication" />
-      <item itemvalue="Spring Boot.CommonsApplication (1)" />
-      <item itemvalue="Spring Boot.GatewayApplication" />
-      <item itemvalue="Spring Boot.TestApplication" />
-      <item itemvalue="Spring Boot.UaaApplication" />
+      <item itemvalue="Spring Boot.ChatApplication" />
       <item itemvalue="Spring Boot.Client1Application" />
       <item itemvalue="Spring Boot.Client2Application" />
-      <item itemvalue="Spring Boot.AuthnApplication" />
-      <item itemvalue="Spring Boot.TestApplication (1)" />
-      <item itemvalue="Spring Boot.UserApplication" />
       <item itemvalue="Spring Boot.Client3Application" />
-      <item itemvalue="Spring Boot.Uaa1Application" />
+      <item itemvalue="Spring Boot.CommonsApplication (1)" />
+      <item itemvalue="Spring Boot.CommonsApplication" />
+      <item itemvalue="Spring Boot.FileApplication (1)" />
       <item itemvalue="Spring Boot.FileApplication" />
-      <item itemvalue="Spring Boot.AfterSaleApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.RequestApplication" />
       <item itemvalue="Spring Boot.ReviewApplication" />
-      <item itemvalue="Spring Boot.AuthApplication" />
-      <item itemvalue="Spring Boot.FileApplication (1)" />
+      <item itemvalue="Spring Boot.TestApplication (1)" />
+      <item itemvalue="Spring Boot.TestApplication" />
+      <item itemvalue="Spring Boot.Uaa1Application" />
+      <item itemvalue="Spring Boot.UaaApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Spring Boot.ReviewApplication (1)" />
+      <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
+      <item itemvalue="JUnit.RequestApplicationTests.testPullCart" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RequestApplicationTests.testPullCart" />
+        <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
         <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
-        <item itemvalue="JUnit.AuthApplicationTests.contextLoads" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.RequestApplicationTests.testCart" />
+        <item itemvalue="JUnit.ChatApplicationTests.testDatabase" />
       </list>
     </recent_temporary>
   </component>
@@ -451,8 +511,9 @@
       <workItem from="1640176892166" duration="9206000" />
       <workItem from="1640236001371" duration="8284000" />
       <workItem from="1640315106921" duration="20000" />
-      <workItem from="1640315170188" duration="27493000" />
-      <workItem from="1640528685190" duration="4115000" />
+      <workItem from="1640315170188" duration="30685000" />
+      <workItem from="1640501660832" duration="9595000" />
+      <workItem from="1640518967121" duration="7951000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -622,35 +683,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640353093676</updated>
     </task>
-    <task id="LOCAL-00025" summary="review微服务优化">
-      <created>1640515519795</created>
+    <task id="LOCAL-00025" summary="增加获取评论删除评论的feign接口">
+      <created>1640496630668</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1640515519795</updated>
+      <updated>1640496630668</updated>
     </task>
-    <task id="LOCAL-00026" summary="review微服务优化">
-      <created>1640516942789</created>
+    <task id="LOCAL-00026" summary="增加了修改credit的feign api">
+      <created>1640520213140</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1640516942789</updated>
+      <updated>1640520213140</updated>
     </task>
-    <task id="LOCAL-00027" summary="review微服务优化">
-      <created>1640519347261</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1640519347261</updated>
-    </task>
-    <task id="LOCAL-00028" summary="review微服务优化">
-      <created>1640528841060</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1640528841060</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,8 +801,9 @@
     <MESSAGE value="新增了多个feign接口" />
     <MESSAGE value="新增了从动态中提取file service的url的helper" />
     <MESSAGE value="bug repairing" />
-    <MESSAGE value="review微服务优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="review微服务优化" />
+    <MESSAGE value="增加获取评论删除评论的feign接口" />
+    <MESSAGE value="增加了修改credit的feign api" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了修改credit的feign api" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

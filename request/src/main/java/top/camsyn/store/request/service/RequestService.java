@@ -60,20 +60,28 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
     public Result<Object> pullRequest(Integer requestId, Integer count, int loginSid) {
         User user = userClient.getUser(loginSid).getData();
         if (user == null) {
+            log.info("查无此用户");
             return Result.failed("查无此用户");
         }
         Request req = getById(requestId);
         if (req == null || req.getState() != 2) {
+            log.info("请求不存在或请求未开放");
             return Result.failed("请求不存在或请求未开放");
+        }
+        if (req.getPusher().equals(loginSid)) {
+            log.info("无法拉取自己发布的请求");
+            return Result.failed("无法拉取自己发布的请求");
         }
         int restCnt = req.getCount() - req.getSaleCount();
         if (restCnt < count) {
+            log.info("余量不足，请求拉取失败");
             return Result.failed("余量不足，请求拉取失败");
         }
         if (req.liyuanPaySellReq()) {
             double consume = req.getExactPrice() * count;
             Double liyuanBalance = user.getLiyuan();
             if (liyuanBalance < consume) {
+                log.info("余额不足，请充值");
                 return Result.failed("余额不足，请充值");
             }
         }

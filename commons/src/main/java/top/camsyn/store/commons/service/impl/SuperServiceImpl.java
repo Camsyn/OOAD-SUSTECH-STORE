@@ -12,31 +12,33 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 import top.camsyn.store.commons.exception.BusinessException;
 import top.camsyn.store.commons.exception.NotFoundException;
 import top.camsyn.store.commons.helper.LockHelper;
-import top.camsyn.store.commons.lock.DistributedLock;
 import top.camsyn.store.commons.service.ISuperService;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
 
 
 public class SuperServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements ISuperService<T> {
 
-
-    static RedisLockRegistry lockRegistry;
+    protected RedisLockRegistry lockRegistry;
 
     @Autowired
-    public void setLockRegistry(RedisLockRegistry lockRegistry) {
-        SuperServiceImpl.lockRegistry = lockRegistry;
+    public final void setLogRepository(RedisLockRegistry lockRegistry) {
+        this.lockRegistry = lockRegistry;
     }
+
+
+//    public void setLockRegistry(RedisLockRegistry lockRegistry) {
+//        SuperServiceImpl.lockRegistry = lockRegistry;
+//    }
 
     @Override
     public boolean exist(String column, Supplier<Object> supplier) {
