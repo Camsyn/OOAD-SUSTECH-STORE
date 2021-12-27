@@ -1,5 +1,6 @@
 package top.camsyn.store.chat.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.chat.mapper.CommentMapper;
 import top.camsyn.store.commons.entity.chat.Comment;
@@ -32,5 +33,11 @@ public class CommentService extends SuperServiceImpl<CommentMapper,Comment>{
                 .lt(Comment::getSendTime, before)
                 .orderByDesc(Comment::getSendTime)
                 .last("limit " + count).list();
+    }
+
+    public List<Comment> getUSerCommentPage(Integer cmId, Integer page, Integer limit, Boolean sortByTime) {
+        return lambdaQuery().eq(Comment::getCmId, cmId)
+                .orderByDesc(sortByTime ? Comment::getSendTime : Comment::getLike_)
+                .page(new Page<>(page, limit)).getRecords();
     }
 }

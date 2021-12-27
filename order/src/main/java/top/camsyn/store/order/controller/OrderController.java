@@ -63,6 +63,7 @@ public class OrderController {
             if (order.isFinished()) {
                 tradeRecordService.postHandle(order);
             }
+            tradeRecordService.updateById(order);
             log.info("ensurePullOrder success");
             return Result.succeed(order);
         }finally {
@@ -91,6 +92,7 @@ public class OrderController {
             if (order.isFinished()) {
                 tradeRecordService.postHandle(order);
             }
+            tradeRecordService.updateById(order);
             log.info("ensurePushOrder success");
             return Result.succeed(order);
         } finally {

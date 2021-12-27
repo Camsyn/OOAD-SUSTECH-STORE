@@ -11,8 +11,10 @@ import top.camsyn.store.commons.exception.LockException;
 import top.camsyn.store.commons.mapper.UserMapper;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService extends SuperServiceImpl<UserMapper, User> implements IUserService {
@@ -24,6 +26,11 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
     public User getOne(int sid) {
         return lambdaQuery().eq(User::getSid, sid).one();
     }
+
+    public List<String> getAvatarBatch(List<Integer> sid){
+        return lambdaQuery().in(User::getSid, sid).list().stream().map(User::getHeadImage).collect(Collectors.toList());
+    }
+
 
     @SneakyThrows
     public User changeLiyuan(Integer sid, Double delta) {
