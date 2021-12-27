@@ -8,16 +8,16 @@ import reactor.core.publisher.Mono;
 
 @Configuration
 public class AccessLimitConfig {
-    @Bean
-    public KeyResolver ipKeyResolver() {
-        return new KeyResolver() {
-            @Override
-            public Mono<String> resolve(ServerWebExchange exchange) {
-                // 获取请求的 IP
-                return Mono.just(exchange.getRequest().getRemoteAddress().getHostName());
-            }
-
-        };
-    }
+//    @Bean
+//    public KeyResolver ipKeyResolver() {
+//        return new KeyResolver() {
+//            @Override
+//            public Mono<String> resolve(ServerWebExchange exchange) {
+//                // 获取请求的 IP
+//                return Mono.just(exchange.getRequest().getRemoteAddress().getHostName());
+//            }
+//
+//        };
+//    }
 }
 

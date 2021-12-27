@@ -23,6 +23,12 @@ public class CircleMessage {
      * 动态标题
      */
     String topic;
+
+    /**
+     * tag
+     */
+    String tag;
+
     /**
      * 发动态者的sid （生成）
      */

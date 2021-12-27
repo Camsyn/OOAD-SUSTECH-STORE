@@ -42,5 +42,7 @@ public class Comment {
     @TableField(fill = FieldFill.INSERT)
     LocalDateTime sendTime;
 
+    Integer like_;
+
     private Integer deleted;
 }

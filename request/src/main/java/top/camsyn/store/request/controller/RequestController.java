@@ -4,8 +4,11 @@ package top.camsyn.store.request.controller;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.client.OrderClient;
+import top.camsyn.store.commons.client.ReviewClient;
 import top.camsyn.store.commons.client.UserClient;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
@@ -43,6 +46,14 @@ public class RequestController {
     @Autowired
     OrderClient orderClient;
 
+    @Autowired
+    ReviewClient reviewClient;
+
+    @Async
+    void reviewAsync(Integer requestId){
+        reviewClient.autoReviewRequest(requestId.toString());
+    }
+
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
         log.info("pushRequest");
@@ -52,6 +63,7 @@ public class RequestController {
         // TODO: 2021/11/22 审核
         // TODO: 邮件提醒
         mailService.sendWhenPush(user.getEmail(), request);
+        reviewAsync(request.getId());
         log.info("已发往审核 user{}", user);
         return Result.succeed(request, "已发往审核");
     }
@@ -142,7 +154,7 @@ public class RequestController {
     public Result<Request> openRequest(@RequestParam("requestId") Integer requestId) {
         log.info("开始打开请求");
         Request req = requestService.getById(requestId);
-        if (req == null || req.getState() != 2) {
+        if (req == null || req.getState() == 2) {
             log.info("请求不存在或无权打开");
             return Result.failed("请求不存在或请求无权打开");
         }

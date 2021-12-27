@@ -126,7 +126,7 @@ public class CartController {
 
     @PutMapping("/satisfy")
     public Result<List<CartItem>> satisfyCart(@RequestParam("cartItemId") List<Integer> cartItemIds) {
-        log.info("finishCart");
+        log.info("satisfy");
         final int owner = UaaHelper.getLoginSid();
         final List<CartRequest> cartList = cartService.getCartList(owner, 0);
         List<CartItem> cartItems = new ArrayList<>();

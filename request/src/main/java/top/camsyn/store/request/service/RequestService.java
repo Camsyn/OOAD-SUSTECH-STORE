@@ -89,7 +89,7 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
         // TODO: 2021/11/22 第三方支付
         // TODO: 2021/11/22 订单微服务
         // TODO: 2021/12/4 幂等操作的实现
-        TradeRecord order = TradeRecord.builder().requestId(requestId)
+        TradeRecord order = TradeRecord.builder().requestId(requestId).requestTitle(req.getTitle())
                 .puller(loginSid).pullerEmail(user.getEmail())
                 .pusher(req.getPusher()).pusherEmail(req.getPusherEmail())
                 .type(req.getType()).tradeType(req.getTradeType()).category(req.getCategory())
