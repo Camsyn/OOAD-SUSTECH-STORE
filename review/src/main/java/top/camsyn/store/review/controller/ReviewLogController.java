@@ -59,37 +59,37 @@ public class ReviewLogController {
         return reviewLogService.updateByRid(R_id, operate);
     }
 
-    @PostMapping("/autoReviewUser")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewUser")
     public String autoReviewUser(@RequestParam("t_id") String t_id){
         log.info("自动审核用户");
         return reviewLogService.autoReview(t_id, 0);
     }
 
-    @PostMapping("/autoReviewRequest")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewRequest")
     public String autoReviewRequest(@RequestParam("t_id") String t_id){
         log.info("自动审核请求");
         return reviewLogService.autoReview(t_id, 1);
     }
 
-    @PostMapping("/autoReviewOrder")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewOrder")
     public String autoReviewOrder(@RequestParam("t_id") String t_id){
         log.info("自动审核订单");
         return reviewLogService.autoReview(t_id, 2);
     }
 
-    @PostMapping("/autoReviewChat")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewChat")
     public String autoReviewChat(@RequestParam("t_id") String t_id){
         log.info("自动审核聊天记录");
         return reviewLogService.autoReview(t_id, 3);
     }
 
-    @PostMapping("/autoReviewCircle")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewCircle")
     public String autoReviewCircle(@RequestParam("t_id") String t_id){
         log.info("自动审核动态");
         return reviewLogService.autoReview(t_id, 4);
     }
 
-    @PostMapping("/autoReviewComment")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewComment")
     public String autoReviewComment(@RequestParam("t_id") String t_id){
         log.info("自动审核评论");
         return reviewLogService.autoReview(t_id, 5);

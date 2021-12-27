@@ -13,6 +13,7 @@ import java.util.List;
 @ConditionalOnMissingClass("top.camsyn.store.review.controller.ReviewLogContorller")
 @ResponseBody
 public interface ReviewClient {
+    //查询所有审核记录
     @GetMapping("/selectAll")
     List<ReviewLog> selectAll();
 
@@ -31,19 +32,22 @@ public interface ReviewClient {
     @PutMapping("/updateByRid")//operate:  0: 审核不通过  1: 审核通过
     String updateByRid(@RequestParam("R_id") String R_id, @RequestParam("operate") String operate);
 
-    @PostMapping("/autoReviewUser")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewUser")
     String autoReviewUser(@RequestParam("t_id") String t_id);
 
-    @PostMapping("/autoReviewRequest")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewRequest")
     String autoReviewRequest(@RequestParam("t_id") String t_id);
 
-    @PostMapping("/autoReviewChat")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewOrder")
+    String autoReviewOrder(@RequestParam("t_id") String t_id);
+
+    @PostMapping("/autoReviewChat")
     String autoReviewChat(@RequestParam("t_id") String t_id);
 
-    @PostMapping("/autoReviewCircle")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewCircle")
     String autoReviewCircle(@RequestParam("t_id") String t_id);
 
-    @PostMapping("/autoReviewComment")//false: 审核不通过  true: 审核通过
+    @PostMapping("/autoReviewComment")
     String autoReviewComment(@RequestParam("t_id") String t_id);
 
     @GetMapping("/selectReportsAboutUser")

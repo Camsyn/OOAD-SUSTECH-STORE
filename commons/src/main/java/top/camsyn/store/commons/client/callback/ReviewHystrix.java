@@ -52,6 +52,9 @@ public class ReviewHystrix implements ReviewClient {
     }
 
     @Override
+    public String autoReviewOrder(String t_id){return null;}
+
+    @Override
     public String autoReviewChat(String t_id){return null;}
 
     @Override
