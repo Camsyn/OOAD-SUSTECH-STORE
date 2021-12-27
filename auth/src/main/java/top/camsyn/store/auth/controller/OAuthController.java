@@ -32,7 +32,7 @@ public class OAuthController {
      */
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public Result<Oauth2TokenDto> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {
-        log.info("开始postAccessToken");
+        log.info("开始postAccessToken principal: {} parameters: {}",principal,parameters);
         if (parameters.containsKey("password"))
             parameters.put("grant_type","password");
         else if (parameters.containsKey("refresh_token"))

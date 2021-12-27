@@ -174,6 +174,7 @@ public class ChatController {
     }
 
     private void updateRecords(Integer count, List<ChatRecord> chatRecords) {
+        log.info("更新记录, chatRecords: {}", chatRecords);
         boolean flag = false;
         if (chatRecords.size() == count + 1) {
             ChatRecord record = chatRecords.get(count);
@@ -191,6 +192,7 @@ public class ChatController {
             chatRecords.get(count).setRecvTime(null);
         }
         chatRecordService.updateBatchById(chatRecords);
+        log.info("更新记录成功");
     }
 //    @GetMapping("/broadcast")
 //    public Result<Boolean> getChatListFromSid(@RequestParam("sendSid")Integer sendSid,

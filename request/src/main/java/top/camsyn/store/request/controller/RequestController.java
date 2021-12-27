@@ -45,7 +45,7 @@ public class RequestController {
 
     @PostMapping("/push")
     public Result<Request> pushRequest(@RequestBody Request request) {
-        log.info("pushRequest");
+        log.info("pushRequest request: {}", request);
         final UserDto user = UaaHelper.getCurrentUser();
         request.setPusher(user.getSid()).setState(0).setPusherEmail(user.getEmail());
         requestService.save(request);
@@ -58,7 +58,7 @@ public class RequestController {
 
     @PutMapping("/update")
     public Result<Request> updateRequest(@RequestBody Request request) {
-        log.info("updateRequest");
+        log.info("updateRequest request: {}", request);
         final UserDto user = UaaHelper.assertAdmin(request.getId());
         Request req = requestService.getById(request.getId());
         if (req == null) {
@@ -86,7 +86,7 @@ public class RequestController {
 
     @PutMapping("/withdraw")
     public Result<Request> withdrawRequest(@RequestParam("requestId") Integer requestId) {
-        log.info("withdrawRequest");
+        log.info("withdrawRequest requestId: {}", requestId);
         int loginSid = UaaHelper.getLoginSid();
         User user = userClient.getUser(loginSid).getData();
         if (user == null) {
@@ -124,7 +124,7 @@ public class RequestController {
 
     @PutMapping("/close")
     public Result<Request> closeRequest(@RequestParam("requestId") Integer requestId) {
-        log.info("开始关闭请求");
+        log.info("开始关闭请求 requestId: {}", requestId);
         Request req = requestService.getById(requestId);
         if (req == null || req.getState() != 2) {
             return Result.failed("请求不存在或请求无权关闭");
@@ -140,7 +140,7 @@ public class RequestController {
 
     @PutMapping("/open")
     public Result<Request> openRequest(@RequestParam("requestId") Integer requestId) {
-        log.info("开始打开请求");
+        log.info("开始打开请求 requestId: {}", requestId);
         Request req = requestService.getById(requestId);
         if (req == null || req.getState() != 2) {
             log.info("请求不存在或无权打开");
@@ -165,7 +165,7 @@ public class RequestController {
 
     @PutMapping("/pull")
     public Result pullRequest(@RequestParam("requestId") Integer requestId, @RequestParam("count") Integer count) {
-        log.info("正在拉取请求");
+        log.info("正在拉取请求 requestId: {}, count: {}", requestId, count);
         int loginSid = UaaHelper.getLoginSid();
         Result<Object> error = requestService.pullRequest(requestId, count, loginSid);
         if (error != null) {

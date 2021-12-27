@@ -35,7 +35,7 @@ public class VerifyController {
 
     @RequestMapping("/modify/password")
     public Result<Boolean> modifyPassword(@RequestParam("username") String username) {
-        log.info("开始修改密码");
+        log.info("开始修改密码 {}",username);
         final Account loginAccount = accountService.getLoginAccount(username);
         if (loginAccount == null) {
             log.info("账户不存在");
@@ -74,6 +74,7 @@ public class VerifyController {
 
     @PostMapping("/register")
     public Result<Boolean> register(@RequestBody Account account) {
+        log.info("开始注册 {}", account);
         if (!VerifyUtils.isSustechEmail(account.getEmail())){
             log.info("非南科大邮箱, 不予注册");
             return Result.failed("非南科大邮箱, 不予注册");

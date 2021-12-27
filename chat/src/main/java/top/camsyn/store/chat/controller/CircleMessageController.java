@@ -27,7 +27,7 @@ public class CircleMessageController {
 
     @GetMapping("/get")
     public Result<CircleMessage> getCircleMessage(Integer cmId){
-        log.info("获取圈子消息");
+        log.info("获取圈子消息 cmId{}",cmId);
         return Result.succeed(circleMessageService.getById(cmId));
     }
 

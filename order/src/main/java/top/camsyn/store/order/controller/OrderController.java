@@ -29,7 +29,7 @@ public class OrderController {
 
     @GetMapping("/pull/get")
     public Result<List<TradeRecord>> getPullRecords(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize) {
-        log.info("getPullRecords");
+        log.info("getPullRecords page: {} pageSize: {}", page, pageSize);
         final UserDto user = UaaHelper.getCurrentUser();
         final List<TradeRecord> orders = tradeRecordService.pageOfPullOrders(user.getSid(), page, pageSize);
         log.info("getPullRecords success");
@@ -38,7 +38,7 @@ public class OrderController {
 
     @GetMapping("/push/get")
     public Result<List<TradeRecord>> getPushRecords(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize) {
-        log.info("getPushRecords");
+        log.info("getPushRecords page: {} pageSize: {}", page, pageSize);
         final UserDto user = UaaHelper.getCurrentUser();
         final List<TradeRecord> orders = tradeRecordService.pageOfPushOrders(user.getSid(), page, pageSize);
         log.info("getPushRecords success");
@@ -48,7 +48,7 @@ public class OrderController {
     @SneakyThrows
     @PutMapping("/pull/confirm")
     public Result<TradeRecord> confirmPullOrder(@RequestParam("orderId") Integer orderId) {
-        log.info("ensurePullOrder");
+        log.info("ensurePullOrder orderId: {}", orderId);
         Lock lock = lockRegistry.obtain(orderId.toString());
         try {
             LockHelper.tryLock(lock);
@@ -76,7 +76,7 @@ public class OrderController {
     @SneakyThrows
     @PutMapping("/push/confirm")
     public Result<TradeRecord> confirmPushOrder(@RequestParam("orderId") Integer orderId) {
-        log.info("ensurePushOrder");
+        log.info("ensurePushOrder orderId: {}", orderId);
         Lock lock = lockRegistry.obtain(orderId.toString());
         try {
             LockHelper.tryLock(lock);
@@ -103,7 +103,7 @@ public class OrderController {
      */
     @PutMapping("/rollback")
     public Result<TradeRecord> rollbackOrder(@RequestParam("orderId") Integer orderId){
-        log.info("rollbackOrder");
+        log.info("rollbackOrder orderId: {}", orderId);
         UserDto currentUser = UaaHelper.getCurrentUser();
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {

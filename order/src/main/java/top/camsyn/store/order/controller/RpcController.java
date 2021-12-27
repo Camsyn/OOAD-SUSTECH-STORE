@@ -28,7 +28,7 @@ public class RpcController {
     @SneakyThrows
     @PutMapping("/order/terminate")
     public Result<TradeRecord> terminateOrder(@RequestParam("orderId") Integer orderId) {
-        log.info("订单终结");
+        log.info("订单终结 orderId: {}", orderId);
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     TradeRecord order = recordService.getById(orderId);
@@ -52,7 +52,7 @@ public class RpcController {
     @SneakyThrows
     @PutMapping("/order/review")
     public Result<TradeRecord> reviewOrder(@RequestParam("orderId") Integer orderId) {
-        log.info("订单审核");
+        log.info("订单审核 orderId: {}", orderId);
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     TradeRecord order = recordService.getById(orderId);
@@ -68,7 +68,7 @@ public class RpcController {
 
     @PutMapping("/order/restore")
     Result<TradeRecord> restoreOrder(@RequestParam("orderId") Integer orderId){
-        log.info("订单审核通过，无异常");
+        log.info("订单审核通过，无异常 orderId: {}", orderId);
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     TradeRecord order = recordService.getById(orderId);
@@ -86,7 +86,7 @@ public class RpcController {
 
     @PostMapping("/order/generate")
     public Result<TradeRecord> generateOrder(@RequestBody TradeRecord record){
-        log.info("处理请求微服务发送来的订单");
+        log.info("处理请求微服务发送来的订单 record: {}",record);
         recordService.preHandle(record);
         log.info("处理完成");
         return Result.succeed(record);

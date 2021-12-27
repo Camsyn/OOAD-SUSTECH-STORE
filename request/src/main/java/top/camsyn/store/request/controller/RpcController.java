@@ -34,7 +34,7 @@ public class RpcController {
      */
     @PutMapping("/request/update/state")
     public Result<Request> updateRequestState(@RequestParam("requestId") Integer requestId, @RequestParam("state") Integer state) {
-        log.info("审核后处理request");
+        log.info("审核后处理request requestId: {} state: {}", requestId, state);
         Request request = requestService.getById(requestId);
         request.setState(state);
         if (Objects.equals(state, RequestConstants.OPEN)){
@@ -49,19 +49,19 @@ public class RpcController {
 
     @PutMapping("/request/drop")
     public Result<Request> dropRequest(@RequestParam("requestId") Integer requestId) {
-        log.info("dropRequest");
+        log.info("dropRequest requestId: {}", requestId);
         return updateRequestState(requestId, 5);
     }
 
     @GetMapping("/request/get")
     public Result<Request> getRequest(@RequestParam("requestId") Integer requestId) {
-        log.info("getRequest");
+        log.info("getRequest requestId: {}", requestId);
         return Result.succeed(requestService.getById(requestId));
     }
 
     @PutMapping("/request/update")
     public Result<Boolean> updateRequestForRpc(@RequestBody Request request) {
-        log.info("updateRequestForRpc");
+        log.info("updateRequestForRpc request: {}", request);
         if (request.getSaleCount().equals(request.getCount())){
             request.setState(3);
         }

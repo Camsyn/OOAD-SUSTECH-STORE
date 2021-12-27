@@ -49,127 +49,127 @@ public class ReviewLogController {
 
     @GetMapping("/selectByRid")
     public ReviewLog selectByRid(@RequestParam("R_id") String R_id){
-        log.info("通过R_id查询举报记录");
+        log.info("通过R_id查询举报记录 R_id: {}", R_id);
         return reviewLogService.selectByRid(R_id);
     }
 
     @PutMapping("/updateByRid")//0: 审核不通过  1: 审核通过
     public String updateByRid(@RequestParam("R_id") String R_id, @RequestParam("operate") String operate){
-        log.info("修改审核记录状态");
+        log.info("修改审核记录状态 R_id: {} operate: {}", R_id, operate);
         return reviewLogService.updateByRid(R_id, operate);
     }
 
     @PostMapping("/autoReviewUser")
     public String autoReviewUser(@RequestParam("t_id") String t_id){
-        log.info("自动审核用户");
+        log.info("自动审核用户 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 0);
     }
 
     @PostMapping("/autoReviewRequest")
     public String autoReviewRequest(@RequestParam("t_id") String t_id){
-        log.info("自动审核请求");
+        log.info("自动审核请求 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 1);
     }
 
     @PostMapping("/autoReviewOrder")
     public String autoReviewOrder(@RequestParam("t_id") String t_id){
-        log.info("自动审核订单");
+        log.info("自动审核订单 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 2);
     }
 
     @PostMapping("/autoReviewChat")
     public String autoReviewChat(@RequestParam("t_id") String t_id){
-        log.info("自动审核聊天记录");
+        log.info("自动审核聊天记录 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 3);
     }
 
     @PostMapping("/autoReviewCircle")
     public String autoReviewCircle(@RequestParam("t_id") String t_id){
-        log.info("自动审核动态");
+        log.info("自动审核动态 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 4);
     }
 
     @PostMapping("/autoReviewComment")
     public String autoReviewComment(@RequestParam("t_id") String t_id){
-        log.info("自动审核评论");
+        log.info("自动审核评论 t_id: {}", t_id);
         return reviewLogService.autoReview(t_id, 5);
     }
 
     @GetMapping("/selectReportsAboutUser")
     public List<ReviewLog> selectReportsAboutUser(@RequestParam("t_id") String t_id){
-        log.info("查询某用户的被举报记录");
+        log.info("查询某用户的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "0");
     }
 
     @GetMapping("/selectReportsAboutRequest")
     public List<ReviewLog> selectReportsAboutRequest(@RequestParam("t_id") String t_id){
-        log.info("查询某请求的被举报记录");
+        log.info("查询某请求的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "1");
     }
 
     @GetMapping("/selectReportsAboutOrder")
     public List<ReviewLog> selectReportsAboutOrder(@RequestParam("t_id") String t_id){
-        log.info("查询某订单的被举报记录");
+        log.info("查询某订单的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "2");
     }
 
     @GetMapping("/selectReportsAboutChat")
     public List<ReviewLog> selectReportsAboutChat(@RequestParam("t_id") String t_id){
-        log.info("查询某聊天记录的被举报记录");
+        log.info("查询某聊天记录的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "3");
     }
 
     @GetMapping("/selectReportsAboutCircle")
     public List<ReviewLog> selectReportsAboutCircle(@RequestParam("t_id") String t_id){
-        log.info("查询某动态的被举报记录");
+        log.info("查询某动态的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "4");
     }
 
     @GetMapping("/selectReportsAboutComment")
     public List<ReviewLog> selectReportsAboutComment(@RequestParam("t_id") String t_id){
-        log.info("查询某评论的被举报记录");
+        log.info("查询某评论的被举报记录 t_id: {}", t_id);
         return reviewLogService.selectByTC(t_id, "5");
     }
 
     @GetMapping("/selectSendingAboutUser")
     public List<ReviewLog> selectSendingAboutUser(@RequestParam("t_id") String t_id){
-        log.info("查询某用户的自动审核记录");
+        log.info("查询某用户的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "0");
     }
 
     @GetMapping("/selectSendingAboutRequest")
     public List<ReviewLog> selectSendingAboutRequest(@RequestParam("t_id") String t_id){
-        log.info("查询某请求的自动审核记录");
+        log.info("查询某请求的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "1");
     }
 
     @GetMapping("/selectSendingAboutOrder")
     public List<ReviewLog> selectSendingAboutOrder(@RequestParam("t_id") String t_id){
-        log.info("查询某订单的自动审核记录");
+        log.info("查询某订单的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "2");
     }
 
     @GetMapping("/selectSendingAboutChat")
     public List<ReviewLog> selectSendingAboutChat(@RequestParam("t_id") String t_id){
-        log.info("查询某聊天记录的自动审核记录");
+        log.info("查询某聊天记录的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "3");
     }
 
     @GetMapping("/selectSendingAboutCircle")
     public List<ReviewLog> selectSendingAboutCircle(@RequestParam("t_id") String t_id){
-        log.info("查询某动态的自动审核记录");
+        log.info("查询某动态的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "4");
     }
 
     @GetMapping("/selectSendingAboutComment")
     public List<ReviewLog> selectSendingAboutComment(@RequestParam("t_id") String t_id){
-        log.info("查询某评论的自动审核记录");
+        log.info("查询某评论的自动审核记录 t_id: {}", t_id);
         return reviewLogService.selectSendingByTC(t_id, "5");
     }
 
     @GetMapping("/selectReportRecord")
     public List<ReviewLog> selectReportRecord(@RequestParam(name="i_id", required = false, defaultValue = "-1") String i_id){
-        log.info("查询某用户的举报记录（默认为当前登录用户）");
+        log.info("查询某用户的举报记录（默认为当前登录用户） i_id: {}", i_id);
         return reviewLogService.selectReportRecord(i_id);
     }
 
@@ -194,7 +194,7 @@ public class ReviewLogController {
 
     @PutMapping("/argue")
     public String argue(@RequestParam("R_id") String R_id, @RequestParam("desc") String desc){
-        log.info("申诉");
+        log.info("申诉 R_id: {}", R_id);
         return reviewLogService.argue(R_id, desc);
     }
 

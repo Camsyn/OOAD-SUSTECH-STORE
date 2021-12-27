@@ -35,7 +35,7 @@ public class UserController {
     }
     @GetMapping("/get/{sid}")
     public Result<User> getOtherUser(@PathVariable("sid") Integer sid) {
-        log.info("获取指定用户信息（去隐私后的）");
+        log.info("获取指定用户信息（去隐私后的）{}", sid);
         User user = userService.getOne(sid);
         if (user == null) {
             log.info("无此用户");
@@ -73,7 +73,7 @@ public class UserController {
 
     @GetMapping("/rpc/get/{sid}")
     public Result<User> getUser(@PathVariable("sid") Integer sid) {
-        log.info("获取其他用户");
+        log.info("获取其他用户 {}" ,sid);
         User user = userService.getOne(sid);
         log.info("获取成功{}", user);
         return Result.succeed(user);
@@ -92,7 +92,7 @@ public class UserController {
 
     @PutMapping("/rpc/changeCredit")
     public Result<User> changeCredit(@RequestParam("sid") Integer sid, @RequestParam("delta") Integer delta){
-        log.info("开始修改信誉分");
+        log.info("开始修改信誉分 sid: {} delta: {}",sid,delta);
         final User user = userService.changeCredit(sid, delta);
         log.info("修改信誉分成功");
         return Result.succeed(user,"修改信誉分成功");
@@ -100,7 +100,7 @@ public class UserController {
 
     @PutMapping("/rpc/changeLiyuan")
     public Result<User> changeLiyuan(@RequestParam("sid") Integer sid, @RequestParam("delta") Double delta){
-        log.info("开始修改余额");
+        log.info("开始修改余额 sid: {} delta: {}",sid,delta);
         final User user = userService.changeLiyuan(sid, delta);
         log.info("修改余额成功");
         return Result.succeed(user,"修改余额成功");
@@ -109,7 +109,7 @@ public class UserController {
     @PutMapping("/rpc/onetrade")
     public Result<Boolean> changeLiyuan(@RequestParam("adder") Integer adder,
                                      @RequestParam("subscriber")Integer subscriber, @RequestParam("delta") Double delta){
-        log.info("开始修改余额");
+        log.info("开始修改余额 adder: {} subscriber: {} delta: {}",adder,subscriber,delta);
         userService.changeLiyuan(adder,subscriber, delta);
         log.info("修改余额成功");
         return Result.succeed(true,"修改余额成功");
@@ -118,7 +118,7 @@ public class UserController {
 
     @PutMapping("/rpc/state/modify")
     public Result<User> modifyUserState(@RequestParam("sid")Integer sid, @RequestParam("state") Integer state){
-        log.info("更新账户的状态");
+        log.info("更新账户的状态 sid: {} state: {}",sid,state);
         final User one = userService.getOne(sid);
         one.setSid(state);
         userService.updateById(one);

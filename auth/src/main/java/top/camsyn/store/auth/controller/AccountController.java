@@ -30,7 +30,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public Result<Account> login(@RequestBody AuthUser account) {
-        log.info("正在登录");
+        log.info("正在登录 account: {}",account);
         final Account loginUser = accountService.getLoginAccount(account);
         if (loginUser==null){
             log.info("用户id或邮箱尚未注册, 请注册后再登录");
@@ -47,7 +47,7 @@ public class AccountController {
 
     @GetMapping("/create")
     public Result<Account> createAccount(@RequestParam(name = "id") String vId)  {
-        log.info("正在创建账户");
+        log.info("正在创建账户 vId: {}", vId);
         if (verifyService.isKeyExist(vId)) {
             final Object content = verifyService.getValByKey(vId);
             if (content instanceof Account) {
@@ -69,7 +69,7 @@ public class AccountController {
     public Result publishModifyPasswordMsg(@RequestParam(name = "sid") int sid,
                                            @RequestParam("oldPassword") String oldPassword,
                                            @RequestParam("newPassword") String newPassword)  {
-        log.info("开始更改密码");
+        log.info("开始更改密码 sid: {} oldPassword: {} newPassword: {}", sid, oldPassword, newPassword);
         final Account account = accountService.findBySid(sid);
         if (account==null){
             log.info("账户不存在");
@@ -91,7 +91,7 @@ public class AccountController {
     public Result publishModifyPasswordMsg(@RequestParam(name = "username") String username,
                                            @RequestParam("captcha") String captcha,
                                            @RequestParam("newPassword") String newPassword)  {
-        log.info("开始更改密码");
+        log.info("开始更改密码 username: {} captcha: {} newPassword: {}", username, captcha, newPassword);
         final Account account = accountService.getLoginAccount(username);
         if (account==null){
             log.info("账户不存在");
@@ -117,7 +117,7 @@ public class AccountController {
 
     @GetMapping("/get")
     public Principal getCurrentUser(Principal principal) {
-        log.info("获取当前用户");
+        log.info("获取当前用户{}", principal);
         return principal;
     }
 }

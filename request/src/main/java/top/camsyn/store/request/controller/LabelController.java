@@ -33,7 +33,7 @@ public class LabelController {
 
     @PutMapping("/request")
     public Result<Request> modifyLabelsForRequest(@RequestBody Request newRequest) {
-        log.info("修改请求的label标签");
+        log.info("修改请求的label标签 newRequest: {}", newRequest);
         Integer id = newRequest.getId();
         Request oldRequest = requestService.getById(id);
         UaaHelper.assertAdmin(oldRequest.getPusher());
@@ -55,7 +55,7 @@ public class LabelController {
      */
     @GetMapping("/frequency")
     public Result<List<Label>> getLabelFrequency(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize){
-        log.info("请求label频率");
+        log.info("请求label频率 page: {}, pageSize: {}", page,pageSize);
         List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize));
         log.info("成功请求label频率");
         return Result.succeed(labels,"成功");

@@ -39,7 +39,7 @@ public class FileController {
 
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file){
-        log.info("开始上传文件");
+        log.info("开始上传文件 fileName: {}", file.getName());
         String fileName = fileService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -54,7 +54,7 @@ public class FileController {
 
     @PostMapping("/uploadFileByURL")
     public UploadFileResponse uploadFileByURL(@RequestParam("url") String url_s, @RequestParam(name="id", required = false, defaultValue = "-1") String id){
-        log.info("开始通过url上传文件");
+        log.info("开始通过url上传文件 url: {}", url_s);
         String fileName = fileService.storeFileByURL(url_s, id);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -68,7 +68,7 @@ public class FileController {
 
     @PostMapping("/downloadFileByURL")
     public File downloadFileByURL(@RequestParam("url") String url_s) throws Exception {
-        log.info("通过url下载文件");
+        log.info("通过url下载文件 url: {}", url_s);
         return fileService.downloadFileByURL(url_s);
     }
 

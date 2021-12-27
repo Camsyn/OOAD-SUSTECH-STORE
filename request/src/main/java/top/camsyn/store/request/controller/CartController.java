@@ -32,7 +32,7 @@ public class CartController {
 
     @PostMapping("/add")
     public Result<CartItem> addRequestToCart(@RequestParam("requestId") Integer requestId, @RequestParam("count") Integer count) {
-        log.info("addRequestToCart");
+        log.info("addRequestToCart requestId: {} count: {}", requestId, count);
         final UserDto currentUser = UaaHelper.getCurrentUser();
         final Integer sid = currentUser.getSid();
         final Request req = requestService.getById(requestId);
@@ -49,7 +49,7 @@ public class CartController {
     @SneakyThrows
     @PutMapping("/modify/count")
     public Result<CartItem> modifyCartItem(@RequestParam("cartItemId") Integer cartItemId, @RequestParam("count") Integer count) {
-        log.info("modifyCartItem");
+        log.info("modifyCartItem cartItemId: {} count: {}", cartItemId, count);
         if (count <= 0) throw new BusinessException("修改后的count不得小于0");
         final CartItem item = cartService.getById(cartItemId);
         UaaHelper.assertAdmin(item.getOwner());
@@ -95,7 +95,7 @@ public class CartController {
     @SneakyThrows
     @GetMapping("/get/state")
     public Result<List<CartRequest>> getCart(@RequestParam("state") Integer state) {
-        log.info("getCart");
+        log.info("getCart state: {}", state);
         final int owner = UaaHelper.getLoginSid();
         final List<CartRequest> cartList = cartService.getCartList(owner, state);
         log.info("getCart success");
