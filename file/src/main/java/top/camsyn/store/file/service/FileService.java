@@ -137,7 +137,7 @@ public class FileService {
         InputStream inStream = null;
         OutputStream os = null;
         try {
-            file = File.createTempFile("pre"+name[name.length-1], label[label.length-1]);
+            file = File.createTempFile("pre"+name[name.length-1].split("\\.")[0], "."+label[label.length-1]);
             //下载
             urlfile = new URL(url);
             inStream = urlfile.openStream();
