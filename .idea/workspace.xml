@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review微服务优化">
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="注释review微服务消息队列相关代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/java/top/camsyn/store/file/service/FileService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +131,7 @@
       <recent name="top.camsyn.store.commons.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FileApplicationTests.contextLoads">
+  <component name="RunManager" selected="Spring Boot.ReviewApplication (1)">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -489,7 +488,7 @@
       <workItem from="1640518967121" duration="7951000" />
       <workItem from="1640535080551" duration="1462000" />
       <workItem from="1640538856887" duration="791000" />
-      <workItem from="1640591202370" duration="938000" />
+      <workItem from="1640591202370" duration="2659000" />
     </task>
     <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
       <created>1632883348415</created>
@@ -687,7 +686,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640536544159</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="file微服务添加批量接口">
+      <created>1640596205792</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1640596205792</updated>
+    </task>
+    <task id="LOCAL-00030" summary="注释review微服务消息队列相关代码">
+      <created>1640597337442</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1640597337442</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -794,7 +807,9 @@
     <MESSAGE value="增加获取评论删除评论的feign接口" />
     <MESSAGE value="增加了修改credit的feign api" />
     <MESSAGE value="review微服务优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="review微服务优化" />
+    <MESSAGE value="file微服务添加批量接口" />
+    <MESSAGE value="注释review微服务消息队列相关代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="注释review微服务消息队列相关代码" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
