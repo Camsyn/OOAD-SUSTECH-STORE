@@ -133,11 +133,12 @@ public class WebSocket {
     @OnMessage
     public void onMessage(String message, Session session) {
         try {
-            log.info("来自客户端消息：" + message + "客户端的id是：" + session.getId());
+            log.info("来自客户端消息：" + message + "  客户端的id是：" + session.getId());
             ChatRecord chatRecord = JSON.parseObject(message, ChatRecord.class);
 
             //messageType 1代表上线 2代表下线 3代表在线名单  4代表普通消息
             int recvId = chatRecord.getRecvId();
+            chatRecord.setSendId(sid);
             if (isOnline(recvId)) {
                 chatRecord.setRead(true);
                 chatRecord.setRecvTime(LocalDateTime.now());

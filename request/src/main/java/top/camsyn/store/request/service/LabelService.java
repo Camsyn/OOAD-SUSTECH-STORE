@@ -20,6 +20,14 @@ public class LabelService extends SuperServiceImpl<LabelMapper, Label> {
         return lambdaQuery().eq(Label::getLabelName, name).one();
     }
 
+    public void updateFrequency(Collection<String> labels, boolean isInc){
+        if (isInc){
+            baseMapper.increaseFreq(labels);
+        }else {
+            baseMapper.declineFreq(labels);
+        }
+    }
+
     public List<Label> queryOrCreate(Collection<String> labelNames) {
         return labelNames.stream().map(
                 name -> {

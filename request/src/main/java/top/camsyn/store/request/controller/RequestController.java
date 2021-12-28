@@ -64,6 +64,9 @@ public class RequestController {
         // TODO: 邮件提醒
         mailService.sendWhenPush(user.getEmail(), request);
         reviewAsync(request.getId());
+
+        labelService.updateFrequency(request.getLabels(), true);
+
         log.info("已发往审核 user{}", user);
         return Result.succeed(request, "已发往审核");
     }
