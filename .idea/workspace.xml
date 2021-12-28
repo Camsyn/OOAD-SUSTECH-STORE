@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="195bbf4d-0bad-4169-941c-a8184c73f999" name="Changes" comment="修复bug， 增加api">
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/top/camsyn/store/auth/service/impl/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Label.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/request/Label.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/client/ReviewClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/LabelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/LabelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/LabelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/LabelMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/LabelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/service/LabelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/Mapper/ReviewLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/Mapper/ReviewLogMapper.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="HTML File" />
+        <option value="AnnotationType" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\Users\86158\.m2\repository" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1y84hyBs9V9QVf7bE61NHpbDatq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/auth/src/test/java/top/camsyn/store" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lab/lab14_refactor" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.123304546" />
+    <property name="project.structure.side.proportion" value="0.14084506" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="top.camsyn.store.commons.client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\test\src\main\java\com\example\test" />
+      <recent name="D:\Project\OOAD-SUSTECH-STORE\request\src\main\resources" />
+      <recent name="D:\Project\OOAD-SUSTECH-STORE\review\src\main\java\top\camsyn\store\review" />
+      <recent name="D:\code\java\course\OOAD\OOAD-SUSTECH-STORE" />
+      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\test\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\OOAD-SUSTECH-STORE\review\src\main\resources" />
+      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\commons\src\main\resources" />
+      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\commons-spring-boot-starter\src\main\resources" />
+      <recent name="D:\学习\大三\ooad\proj\OOAD-SUSTECH-STORE\uaa\src\main\resources\static" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="top.camsyn.store.uaa.service.impl" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="top.camsyn.store.commons.entity" />
+      <recent name="" />
+      <recent name="top.camsyn.store.gateway" />
+      <recent name="com.example.uaa1" />
+      <recent name="top.camsyn.store" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="top.camsyn.store.request.controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.camsyn.store.request.test" />
+      <recent name="top.camsyn.store.commons.client.callback" />
+      <recent name="review" />
+      <recent name="top.camsyn.store.auth.model" />
+      <recent name="top.camsyn.store.commons.constant" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ReviewApplication (1)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.file" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.file.FileApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testPullCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testPullCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testPullRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testPullRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplicationTests.testSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="request" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.request" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.request.RequestApplicationTests" />
+      <option name="METHOD_NAME" value="testSearch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AfterSaleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="after-sale" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.aftersale.AfterSaleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.auth.AuthApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthnApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="authn" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.authn.AuthnApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="chat" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.chat.ChatApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="chat" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.camsyn.top.chat.ChatApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="client1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.client1.Client1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="client2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.client2.Client2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="client3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.client3.Client3Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonsApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="commons" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.commons.CommonsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="commons" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.camsyn.top.commons.CommonsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="file" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.file.FileApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="file" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="camsyn.top.store.file.FileApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.gateway.GatewayApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.order.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="request" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.request.RequestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReviewApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="review" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.review.ReviewApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReviewApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="review" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="review.ReviewApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.test.TestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.test.TestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Uaa1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="uaa1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uaa1.Uaa1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UaaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="uaa" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.camsyn.top.uaa.UaaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UaaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="uaa1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.uaa1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uaa1.UaaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.user.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
+      <item itemvalue="JUnit.RequestApplicationTests.testCart" />
+      <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
+      <item itemvalue="JUnit.RequestApplicationTests.testPullCart" />
+      <item itemvalue="JUnit.FileApplicationTests.contextLoads" />
+      <item itemvalue="Spring Boot.AfterSaleApplication" />
+      <item itemvalue="Spring Boot.AuthApplication" />
+      <item itemvalue="Spring Boot.AuthnApplication" />
+      <item itemvalue="Spring Boot.ChatApplication (1)" />
+      <item itemvalue="Spring Boot.ChatApplication" />
+      <item itemvalue="Spring Boot.Client1Application" />
+      <item itemvalue="Spring Boot.Client2Application" />
+      <item itemvalue="Spring Boot.Client3Application" />
+      <item itemvalue="Spring Boot.CommonsApplication (1)" />
+      <item itemvalue="Spring Boot.CommonsApplication" />
+      <item itemvalue="Spring Boot.FileApplication (1)" />
+      <item itemvalue="Spring Boot.FileApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.RequestApplication" />
+      <item itemvalue="Spring Boot.ReviewApplication" />
+      <item itemvalue="Spring Boot.TestApplication (1)" />
+      <item itemvalue="Spring Boot.TestApplication" />
+      <item itemvalue="Spring Boot.Uaa1Application" />
+      <item itemvalue="Spring Boot.UaaApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Spring Boot.ReviewApplication (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FileApplicationTests.contextLoads" />
+        <item itemvalue="JUnit.RequestApplicationTests.testPullCart" />
+        <item itemvalue="JUnit.RequestApplicationTests.testPullRequest" />
+        <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
+        <item itemvalue="JUnit.RequestApplicationTests.testCart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="" />
+      <created>1631620004856</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631620004856</updated>
+      <workItem from="1631620008047" duration="1325000" />
+      <workItem from="1631689057576" duration="195000" />
+      <workItem from="1631689278585" duration="4565000" />
+      <workItem from="1631701361682" duration="2818000" />
+      <workItem from="1631759662927" duration="996000" />
+      <workItem from="1631760688295" duration="20743000" />
+      <workItem from="1631848204910" duration="8383000" />
+      <workItem from="1632214286162" duration="5320000" />
+      <workItem from="1632295119184" duration="1930000" />
+      <workItem from="1632314871013" duration="7744000" />
+      <workItem from="1632327102369" duration="1558000" />
+      <workItem from="1632364143559" duration="33558000" />
+      <workItem from="1632453304110" duration="18427000" />
+      <workItem from="1632500386647" duration="10388000" />
+      <workItem from="1632557864056" duration="10533000" />
+      <workItem from="1632630754908" duration="21756000" />
+      <workItem from="1632705132625" duration="22000" />
+      <workItem from="1632730355927" duration="11530000" />
+      <workItem from="1632802879769" duration="13147000" />
+      <workItem from="1632825958413" duration="7479000" />
+      <workItem from="1632883251105" duration="8226000" />
+      <workItem from="1632967933884" duration="15021000" />
+      <workItem from="1633174766066" duration="2073000" />
+      <workItem from="1633845701551" duration="20505000" />
+      <workItem from="1633947081841" duration="22245000" />
+      <workItem from="1636442146000" duration="348000" />
+      <workItem from="1636442519583" duration="66472000" />
+      <workItem from="1637222967821" duration="43694000" />
+      <workItem from="1637421847373" duration="8818000" />
+      <workItem from="1637589841271" duration="5669000" />
+      <workItem from="1638000318416" duration="25507000" />
+      <workItem from="1638690602888" duration="8876000" />
+      <workItem from="1638882424747" duration="274000" />
+      <workItem from="1639311541823" duration="667000" />
+      <workItem from="1639412342478" duration="3726000" />
+      <workItem from="1640008075714" duration="1489000" />
+      <workItem from="1640010814968" duration="4454000" />
+      <workItem from="1640156384572" duration="2400000" />
+      <workItem from="1640176892166" duration="9206000" />
+      <workItem from="1640236001371" duration="8284000" />
+      <workItem from="1640315106921" duration="20000" />
+      <workItem from="1640315170188" duration="30685000" />
+      <workItem from="1640501660832" duration="9595000" />
+      <workItem from="1640518967121" duration="7951000" />
+      <workItem from="1640535080551" duration="1462000" />
+      <workItem from="1640538856887" duration="791000" />
+      <workItem from="1640591202370" duration="4106000" />
+    </task>
+    <task id="LOCAL-00001" summary="1.0 简单实现登录注册；基本搭起微服务框架">
+      <created>1632883348415</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632883348415</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1.0 简单实现登录注册；基本搭起微服务框架">
+      <created>1633873817775</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633873817775</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2.0 简单实现登录注册；基本搭起微服务框架">
+      <created>1634036352137</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634036352137</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2.0 简单实现登录注册；基本搭起微服务框架">
+      <created>1634036684353</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634036684353</updated>
+    </task>
+    <task id="LOCAL-00005" summary="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒">
+      <created>1636636285839</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636636285839</updated>
+    </task>
+    <task id="LOCAL-00006" summary="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒">
+      <created>1636721169427</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636721169427</updated>
+    </task>
+    <task id="LOCAL-00007" summary="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒&#10;&#10;append 改进commmons， 增加逻辑删除， 验证了mybatis-plus">
+      <created>1636982815466</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636982815466</updated>
+    </task>
+    <task id="LOCAL-00008" summary="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒&#10;&#10;append 改进commmons， 增加逻辑删除， 验证了mybatis-plus">
+      <created>1636982878908</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636982878908</updated>
+    </task>
+    <task id="LOCAL-00009" summary="append 修复了common包的bug">
+      <created>1637238993623</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637238993623</updated>
+    </task>
+    <task id="LOCAL-00010" summary="append 修炼commons的bug">
+      <created>1637302646965</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637302646965</updated>
+    </task>
+    <task id="LOCAL-00011" summary="5.0 开始编写请求微服务, 初步搭建了search逻辑">
+      <created>1637400053611</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637400053611</updated>
+    </task>
+    <task id="LOCAL-00012" summary="append search接口基本确认可行">
+      <created>1637429502225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1637429502225</updated>
+    </task>
+    <task id="LOCAL-00013" summary="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录">
+      <created>1638189590235</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638189590235</updated>
+    </task>
+    <task id="LOCAL-00014" summary="append 继续完善 request微服务">
+      <created>1638246681510</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1638246681510</updated>
+    </task>
+    <task id="LOCAL-00015" summary="append 完善了各个feign client， 完善了request，user微服务">
+      <created>1638331191465</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1638331191465</updated>
+    </task>
+    <task id="LOCAL-00016" summary="append 现在rpc调用可以传递登录信息了(必须要在http触发的接口下的rpc调用)&#10;append 初步搭建好了订单微服务&#10;append 初步搭建了分布式锁(基于redis), 并应用到updateById等方法上&#10;append 修改了一些rpc接口">
+      <created>1638631741034</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1638631741034</updated>
+    </task>
+    <task id="LOCAL-00017" summary="file微服务变更">
+      <created>1639365444754</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1639365444754</updated>
+    </task>
+    <task id="LOCAL-00018" summary="测试了openfeign的连通性, 修复了一些bug">
+      <created>1639925643552</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1639925643552</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修复了bug">
+      <created>1640161057758</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1640161057758</updated>
+    </task>
+    <task id="LOCAL-00020" summary="修复了bug">
+      <created>1640185807077</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1640185807077</updated>
+    </task>
+    <task id="LOCAL-00021" summary="修复了bug">
+      <created>1640313788213</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1640313788213</updated>
+    </task>
+    <task id="LOCAL-00022" summary="新增了多个feign接口">
+      <created>1640316953650</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1640316953651</updated>
+    </task>
+    <task id="LOCAL-00023" summary="新增了从动态中提取file service的url的helper">
+      <created>1640318151444</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1640318151444</updated>
+    </task>
+    <task id="LOCAL-00024" summary="bug repairing">
+      <created>1640353093676</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1640353093676</updated>
+    </task>
+    <task id="LOCAL-00025" summary="增加获取评论删除评论的feign接口">
+      <created>1640496630668</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1640496630668</updated>
+    </task>
+    <task id="LOCAL-00026" summary="增加了修改credit的feign api">
+      <created>1640520213140</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1640520213140</updated>
+    </task>
+    <task id="LOCAL-00027" summary="review微服务优化">
+      <created>1640535478081</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1640535478082</updated>
+    </task>
+    <task id="LOCAL-00028" summary="review微服务优化">
+      <created>1640536544159</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1640536544159</updated>
+    </task>
+    <task id="LOCAL-00029" summary="file微服务添加批量接口">
+      <created>1640596205792</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1640596205792</updated>
+    </task>
+    <task id="LOCAL-00030" summary="注释review微服务消息队列相关代码">
+      <created>1640597337442</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1640597337442</updated>
+    </task>
+    <task id="LOCAL-00031" summary="注释review微服务消息队列相关代码">
+      <created>1640597722211</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1640597722211</updated>
+    </task>
+    <task id="LOCAL-00032" summary="修复bug， 增加api">
+      <created>1640676740159</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1640676740159</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="10ab4307-2efe-45c8-96fc-1ddd7b39933e">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="5e51e2c9-58e5-4b4c-b1c3-adaeaa5c5623">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="10ab4307-2efe-45c8-96fc-1ddd7b39933e" value="TOOL_WINDOW" />
+        <entry key="5e51e2c9-58e5-4b4c-b1c3-adaeaa5c5623" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.0 简单实现登录注册；基本搭起微服务框架" />
+    <MESSAGE value="2.0 简单实现登录注册；基本搭起微服务框架" />
+    <MESSAGE value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒" />
+    <MESSAGE value="3.0 初步完成chat微服务&#10;    1. 通过websocket，可以在线以push的形式交流（即时通信）&#10;    2. 通过传统http接口，可以查询历史聊天记录&#10;    &#10;高级需求：1.好友系统、 2.上下线提醒   3.已读未读提醒&#10;&#10;append 改进commmons， 增加逻辑删除， 验证了mybatis-plus" />
+    <MESSAGE value="append 修复了common包的bug" />
+    <MESSAGE value="append 修炼commons的bug" />
+    <MESSAGE value="5.0 开始编写请求微服务, 初步搭建了search逻辑" />
+    <MESSAGE value="append search接口基本确认可行" />
+    <MESSAGE value="基于新的授权登陆机制， 初步搭建全部微服务体系， 初步搭建rocketmq与Spring Cloud Stream, 初步完成chat微服务 websocket的授权登录" />
+    <MESSAGE value="append 继续完善 request微服务" />
+    <MESSAGE value="append 完善了各个feign client， 完善了request，user微服务" />
+    <MESSAGE value="append 现在rpc调用可以传递登录信息了(必须要在http触发的接口下的rpc调用)&#10;append 初步搭建好了订单微服务&#10;append 初步搭建了分布式锁(基于redis), 并应用到updateById等方法上&#10;append 修改了一些rpc接口" />
+    <MESSAGE value="file微服务变更" />
+    <MESSAGE value="测试了openfeign的连通性, 修复了一些bug" />
+    <MESSAGE value="修复了bug" />
+    <MESSAGE value="新增了多个feign接口" />
+    <MESSAGE value="新增了从动态中提取file service的url的helper" />
+    <MESSAGE value="bug repairing" />
+    <MESSAGE value="增加获取评论删除评论的feign接口" />
+    <MESSAGE value="增加了修改credit的feign api" />
+    <MESSAGE value="review微服务优化" />
+    <MESSAGE value="file微服务添加批量接口" />
+    <MESSAGE value="注释review微服务消息队列相关代码" />
+    <MESSAGE value="修复bug， 增加api" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复bug， 增加api" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
