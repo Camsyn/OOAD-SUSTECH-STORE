@@ -29,7 +29,7 @@ public class ReviewLog {
     // 状态
     private int state;//0: 审核中  1: 过审  2: 不过审  3: 申诉审核中 4: 申诉失败，确认不过审
     // 被举报对象类别
-    private int category;//0: 用户  1: 请求  2: 订单
+    private int category;//0: 用户  1: 请求  2: 订单  3: 聊天记录  4: 动态  5: 评论
 
     public int getR_id() {
         return r_id;
