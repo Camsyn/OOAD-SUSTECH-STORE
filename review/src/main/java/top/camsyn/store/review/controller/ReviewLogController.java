@@ -192,6 +192,24 @@ public class ReviewLogController {
         return reviewLogService.report(t_id, desc, 2);
     }
 
+    @PostMapping("/reportChat")
+    public String reportChat(@RequestParam("t_id") String t_id, @RequestParam("desc") String desc){
+        log.info("举报聊天记录 id{}", t_id);
+        return reviewLogService.report(t_id, desc, 3);
+    }
+
+    @PostMapping("/reportCircle")
+    public String reportCircle(@RequestParam("t_id") String t_id, @RequestParam("desc") String desc){
+        log.info("举报动态 id{}", t_id);
+        return reviewLogService.report(t_id, desc, 4);
+    }
+
+    @PostMapping("/reportComment")
+    public String reportComment(@RequestParam("t_id") String t_id, @RequestParam("desc") String desc){
+        log.info("举报评论 id{}", t_id);
+        return reviewLogService.report(t_id, desc, 5);
+    }
+
     @PutMapping("/argue")
     public String argue(@RequestParam("R_id") String R_id, @RequestParam("desc") String desc){
         log.info("申诉 R_id: {}", R_id);
