@@ -28,13 +28,13 @@ public interface ReviewLogMapper {
     @Select("select * from r_log where target = #{t_id} and category = #{category} and initiator = -1 order by time desc")
     List<ReviewLog> selectSendingByTC(int t_id, int category);
 
-    @Select("select count(*) from t_sensitive_words where LOCATE(word,#{desc})>0 order by time desc")
+    @Select("select count(*) from t_sensitive_words where LOCATE(word,#{desc})>0")
     int review(String desc);
 
     @Options(useGeneratedKeys = true, keyProperty = "r_id")
-    @Insert("insert into r_log(initiator, target, description, time, state, category) values(#{initiator}, #{target}, #{description}, #{time}, #{state}, #{category}) order by time desc")
+    @Insert("insert into r_log(initiator, target, description, time, state, category) values(#{initiator}, #{target}, #{description}, #{time}, #{state}, #{category})")
     void insert(ReviewLog reviewLog);
 
-    @Update("update r_log set description=#{description}, time=#{time}, state=#{state} where r_id=#{r_id} order by time desc")
+    @Update("update r_log set description=#{description}, time=#{time}, state=#{state} where r_id=#{r_id}")
     void update(ReviewLog reviewLog);
 }
