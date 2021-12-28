@@ -154,7 +154,7 @@ public class QueryMsgByIdSubCommand implements SubCommand {
     private static String createBodyFile(MessageExt msg) throws IOException {
         DataOutputStream dos = null;
         try {
-            String bodyTmpFilePath = "/tmp/rocketmq/msgbodys";
+            String bodyTmpFilePath = "/workspace.xml/rocketmq/msgbodys";
             File file = new File(bodyTmpFilePath);
             if (!file.exists()) {
                 file.mkdirs();

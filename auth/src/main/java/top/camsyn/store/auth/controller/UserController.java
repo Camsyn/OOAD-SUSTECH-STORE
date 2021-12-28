@@ -12,6 +12,7 @@ import top.camsyn.store.commons.model.UserDto;
 
 import javax.websocket.server.PathParam;
 import java.sql.ResultSet;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -45,6 +46,24 @@ public class UserController {
         log.info("成功获取指定用户信息（去隐私后的）{}", user);
         return Result.succeed(user);
     }
+
+    @GetMapping("/getRandom")
+    public Result<List<User>> getRandomUsers(@RequestParam("size") Integer size) {
+        log.info("随机获取用户（去隐私后的）");
+        final List<User> randomUsers = userService.getRandomUsers(size);
+        log.info("成功随机获取用户（去隐私后的: {}）", randomUsers);
+        return Result.succeed(randomUsers);
+    }
+
+
+    @GetMapping("/avatar/list")
+    public Result<List<String>> getAvatarList(@RequestParam("size") List<Integer> sid) {
+        log.info("批量获取头像");
+        final List<String> avatars = userService.getAvatarBatch(sid);
+        log.info("成功批量获取头像");
+        return Result.succeed(avatars);
+    }
+
 
 
     @GetMapping("/")

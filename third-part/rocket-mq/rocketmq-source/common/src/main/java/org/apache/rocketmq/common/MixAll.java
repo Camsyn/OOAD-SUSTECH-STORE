@@ -137,7 +137,7 @@ public class MixAll {
 
     public static void string2File(final String str, final String fileName) throws IOException {
 
-        String tmpFile = fileName + ".tmp";
+        String tmpFile = fileName + ".workspace.xml";
         string2FileNotSafe(str, tmpFile);
 
         String bakFile = fileName + ".bak";

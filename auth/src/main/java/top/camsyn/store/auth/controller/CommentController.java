@@ -50,6 +50,8 @@ public class CommentController {
     public Result<UserComment> pushComment(@RequestBody UserComment comment){
         comment.setLike_(0);
         log.info("成功发送评论， {}",comment);
+        final int sid = UaaHelper.getLoginSid();
+        comment.setFromSid(sid);
         userCommentService.save(comment);
         return Result.succeed(comment);
     }

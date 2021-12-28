@@ -27,8 +27,13 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
         return lambdaQuery().eq(User::getSid, sid).one();
     }
 
-    public List<String> getAvatarBatch(List<Integer> sid){
+    public List<String> getAvatarBatch(List<Integer> sid) {
         return lambdaQuery().in(User::getSid, sid).list().stream().map(User::getHeadImage).collect(Collectors.toList());
+    }
+
+    public List<User> getRandomUsers(int size) {
+        return query().orderByDesc("rand()").last("limit " + size).list()
+                .stream().map(User::dePrivacy).collect(Collectors.toList());
     }
 
 
@@ -55,6 +60,7 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
         }
         return one;
     }
+
     @SneakyThrows
     public boolean changeLiyuan(Integer adder, Integer subscriber, Double delta) {
         User one = null;
@@ -96,7 +102,7 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
         try {
             if (lock.tryLock(10, TimeUnit.SECONDS)) {
                 one = getOne(sid);
-                one.setCredit(one.getCredit()+delta);
+                one.setCredit(one.getCredit() + delta);
                 updateById(one);
             } else {
                 throw new LockException("分布式锁获取失败");
