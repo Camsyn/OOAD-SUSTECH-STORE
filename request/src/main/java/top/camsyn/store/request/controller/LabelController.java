@@ -11,11 +11,9 @@ import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.request.service.LabelService;
-import top.camsyn.store.request.service.RelationService;
 import top.camsyn.store.request.service.RequestService;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -28,9 +26,6 @@ public class LabelController {
 
     @Autowired
     LabelService labelService;
-
-    @Autowired
-    RelationService relationService;
 
     @PutMapping("/request")
     public Result<Request> modifyLabelsForRequest(@RequestBody Request newRequest) {
@@ -54,8 +49,8 @@ public class LabelController {
         final Collection<String> append = CollectionUtils.subtract(newLabels, oldLabels);
         req.setLabels(newLabels);
         requestService.updateById(req);
-        labelService.updateFrequency(subtract, false);
-        labelService.updateFrequency(append, true);
+        labelService.updatePushFrequency(subtract, false);
+        labelService.updatePushFrequency(append, true);
 
         log.info("成功修改请求的label标签");
         return Result.succeed(req.setLabels(newLabels), "成功");
@@ -66,9 +61,11 @@ public class LabelController {
      * 按频率排序分页返回labels
      */
     @GetMapping("/frequency")
-    public Result<List<Label>> getLabelFrequency(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize){
+    public Result<List<Label>> getLabelByFrequency(@RequestParam("page") Integer page,
+                                                   @RequestParam("pageSize") Integer pageSize,
+                                                   @RequestParam("isPush") Boolean isPush){
         log.info("请求label频率 page: {}, pageSize: {}", page,pageSize);
-        List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize));
+        List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize), isPush);
         log.info("成功请求label频率");
         return Result.succeed(labels,"成功");
     }

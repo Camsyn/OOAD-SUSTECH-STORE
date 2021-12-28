@@ -22,7 +22,11 @@ public class Label {
     /**
      * 生成
      */
-    Integer frequency;
+    Integer pullFrequency;
+    /**
+     * 生成
+     */
+    Integer pushFrequency;
     private Integer deleted;
 
 }

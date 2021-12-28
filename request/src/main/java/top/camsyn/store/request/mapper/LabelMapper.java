@@ -18,28 +18,35 @@ public interface LabelMapper extends BaseMapper<Label> {
             "    (label_name)\n" +
             "   VALUES " +
             "<foreach collection=\"label_list\" item=\"item\" index =\"index\" separator =\",\">\n" +
-            "       (\n" +
-            "       #{item},\n" +
-            "       ) " +
+            "       (#{item}) " +
             "</foreach>\n" +
             "   ON DUPLICATE KEY UPDATE\n" +
-            "    frequency=frequency+1;\n" +
+            "    push_frequency=push_frequency+1;\n" +
             "</script>")
-    void increaseFreq(@Param("label_list") Collection<String> labels);
+    void increasePushFreq(@Param("label_list") Collection<String> labels);
 
     @Insert("<script>\n" +
             "INSERT INTO label\n" +
             "    (label_name)\n" +
             "   VALUES " +
             "<foreach collection=\"label_list\" item=\"item\" index =\"index\" separator =\",\">\n" +
-            "       (\n" +
-            "       #{item},\n" +
-            "       ) " +
+            "       (#{item}) " +
             "</foreach>\n" +
             "   ON DUPLICATE KEY UPDATE\n" +
-            "    frequency=frequency-1;\n" +
+            "    push_frequency=push_frequency-1;\n" +
             "</script>")
-    void declineFreq(@Param("label_list") Collection<String> labels);
+    void declinePushFreq(@Param("label_list") Collection<String> labels);
+    @Insert("<script>\n" +
+            "INSERT INTO label\n" +
+            "    (label_name)\n" +
+            "   VALUES " +
+            "<foreach collection=\"label_list\" item=\"item\" index =\"index\" separator =\",\">\n" +
+            "       (#{item}) " +
+            "</foreach>\n" +
+            "   ON DUPLICATE KEY UPDATE\n" +
+            "    pull_frequency=pull_frequency-1;\n" +
+            "</script>")
+    void increasePullFreq(@Param("label_list") Collection<String> labels);
 
 }
 

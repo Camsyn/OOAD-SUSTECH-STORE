@@ -5,30 +5,24 @@ import com.alibaba.fastjson.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.web.client.RestTemplate;
 import top.camsyn.store.commons.client.OrderClient;
 import top.camsyn.store.commons.entity.request.CartItem;
 import top.camsyn.store.commons.entity.request.CartRequest;
 import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.request.controller.CartController;
-import top.camsyn.store.request.controller.RequestController;
 import top.camsyn.store.request.controller.RpcController;
 import top.camsyn.store.request.dto.SearchDto;
 import top.camsyn.store.request.service.CartService;
+import top.camsyn.store.request.service.LabelService;
 import top.camsyn.store.request.service.RequestService;
-import top.camsyn.store.request.test.RequestClient;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @SpringBootTest
-@EnableDiscoveryClient
-@EnableFeignClients(basePackages = "top.camsyn.store.request.test")
+//@EnableDiscoveryClient
+//@EnableFeignClients(basePackages = "top.camsyn.store.request.test")
 class RequestApplicationTests {
     public static final String USER = "{\"sid\":11911626, \"user_name\":\"11911626\", \"password\":\"123456\",\"email\":\"11911626@mail.susetch.edu.cn\",\"status\":0,\"roles\":[\"admin\",\"root\"]}";
     @Autowired
@@ -39,6 +33,8 @@ class RequestApplicationTests {
 
     @Autowired
     RpcController rpcController;
+    @Autowired
+    LabelService labelService;
 
 //    static RestTemplate restTemplate = new RestTemplate();
 
@@ -53,8 +49,7 @@ class RequestApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(requestService.getById(1));
-        System.out.println(requestService.getById(1111));
+       labelService.updatePushFrequency(Arrays.asList("test","demo","test"), true);
     }
 
 
