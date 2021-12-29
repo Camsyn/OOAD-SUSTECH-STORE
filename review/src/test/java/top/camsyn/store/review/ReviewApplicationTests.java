@@ -14,7 +14,8 @@ class ReviewApplicationTests {
 
     @Test
     void contextLoads() {
-        reviewLogService.updateByRid("28","0");
+        reviewLogService.selectByRid("28");
+//        reviewLogService.updateByRid("28","0");
     }
 
 }
