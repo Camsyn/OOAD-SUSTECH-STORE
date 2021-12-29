@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review 测试">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +37,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Spring Boot.ReviewApplication">
+  <component name="RunManager" selected="Spring Boot.OrderApplication">
     <configuration name="ReviewApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="review" />
       <extension name="coverage">

@@ -95,22 +95,23 @@ public class ReviewLogService {
                 if(category==0){
                     User user = userClient.getUser(t_id).getData();
                     user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -1);
                 }else if(category==1){
                     Request request = requestClient.getRequest(t_id).getData();
                     User user = userClient.getUser(request.getPusher()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -5);
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -3);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -2);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -1);
                 }
             }
         }
@@ -227,28 +228,28 @@ public class ReviewLogService {
             if(rL.getState()==3 || rL.getState()==2){
                 if(category==0){
                     User user = userClient.getUser(t_id).getData();
-                    user.setCredit(user.getCredit()+1);
+                    userClient.changeCredit(user.getSid(), 1);
                 }else if(category==1){
                     Request request = requestClient.getRequest(t_id).getData();
                     User user = userClient.getUser(request.getPusher()).getData();
-                    user.setCredit(user.getCredit()+1);
+                    userClient.changeCredit(user.getSid(), 5);
                     requestClient.updateRequestState(t_id,2);
                 }else if(category==2){
                     TradeRecord tradeRecord = orderClient.restoreOrder(t_id).getData();
                     User user = userClient.getUser(tradeRecord.getPusher()).getData();
-                    user.setCredit(user.getCredit()+1);
+                    userClient.changeCredit(user.getSid(), 5);
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
-                    user.setCredit(user.getCredit()+2);
+                    userClient.changeCredit(user.getSid(), 3);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
-                    user.setCredit(user.getCredit()+2);
+                    userClient.changeCredit(user.getSid(), 2);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
-                    user.setCredit(user.getCredit()+2);
+                    userClient.changeCredit(user.getSid(), 1);
                 }
             }
             rL.setState(1);
@@ -256,30 +257,30 @@ public class ReviewLogService {
             if(rL.getState()==0 || rL.getState()==1){
                 if(category==0){
                     User user = userClient.getUser(t_id).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -1);
                 }else if(category==1){
                     Request request = requestClient.getRequest(t_id).getData();
                     User user = userClient.getUser(request.getPusher()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -5);
                     requestClient.updateRequestState(t_id,5);
                 }else if(category==2){
                     TradeRecord tradeRecord = orderClient.terminateOrder(t_id).getData();
                     User user = userClient.getUser(tradeRecord.getPusher()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -5);
                 }else if(category==3){
                     ChatRecord chatRecord = chatClient.getChatRecord(t_id).getData();
                     User user = userClient.getUser(chatRecord.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -3);
                     chatClient.deleteChatRecord(t_id);
                 }else if(category==4){
                     CircleMessage circleMessage = chatClient.getCircleMessage(t_id).getData();
                     User user = userClient.getUser(circleMessage.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -2);
                     chatClient.deleteCircleMessage(t_id);
                 }else if(category==5){
                     Comment comment = chatClient.getComment(t_id).getData();
                     User user = userClient.getUser(comment.getSendId()).getData();
-                    user.setCredit(user.getCredit()-1);
+                    userClient.changeCredit(user.getSid(), -1);
                     chatClient.deleteComment(t_id);
                 }
             }
