@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21b4d3f4-dda9-4b57-bd29-b7e6ec650841" name="Changes" comment="最后一班?">
-      <change afterPath="$PROJECT_DIR$/order/src/test/java/top/camsyn/store/order/Test1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/top/camsyn/store/chat/service/WebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="Application.WebSocket">
+  <component name="RunManager" selected="JUnit.ReviewApplicationTests.contextLoads">
     <configuration name="WebSocket" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="top.camsyn.store.chat.service.WebSocket" />
       <module name="chat" />
@@ -137,9 +134,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReviewApplicationTests.contextLoads" />
         <item itemvalue="Application.WebSocket" />
         <item itemvalue="JUnit.ReviewApplicationTests" />
-        <item itemvalue="JUnit.ReviewApplicationTests.contextLoads" />
         <item itemvalue="JUnit.Test1.test" />
         <item itemvalue="JUnit.RequestApplicationTests.testSearch" />
       </list>
@@ -160,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640791237076</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="最后一班?">
+      <created>1640794604344</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640794604344</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
