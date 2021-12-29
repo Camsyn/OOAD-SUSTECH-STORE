@@ -12,11 +12,13 @@ import top.camsyn.store.commons.entity.chat.ChatRecord;
 import top.camsyn.store.commons.helper.UaaHelper;
 
 import javax.websocket.*;
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,7 +29,7 @@ import java.util.regex.Pattern;
 @Component
 @ServerEndpoint("/websocket/one2one")
 public class WebSocket {
-    static Pattern token = Pattern.compile("(?<=token=)(?<token>.*)");
+    static Pattern tokenPattern = Pattern.compile("(?<=token=)(?<token>.*)");
     private static ChatRecordService chatRecordService;
 
     @Autowired
@@ -43,7 +45,8 @@ public class WebSocket {
     /**
      * 以用户的姓名为key，WebSocket为对象保存起来
      */
-    private static final Map<Integer, WebSocket> clients = new ConcurrentHashMap<>();
+    private static final Map<Integer, List<WebSocket>> clients = new ConcurrentHashMap<>();
+    private static final Map<String, WebSocket> clients_ = new ConcurrentHashMap<>();
 
     /**
      * 会话
@@ -54,6 +57,22 @@ public class WebSocket {
      * 用户id
      */
     private Integer sid;
+
+
+    private String token;
+
+    private void putClient(Integer sid){
+        if (clients.containsKey(sid)){
+            clients.get(sid).add(this);
+        }else {
+            final ArrayList<WebSocket> array = new ArrayList<>();
+            array.add(this);
+            clients.put(sid, array);
+        }
+    }
+    private void removeClient(){
+        clients.get(sid).remove(clients_.get(token));
+    }
 
     /**
      * 建立连接
@@ -69,10 +88,10 @@ public class WebSocket {
         this.session = session;
         log.info("有新连接加入！ 当前在线人数" + onlineNumber);
         String rawQuery = session.getRequestURI().getRawQuery();
-        Matcher matcher = token.matcher(rawQuery);
+        Matcher matcher = tokenPattern.matcher(rawQuery);
         try {
             if (matcher.find()) {
-                String token = matcher.group("token");
+                token = matcher.group("token");
                 JWSObject jwsObject = null;
                 try {
                     jwsObject = JWSObject.parse(token);
@@ -84,7 +103,9 @@ public class WebSocket {
                 log.info("解析后的jwt：{}", userStr);
 
                 Integer sid = UaaHelper.getUser(userStr).getSid();
-                clients.put(sid, this);
+//                clients.put(sid, this);
+                putClient(sid);
+                clients_.put(token, this);
                 this.sid = sid;
                 reply(ChatState.builder().msg("成功登录").sid(sid).state(0).build().toString());
             } else {
@@ -109,7 +130,8 @@ public class WebSocket {
     public void onClose() {
         onlineNumber.addAndGet(-1);
         //webSockets.remove(this);
-        clients.remove(sid);
+//        clients.remove(sid);
+        removeClient();
         log.info("有连接关闭！ 当前在线人数" + onlineNumber);
     }
 
@@ -146,8 +168,10 @@ public class WebSocket {
     }
 
     public void sendMessageTo(String message, Integer toSid) throws IOException {
-        WebSocket webSocket = clients.get(toSid);
-        webSocket.session.getBasicRemote().sendText(message);
+        for (WebSocket webSocket : clients.get(toSid)) {
+            webSocket.session.getBasicRemote().sendText(message);
+        }
+
 //        for (WebSocket item : clients.values()) {
 //            if (item.username.equals(toSid) ) {
 //                item.session.getAsyncRemote().sendText(message);
@@ -157,9 +181,9 @@ public class WebSocket {
     }
 
     public void sendMessageAll(String message, Integer FromUserName) throws IOException {
-        for (WebSocket item : clients.values()) {
-            item.session.getAsyncRemote().sendText(message);
-        }
+//        for (WebSocket item : clients.values()) {
+//            item.session.getAsyncRemote().sendText(message);
+//        }
     }
 
     public static synchronized AtomicInteger getOnlineCount() {
