@@ -125,7 +125,7 @@ public class ReviewLogService {
         ReviewLog rL = new ReviewLog();
         rL.setInitiator(i_id);
         rL.setTarget(t_id);
-        String desc = "存在敏感词汇";
+        String desc = "";
         rL.setDescription(desc);
         rL.setTime(new Date());
         if(category==2){
@@ -137,6 +137,7 @@ public class ReviewLogService {
                 rL.setState(1);
             }else{
                 rL.setState(2);
+                desc = "存在敏感词汇";
 //                if(category==0){
 //                    User user = userClient.getUser(t_id).getData();
 //                    user.setCredit(user.getCredit()-1);

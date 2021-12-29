@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="添加详细log">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="3f85488e-0315-44a5-9aa1-8b82f9b71e20" name="Default Changelist" comment="review 添加缺少的接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/review/ReviewLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/top/camsyn/store/commons/entity/review/ReviewLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/controller/ReviewLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/controller/ReviewLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/file/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/test/java/top/camsyn/store/review/ReviewApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthApplication">
+  <component name="RunManager" selected="JUnit.ReviewApplicationTests.contextLoads">
+    <configuration name="ReviewApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="review" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.camsyn.store.review.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.camsyn.store.review" />
+      <option name="MAIN_CLASS_NAME" value="top.camsyn.store.review.ReviewApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="auth" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.camsyn.store.auth.AuthApplication" />
@@ -109,6 +125,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ReviewApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,9 +145,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640700041171</updated>
-      <workItem from="1640700044716" duration="654000" />
+      <workItem from="1640700044716" duration="1487000" />
+      <workItem from="1640767387433" duration="563000" />
+      <workItem from="1640787897078" duration="1116000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="review 添加缺少的接口">
+      <created>1640700779379</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1640700779379</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +186,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加详细log" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加详细log" />
+    <MESSAGE value="review 添加缺少的接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="review 添加缺少的接口" />
   </component>
 </project>
