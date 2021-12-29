@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import top.camsyn.store.commons.entity.auth.Account;
 import top.camsyn.store.commons.mapper.AccountMapper;
@@ -111,6 +112,10 @@ public class AccountService extends SuperServiceImpl<AccountMapper, Account> imp
     public boolean comparePassword(String originalPwd, String encryptedPwd) {
         if (originalPwd == null) return false;
         return passwordEncoder.matches(originalPwd, encryptedPwd);
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

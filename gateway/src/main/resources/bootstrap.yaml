@@ -7,14 +7,12 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: camsyn.cn:8848
-        namespace: d2b044ed-b880-4cd9-904f-5cca114fb4e0
+        server-addr: 119.91.253.133:8848
       config:
         name: gateway # 使用的 Nacos 配置集的 dataId，默认为 spring.application.name
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yaml   #nacos配置文件后缀，下文配置发布的时候会用到。注意是yaml，不是yml
 #        group: sustech-store  #配置分组，默认分组是DEFAULT_GROUP
-        namespace: ${spring.cloud.nacos.discovery.namespace}
         refresh-enabled: true
         shared-configs:
           - data-id: common-database.yaml

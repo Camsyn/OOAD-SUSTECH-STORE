@@ -55,10 +55,12 @@ public class TradeRecord {
     Integer requestId;
 
     /**
-     * 0：订单准备，  1: 订单正式发布    2：订单正式满足，无法撤回  3. 订单异常（审核中） 4. 订单中断
+     * 0：订单准备，  1: 订单正式发布    2：订单正式满足，无法撤回  3. 订单异常（审核中） 4. 订单中断（puller撤回）  5. 订单中断（pusher撤回）
      */
     @Builder.Default
     Integer state = 0;
+
+
 
     /**
      * 不知道有什么用，留待拓展

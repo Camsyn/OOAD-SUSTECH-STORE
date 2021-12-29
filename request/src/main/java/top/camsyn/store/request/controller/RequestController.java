@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.client.OrderClient;
 import top.camsyn.store.commons.client.ReviewClient;
@@ -73,8 +74,8 @@ public class RequestController {
     @PutMapping("/update")
     public Result<Request> updateRequest(@RequestBody Request request) {
         log.info("updateRequest request: {}", request);
-        final UserDto user = UaaHelper.assertAdmin(request.getId());
         Request req = requestService.getById(request.getId());
+        final UserDto user = UaaHelper.assertAdmin(request.getPusher());
         if (req == null) {
             log.info("请求不存在 user{}", user);
             return Result.failed("请求不存在");
@@ -171,6 +172,9 @@ public class RequestController {
 
     @GetMapping("/search")
     public Result<List<Request>> search(SearchDto searchDto) {
+        if (searchDto.searchStrategy.equals(3) && StringUtils.isEmpty(searchDto.queryStr)){
+            searchDto.queryStr = ".*";
+        }
         log.info("开始搜索: {}", JSON.toJSONString(searchDto, true));
         final List<Request> result = requestService.search(searchDto);
         log.info("搜索成功");

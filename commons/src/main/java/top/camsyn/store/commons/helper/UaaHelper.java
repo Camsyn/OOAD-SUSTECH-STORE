@@ -63,8 +63,9 @@ public class UaaHelper {
 
     public static UserDto assertAdmin(Integer sid) {
         final UserDto user = getCurrentUser();
-        if (user.getSid().equals(sid)) return user;
-        throw new NotSelfException();
+        final Integer logSid = user.getSid();
+        if (logSid.equals(sid)) return user;
+        throw new NotSelfException(logSid+"");
     }
 
 }

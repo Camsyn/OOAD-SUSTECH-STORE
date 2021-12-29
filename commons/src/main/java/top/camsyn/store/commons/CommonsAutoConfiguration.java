@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableFeignClients(basePackages = {"top.camsyn.store.commons.client"})
-@ConditionalOnMissingClass("com.example.test.TestApplication")
+//@ConditionalOnMissingClass("com.example.test.TestApplication")
 //@EnableBinding({MQProducerSource.class, MQConsumerSource.class})
 //@Exclude
 //@EnableAutoConfiguration

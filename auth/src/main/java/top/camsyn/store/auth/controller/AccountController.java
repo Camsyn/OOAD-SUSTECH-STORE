@@ -9,6 +9,7 @@ import top.camsyn.store.auth.model.AuthUser;
 import top.camsyn.store.auth.service.impl.AccountService;
 import top.camsyn.store.auth.service.impl.VerifyService;
 import top.camsyn.store.commons.entity.auth.Account;
+import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.CodeEnum;
 import top.camsyn.store.commons.model.Result;
 
@@ -66,16 +67,16 @@ public class AccountController {
     }
 
     @RequestMapping("/modify/password/oldPassword")
-    public Result publishModifyPasswordMsg(@RequestParam(name = "sid") int sid,
-                                           @RequestParam("oldPassword") String oldPassword,
+    public Result publishModifyPasswordMsg(@RequestParam("oldPassword") String oldPassword,
                                            @RequestParam("newPassword") String newPassword)  {
+        int sid = UaaHelper.getLoginSid();
         log.info("开始更改密码 sid: {} oldPassword: {} newPassword: {}", sid, oldPassword, newPassword);
         final Account account = accountService.findBySid(sid);
         if (account==null){
             log.info("账户不存在");
             return Result.failed(null,"账户不存在");
         }
-        if (accountService.comparePassword(oldPassword,account.getPassword())) {
+        if (!accountService.comparePassword(oldPassword,account.getPassword())) {
             log.info("原密码错误");
             return Result.failed(null,"原密码错误");
         }
@@ -88,7 +89,7 @@ public class AccountController {
     }
 
     @RequestMapping("/modify/password/captcha")
-    public Result publishModifyPasswordMsg(@RequestParam(name = "username") String username,
+    public Result publishModifyPasswordMsg(@RequestParam("username") String username,
                                            @RequestParam("captcha") String captcha,
                                            @RequestParam("newPassword") String newPassword)  {
         log.info("开始更改密码 username: {} captcha: {} newPassword: {}", username, captcha, newPassword);
