@@ -65,7 +65,7 @@ public class AccountController {
         return Result.failed(null, "验证失败, 验证id错误");
     }
 
-    @RequestMapping("/modify/password/captcha")
+    @RequestMapping("/modify/password/oldPassword")
     public Result publishModifyPasswordMsg(@RequestParam(name = "sid") int sid,
                                            @RequestParam("oldPassword") String oldPassword,
                                            @RequestParam("newPassword") String newPassword)  {
@@ -87,7 +87,7 @@ public class AccountController {
         return Result.succeed("修改密码成功");
     }
 
-    @RequestMapping("/modify/password/oldPassword")
+    @RequestMapping("/modify/password/captcha")
     public Result publishModifyPasswordMsg(@RequestParam(name = "username") String username,
                                            @RequestParam("captcha") String captcha,
                                            @RequestParam("newPassword") String newPassword)  {

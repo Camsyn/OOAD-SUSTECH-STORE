@@ -17,13 +17,16 @@ public class Label {
     /**
      * 生成
      */
-    @TableId(value = "id",type = IdType.AUTO)
-    Integer id;
+    @TableId(value = "label_name",type = IdType.AUTO)
     String labelName;
     /**
      * 生成
      */
-    Integer frequency;
+    Integer pullFrequency;
+    /**
+     * 生成
+     */
+    Integer pushFrequency;
     private Integer deleted;
 
 }

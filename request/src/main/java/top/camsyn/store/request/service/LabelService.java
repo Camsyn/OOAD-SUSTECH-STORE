@@ -20,6 +20,17 @@ public class LabelService extends SuperServiceImpl<LabelMapper, Label> {
         return lambdaQuery().eq(Label::getLabelName, name).one();
     }
 
+    public void updatePushFrequency(Collection<String> labels, boolean isInc){
+        if (isInc){
+            baseMapper.increasePushFreq(labels);
+        }else {
+            baseMapper.declinePushFreq(labels);
+        }
+    }
+    public void updatePullFrequency(Collection<String> labels){
+        baseMapper.increasePushFreq(labels);
+    }
+
     public List<Label> queryOrCreate(Collection<String> labelNames) {
         return labelNames.stream().map(
                 name -> {
@@ -32,8 +43,9 @@ public class LabelService extends SuperServiceImpl<LabelMapper, Label> {
                 }
         ).collect(Collectors.toList());
     }
-    public List<Label> getLabelsByFreqOrder(IPage<Label> iPage) {
-        return page(iPage, new LambdaQueryWrapper<Label>().orderByDesc(Label::getFrequency)).getRecords();
+
+    public List<Label> getLabelsByFreqOrder(IPage<Label> iPage, boolean isPush) {
+        return page(iPage, new LambdaQueryWrapper<Label>().orderByDesc(isPush?Label::getPushFrequency:Label::getPullFrequency)).getRecords();
     }
 
 

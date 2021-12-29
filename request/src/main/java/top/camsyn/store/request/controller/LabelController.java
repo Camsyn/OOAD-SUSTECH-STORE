@@ -11,7 +11,6 @@ import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.request.service.LabelService;
-import top.camsyn.store.request.service.RelationService;
 import top.camsyn.store.request.service.RequestService;
 
 import java.util.Collection;
@@ -28,25 +27,33 @@ public class LabelController {
     @Autowired
     LabelService labelService;
 
-    @Autowired
-    RelationService relationService;
-
     @PutMapping("/request")
     public Result<Request> modifyLabelsForRequest(@RequestBody Request newRequest) {
         log.info("修改请求的label标签 newRequest: {}", newRequest);
         Integer id = newRequest.getId();
-        Request oldRequest = requestService.getById(id);
-        UaaHelper.assertAdmin(oldRequest.getPusher());
-        List<String> oldLabels = oldRequest.getLabels();
-        List<String> newLabels = newRequest.getLabels();
-        Collection<String> labels2append = CollectionUtils.subtract(newLabels, oldLabels);
-        Collection<String> labels2delete = CollectionUtils.subtract(oldLabels, newLabels);
-        List<Label> deletes = labelService.queryOrCreate(labels2delete);
-        relationService.unbindRequestAndLabel(deletes, newRequest);
-        List<Label> appends = labelService.queryOrCreate(labels2append);
-        relationService.bindRequestAndLabel(appends, newRequest);
+        Request req = requestService.getById(id);
+        UaaHelper.assertAdmin(req.getPusher());
+        final List<String> oldLabels = req.getLabels();
+        final List<String> newLabels = newRequest.getLabels();
+
+//        //并集
+//        Collection<String> union = CollectionUtils.union(a, b);
+//        //交集
+//        Collection<String> intersection = CollectionUtils.intersection(a, b);
+//        //交集的补集
+//        Collection<String> disjunction = CollectionUtils.disjunction(a, b);
+//        //集合相减
+//        Collection<String> subtract = CollectionUtils.subtract(a, b);
+
+        final Collection<String> subtract = CollectionUtils.subtract(oldLabels, newLabels);
+        final Collection<String> append = CollectionUtils.subtract(newLabels, oldLabels);
+        req.setLabels(newLabels);
+        requestService.updateById(req);
+        labelService.updatePushFrequency(subtract, false);
+        labelService.updatePushFrequency(append, true);
+
         log.info("成功修改请求的label标签");
-        return Result.succeed(oldRequest.setLabels(newLabels), "成功");
+        return Result.succeed(req.setLabels(newLabels), "成功");
     }
 
 
@@ -54,9 +61,11 @@ public class LabelController {
      * 按频率排序分页返回labels
      */
     @GetMapping("/frequency")
-    public Result<List<Label>> getLabelFrequency(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize){
+    public Result<List<Label>> getLabelByFrequency(@RequestParam("page") Integer page,
+                                                   @RequestParam("pageSize") Integer pageSize,
+                                                   @RequestParam("isPush") Boolean isPush){
         log.info("请求label频率 page: {}, pageSize: {}", page,pageSize);
-        List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize));
+        List<Label> labels = labelService.getLabelsByFreqOrder(new Page<>(page, pageSize), isPush);
         log.info("成功请求label频率");
         return Result.succeed(labels,"成功");
     }

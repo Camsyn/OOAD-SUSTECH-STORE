@@ -4,7 +4,6 @@ package top.camsyn.store.request.controller;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import top.camsyn.store.commons.client.OrderClient;
@@ -64,6 +63,9 @@ public class RequestController {
         // TODO: 邮件提醒
         mailService.sendWhenPush(user.getEmail(), request);
         reviewAsync(request.getId());
+
+        labelService.updatePushFrequency(request.getLabels(), true);
+
         log.info("已发往审核 user{}", user);
         return Result.succeed(request, "已发往审核");
     }

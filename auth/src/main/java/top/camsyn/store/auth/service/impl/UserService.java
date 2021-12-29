@@ -31,8 +31,8 @@ public class UserService extends SuperServiceImpl<UserMapper, User> implements I
         return lambdaQuery().in(User::getSid, sid).list().stream().map(User::getHeadImage).collect(Collectors.toList());
     }
 
-    public List<User> getRandomUsers(int size) {
-        return query().orderByDesc("rand()").last("limit " + size).list()
+    public List<User> getRandomUsers(Integer sid, int size) {
+        return query().ne("sid",sid).orderByDesc("rand()").last("limit " + size).list()
                 .stream().map(User::dePrivacy).collect(Collectors.toList());
     }
 

@@ -29,6 +29,9 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
     @Autowired
     RequestMailService mailService;
 
+
+    @Autowired
+    LabelService labelService;
     public List<Request> getRequestPageByLabel(String labelName, int page, int pageSize) {
         QueryWrapper<Request> query = new QueryWrapper<Request>()
                 .eq("label_name", labelName)
@@ -95,6 +98,7 @@ public class RequestService extends SuperServiceImpl<RequestMapper, Request> {
                 .type(req.getType()).tradeType(req.getTradeType()).category(req.getCategory())
                 .state(0).tradeCnt(count).singlePrice(req.getExactPrice()).build();
         log.info("发送订单生成请求至消息队列，order: {}", order);
+        labelService.updatePullFrequency(req.getLabels());
         System.out.println(orderClient.generateOrder(order));
 //        mqProducer.orderOutput().send(MessageBuilder.withPayload(order).build());
         mailService.sendWhenPull(user.getEmail(), req);
