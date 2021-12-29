@@ -61,12 +61,12 @@ class RequestApplicationTests {
     @Test
     void testSearch() {
 //        System.out.println(requestService.getById(7));
-        SearchDto search = SearchDto.builder().queryStr("te").searchStrategy(0)
+        SearchDto search = SearchDto.builder().queryStr(" ").searchStrategy(3)
                 .page(1).limit(3).labels(Arrays.asList("汽车", "test")).build();
         List<Request> result = requestService.search(search);
         System.out.println(result.size());
-        System.out.println(JSONArray.toJSONString(result, true));
-        System.out.println();
+//        System.out.println(JSONArray.toJSONString(result, true));
+//        System.out.println();
 //        search =  SearchDto.builder().searchStrategy(0).page(1).limit(10).build();
 //        result = requestService.search(search);
 //        System.out.println(search);

@@ -1,5 +1,6 @@
 package top.camsyn.store.order.service;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.entity.order.TradeRecord;
 import top.camsyn.store.commons.service.MailService;
@@ -28,6 +29,10 @@ public class OrderMailService extends MailService {
     }
     public void sendWhenOrderTerminate(TradeRecord record){
         sendMail(record.getPullerEmail(), SIGNATURE+": 订单已被终止", "经审核，此订单已被终止，交易行为将回滚");
+    }
+
+    public void sendWhenRollback(String goal, TradeRecord record){
+        sendMail(goal, "订单撤回", "对方已撤回订单，请及时确认。订单详情：\n"+ JSON.toJSONString(record, true));
     }
 
 }

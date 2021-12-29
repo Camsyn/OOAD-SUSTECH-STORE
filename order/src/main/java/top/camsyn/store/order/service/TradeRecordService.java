@@ -4,8 +4,8 @@ package top.camsyn.store.order.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.client.RequestClient;
@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 
+@Slf4j
 @Service
 public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, TradeRecord> {
     @Autowired
@@ -62,10 +63,11 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
         try {
             LockHelper.tryLock(lock);
             final Request request = checkRpcResult(requestClient.getRequest(record.getRequestId()), record);
-            if (request.getCount() - request.getSaleCount() < record.getTradeCnt()) {
-                mailService.sendWhenOrderGenerateFail(record, "目标请求的余量不足");
-                throw new BusinessException("目标请求的余量不足");
-            }
+//            if (request.getCount() - request.getSaleCount() < record.getTradeCnt()) {
+//                mailService.sendWhenOrderGenerateFail(record, "目标请求的余量不足");
+//                throw new BusinessException("目标请求的余量不足");
+//            }
+            request.setSaleCount(request.getSaleCount() - record.getTradeCnt());
             switch (record.getType()) {
                 case RequestConstants.BUY:
                     rollbackBuy(record);
@@ -74,13 +76,11 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
                     rollbackSell(record);
                     break;
                 default:
-
                     break;
             }
             request.setSaleCount(request.getSaleCount() - record.getTradeCnt());
             requestClient.updateRequestForRpc(request);
-            mailService.sendWhenOrderTerminate(record);
-            record.setState(OrderConstants.TERMINATED);
+//            mailService.sendWhenOrderTerminate(record);
             saveOrUpdate(record);
         } finally {
             LockHelper.unlock(lock);
@@ -126,6 +126,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
             default:
                 break;
         }
+        record.setState(OrderConstants.TERMINATED_1);
     }
 
 
@@ -176,21 +177,23 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 
     private void updateCredit(int totalPrice, User user) {
         final Integer curCredit = user.getCredit();
+        log.info("更新前credit: {}",curCredit);
         final int creditInc = getCreditIncrease(curCredit, totalPrice);
-        user.setCredit(curCredit+creditInc);
+        user.setCredit(curCredit + creditInc);
+        log.info("更新后credit: {}",curCredit);
         userClient.updateUser(user);
     }
 
-    private int getCreditIncrease(int curCredit, int amount){
-        int totalInc=0;
-        do{
-            int step = amount>1000?10:amount/100;
+    private int getCreditIncrease(int curCredit, int amount) {
+        int totalInc = 0;
+        do {
+            int step = amount > 1000 ? 10 : amount / 100;
             amount -= 1000;
             final int delta = 100 - curCredit;
             final int inc = step * (delta / 100);
             totalInc += inc;
             curCredit += inc;
-        }while (amount>0);
+        } while (amount > 0);
 
         return totalInc;
     }
@@ -241,6 +244,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
             save(record);
 //            mailService.sendWhenOrderGenerate(record);
             request.setSaleCount(request.getSaleCount() + record.getTradeCnt());
+            log.info("已拉取：{}", request.getSaleCount());
             requestClient.updateRequestForRpc(request);
         } finally {
             LockHelper.unlock(lock);
@@ -250,8 +254,7 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
 
     public void preHandleBuy(TradeRecord record, Request request) {
         switch (record.getTradeType()) {
-            case RequestConstants.LIYUAN:
-            {
+            case RequestConstants.LIYUAN: {
                 record.setPullerConfirm(1);
 //                record.setState(OrderConstants.PUBLISHED);
 //                tradeRecordService.save(record);
@@ -308,21 +311,25 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
         return result.getData();
     }
 
-    public boolean checkPermissionForRollback(Integer sid, TradeRecord record){
-        switch (record.getType()){
-            case RequestConstants.BUY:{
-                if (record.getTradeType() == RequestConstants.LIYUAN){
+    public boolean checkPermissionForRollback(Integer sid, TradeRecord record) {
+        switch (record.getType()) {
+            case RequestConstants.BUY: {
+                if (record.getTradeType() == RequestConstants.LIYUAN) {
                     return Objects.equals(sid, record.getPuller());
                 }
             }
 
-            case RequestConstants.SELL:{
-                if (record.getTradeType() == RequestConstants.LIYUAN){
+            case RequestConstants.SELL: {
+                if (record.getTradeType() == RequestConstants.LIYUAN) {
                     return Objects.equals(sid, record.getPusher());
 
                 }
             }
         }
         return false;
+    }
+
+    public boolean isPullerRollback(Integer sid, TradeRecord record) {
+        return record.getPuller().equals(sid);
     }
 }

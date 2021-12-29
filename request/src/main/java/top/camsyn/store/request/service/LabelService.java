@@ -2,6 +2,7 @@ package top.camsyn.store.request.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import top.camsyn.store.commons.entity.request.Label;
 import top.camsyn.store.commons.service.impl.SuperServiceImpl;
@@ -21,6 +22,7 @@ public class LabelService extends SuperServiceImpl<LabelMapper, Label> {
     }
 
     public void updatePushFrequency(Collection<String> labels, boolean isInc){
+        if (CollectionUtils.isEmpty(labels)) return;
         if (isInc){
             baseMapper.increasePushFreq(labels);
         }else {
@@ -28,6 +30,7 @@ public class LabelService extends SuperServiceImpl<LabelMapper, Label> {
         }
     }
     public void updatePullFrequency(Collection<String> labels){
+        if (CollectionUtils.isEmpty(labels)) return;
         baseMapper.increasePushFreq(labels);
     }
 

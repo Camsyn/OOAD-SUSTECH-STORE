@@ -110,17 +110,6 @@ public class WebSocket {
         onlineNumber.addAndGet(-1);
         //webSockets.remove(this);
         clients.remove(sid);
-//        try {
-////            //messageType 1代表上线 2代表下线 3代表在线名单  4代表普通消息
-////            Map<String,Object> map1 = Maps.newHashMap();
-////            map1.put("messageType",2);
-////            map1.put("onlineUsers",clients.keySet());
-////            map1.put("userId",sid);
-////            sendMessageAll(JSON.toJSONString(map1),sid);
-//        }
-//        catch (IOException e){
-//            log.info(sid+"下线的时候通知所有人发生了错误");
-//        }
         log.info("有连接关闭！ 当前在线人数" + onlineNumber);
     }
 
@@ -133,11 +122,12 @@ public class WebSocket {
     @OnMessage
     public void onMessage(String message, Session session) {
         try {
-            log.info("来自客户端消息：" + message + "  客户端的id是：" + session.getId());
+            log.info("来自客户端消息：" + message + "  客户端的id是：" + sid);
             ChatRecord chatRecord = JSON.parseObject(message, ChatRecord.class);
 
             //messageType 1代表上线 2代表下线 3代表在线名单  4代表普通消息
             int recvId = chatRecord.getRecvId();
+            log.info("当前用户： {}, 目标用户：{}", clients, recvId);
             chatRecord.setSendId(sid);
             if (isOnline(recvId)) {
                 chatRecord.setRead(true);

@@ -13,6 +13,7 @@ import top.camsyn.store.commons.helper.LockHelper;
 import top.camsyn.store.commons.helper.UaaHelper;
 import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.commons.model.UserDto;
+import top.camsyn.store.order.service.OrderMailService;
 import top.camsyn.store.order.service.TradeRecordService;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class OrderController {
     @Autowired
     TradeRecordService tradeRecordService;
 
+    @Autowired
+    OrderMailService mailService;
     @GetMapping("/pull/get")
     public Result<List<TradeRecord>> getPullRecords(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize) {
         log.info("getPullRecords page: {} pageSize: {}", page, pageSize);
@@ -53,7 +56,7 @@ public class OrderController {
         try {
             LockHelper.tryLock(lock);
             final TradeRecord order = tradeRecordService.getById(orderId);
-            if (order.getState() == OrderConstants.REVIEWING || order.getState() == OrderConstants.TERMINATED){
+            if (order.getState() != OrderConstants.PUBLISHED) {
                 throw new BusinessException("此订单已被申诉或冻结，暂时无法确认");
             }
             final UserDto currentUser = UaaHelper.getCurrentUser();
@@ -66,7 +69,7 @@ public class OrderController {
             tradeRecordService.updateById(order);
             log.info("ensurePullOrder success");
             return Result.succeed(order);
-        }finally {
+        } finally {
             LockHelper.unlock(lock);
 
         }
@@ -82,7 +85,7 @@ public class OrderController {
         try {
             LockHelper.tryLock(lock);
             final TradeRecord order = tradeRecordService.getById(orderId);
-            if (order.getState() == OrderConstants.REVIEWING || order.getState() == OrderConstants.TERMINATED){
+            if (order.getState() != OrderConstants.PUBLISHED) {
                 throw new BusinessException("此订单已被申诉或冻结，暂时无法确认");
             }
             final UserDto currentUser = UaaHelper.getCurrentUser();
@@ -104,20 +107,24 @@ public class OrderController {
      * 只有卖请求中的pusher 或 买请求中的puller拥有 主动回滚订单的权力
      */
     @PutMapping("/rollback")
-    public Result<TradeRecord> rollbackOrder(@RequestParam("orderId") Integer orderId){
+    public Result<TradeRecord> rollbackOrder(@RequestParam("orderId") Integer orderId) {
         log.info("rollbackOrder orderId: {}", orderId);
         UserDto currentUser = UaaHelper.getCurrentUser();
         return LockHelper.lockTask(lockRegistry, orderId,
                 () -> {
                     final TradeRecord order = tradeRecordService.getById(orderId);
-                    if (!tradeRecordService.checkPermissionForRollback(currentUser.getSid(), order)){
-                        throw new BusinessException("没有权限撤回");
-                    }
                     if (order.isFinished()) {
                         throw new BusinessException("订单已完成，无法中断");
                     }
+//                    if (!tradeRecordService.checkPermissionForRollback(currentUser.getSid(), order)){
+//                        throw new BusinessException("没有权限撤回");
+//                    }
+                    final boolean pullerRollback = tradeRecordService.isPullerRollback(currentUser.getSid(), order);
+                    order.setState(pullerRollback ? OrderConstants.TERMINATED_1 : OrderConstants.TERMINATED_2);
                     tradeRecordService.rollbackUnfinishedOrder(order);
-                    log.info("rollbackOrder success");
+                    mailService.sendWhenRollback(pullerRollback? order.getPusherEmail(): order.getPullerEmail(), order);
+                    log.info("rollbackOrder success， order: {}", order);
+
                     return Result.succeed(order);
                 });
     }

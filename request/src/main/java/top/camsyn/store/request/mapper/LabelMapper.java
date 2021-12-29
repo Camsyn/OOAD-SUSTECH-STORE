@@ -21,7 +21,7 @@ public interface LabelMapper extends BaseMapper<Label> {
             "       (#{item}) " +
             "</foreach>\n" +
             "   ON DUPLICATE KEY UPDATE\n" +
-            "    push_frequency=push_frequency+1;\n" +
+            "    push_frequency=push_frequency+1\n" +
             "</script>")
     void increasePushFreq(@Param("label_list") Collection<String> labels);
 
@@ -33,7 +33,7 @@ public interface LabelMapper extends BaseMapper<Label> {
             "       (#{item}) " +
             "</foreach>\n" +
             "   ON DUPLICATE KEY UPDATE\n" +
-            "    push_frequency=push_frequency-1;\n" +
+            "    push_frequency=push_frequency-1\n" +
             "</script>")
     void declinePushFreq(@Param("label_list") Collection<String> labels);
     @Insert("<script>\n" +
@@ -44,7 +44,7 @@ public interface LabelMapper extends BaseMapper<Label> {
             "       (#{item}) " +
             "</foreach>\n" +
             "   ON DUPLICATE KEY UPDATE\n" +
-            "    pull_frequency=pull_frequency-1;\n" +
+            "    pull_frequency=pull_frequency-1\n" +
             "</script>")
     void increasePullFreq(@Param("label_list") Collection<String> labels);
 
