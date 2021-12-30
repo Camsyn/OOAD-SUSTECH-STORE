@@ -92,6 +92,7 @@ public class RequestController {
         req.setState(0);
         requestService.updateById(req);
         // TODO: 2021/11/22 审核
+        reviewAsync(req.getId());
         // TODO: 邮件提醒
         mailService.sendWhenModify(user.getEmail(), request);
 

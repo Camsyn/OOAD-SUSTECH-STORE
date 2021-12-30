@@ -98,27 +98,6 @@ public class ChatController {
         }
     }
 
-//    @GetMapping("/record/get")
-//    public Result<List<ChatRecord>> getChatListFromSid(@RequestParam("sendSid")Integer sendSid,
-//                                                       @RequestParam("recvSid") Integer recvSid,
-//                                                       @RequestParam("count") Integer count){
-//        log.info("请求聊天记录， s_sid: {}, r_sid: {}, count: {}",sendSid,recvSid,count);
-////        chatRecordService.page()
-//        try{
-//
-//            List<ChatRecord> chatRecords = chatService.queryChatList(sendSid, recvSid, count);
-//            chatRecords.stream().filter(i->!i.isRead()).forEach(i->
-//            {
-//                i.setSendTime(new Date());
-//                i.setRead(true);
-//            });
-//            chatRecordService.updateBatchById(chatRecords);
-//            return Result.succeed(chatRecords);
-//        }catch (Exception e){
-//            log.error("发生错误， 请求聊天记录， s_sid: {}, r_sid: {}, count: {}",sendSid,recvSid,count);
-//            return Result.failed("服务器错误");
-//        }
-//    }
 
     /**
      * 多发送一条记录， 以表明是否有别以前还有未读的消息
@@ -141,6 +120,7 @@ public class ChatController {
             result.forEach((key, chatRecords) -> {
                 updateRecords(count, chatRecords);
             });
+
             log.info("请求一个用户所有聊天记录成功");
             return Result.succeed(result);
         } catch (Exception e) {
@@ -182,11 +162,11 @@ public class ChatController {
                 flag = true;
             }
         }
-        chatRecords.stream().filter(i -> !i.isRead()).peek(i ->
+        chatRecords.stream().filter(i -> !i.isRead()).forEach(i ->
         {
             i.setRecvTime(LocalDateTime.now());
             i.setRead(true);
-        }).findFirst().ifPresent(i->log.info("更新聊天记录接收状态：send: {}, recv: {}, time: {}", i.getSendId(),i.getRecvId(), i.getRecvTime()));
+        });
         if (flag) {
             chatRecords.get(count).setRead(false);
             chatRecords.get(count).setRecvTime(null);
