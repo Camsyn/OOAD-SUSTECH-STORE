@@ -17,41 +17,41 @@ import java.util.Date;
 @ToString
 public class ReviewLog {
     // 主键
-    private int r_id;
+    private Integer id;
     // 举报者
-    private int initiator;
+    private Integer initiator;
     //被举报对象
-    private int target;
+    private Integer target;
     // 描述
     private String description;
     // 最后处理时间
     private Date time;
     // 状态
-    private int state;//0: 审核中  1: 过审  2: 不过审  3: 申诉审核中 4: 申诉失败，确认不过审
+    private Integer state;//0: 审核中  1: 过审  2: 不过审  3: 申诉审核中 4: 申诉失败，确认不过审
     // 被举报对象类别
-    private int category;//0: 用户  1: 请求  2: 订单  3: 聊天记录  4: 动态  5: 评论
+    private Integer category;//0: 用户  1: 请求  2: 订单  3: 聊天记录  4: 动态  5: 评论
 
-    public int getR_id() {
-        return r_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setR_id(int r_id) {
-        this.r_id = r_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public int getInitiator() {
+    public Integer getInitiator() {
         return initiator;
     }
 
-    public void setInitiator(int initiator) {
+    public void setInitiator(Integer initiator) {
         this.initiator = initiator;
     }
 
-    public int getTarget() {
+    public Integer getTarget() {
         return target;
     }
 
-    public void setTarget(int target) {
+    public void setTarget(Integer target) {
         this.target = target;
     }
 
@@ -71,26 +71,26 @@ public class ReviewLog {
         this.time = time;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
-    public int getCategory() {
+    public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(Integer category) {
         this.category = category;
     }
 
     @Override
     public String toString() {
         return "ReviewLog{" +
-                "r_id=" + r_id +
+                "id=" + id +
                 ", initiator=" + initiator +
                 ", target=" + target +
                 ", description='" + description + '\'' +

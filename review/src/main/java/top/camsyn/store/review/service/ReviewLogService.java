@@ -94,7 +94,6 @@ public class ReviewLogService {
                 rL.setState(2);
                 if(category==0){
                     User user = userClient.getUser(t_id).getData();
-                    user.setCredit(user.getCredit()-1);
                     userClient.changeCredit(user.getSid(), -1);
                 }else if(category==1){
                     Request request = requestClient.getRequest(t_id).getData();
