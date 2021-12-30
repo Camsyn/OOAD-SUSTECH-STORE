@@ -93,6 +93,7 @@ public class OrderController {
                 throw new NotSelfException("非本人的请求, 不可操作");
             order.setPusherConfirm(1);
             if (order.isFinished()) {
+                log.info("订单已完成： {}",orderId);
                 tradeRecordService.postHandle(order);
             }
             tradeRecordService.updateById(order);

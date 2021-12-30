@@ -58,7 +58,9 @@ public class RequestController {
     public Result<Request> pushRequest(@RequestBody Request request) {
         log.info("pushRequest request: {}", request);
         final UserDto user = UaaHelper.getCurrentUser();
-        request.setPusher(user.getSid()).setState(0).setPusherEmail(user.getEmail());
+        request.setPusher(user.getSid())
+                .setState(0)
+                .setPusherEmail(user.getEmail());
         requestService.save(request);
         // TODO: 2021/11/22 审核
         // TODO: 邮件提醒
@@ -89,8 +91,10 @@ public class RequestController {
             log.info("总数量不得小于已售数量 user{}", user);
             return Result.failed("总数量不得小于已售数量");
         }
-        req.setState(0);
-        requestService.updateById(req);
+        request.setPushTime(req.getPushTime());
+        request.setPusher(req.getPusher());
+        request.setState(0);
+        requestService.updateById(request);
         // TODO: 2021/11/22 审核
         reviewAsync(req.getId());
         // TODO: 邮件提醒

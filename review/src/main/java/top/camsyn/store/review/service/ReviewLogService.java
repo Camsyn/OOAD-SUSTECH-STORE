@@ -9,6 +9,7 @@ import top.camsyn.store.commons.entity.request.Request;
 import top.camsyn.store.commons.entity.user.User;
 import top.camsyn.store.commons.helper.UaaHelper;
 
+import top.camsyn.store.commons.model.Result;
 import top.camsyn.store.review.Mapper.ReviewLogMapper;
 import top.camsyn.store.commons.entity.review.ReviewLog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,6 +175,15 @@ public class ReviewLogService {
         }else if(category==1){
             Request request = requestClient.getRequest(t_id).getData();
             if(reviewLogMapper.review(request.getDesc_()+request.getTitle())==0) {
+                if (request.liyuanPayBuyReq()){
+                    final Integer pusher = request.getPusher();
+                    final double cost = request.getCount() * request.getExactPrice();
+                    final Result<User> result = userClient.changeLiyuan(pusher, -cost);
+                    if (!result.isSuccess()){
+                        requestClient.updateRequestState(t_id,5);
+                        return false;
+                    }
+                }
                 requestClient.updateRequestState(t_id,2);
                 return true;
             }else{

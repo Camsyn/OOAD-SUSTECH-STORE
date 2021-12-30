@@ -176,26 +176,30 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
     }
 
     private void updateCredit(int totalPrice, User user) {
-        final Integer curCredit = user.getCredit();
+        Integer curCredit = user.getCredit();
         log.info("更新前credit: {}",curCredit);
         final int creditInc = getCreditIncrease(curCredit, totalPrice);
-        user.setCredit(curCredit + creditInc);
+        curCredit += creditInc;
+        user.setCredit(curCredit);
         log.info("更新后credit: {}",curCredit);
         userClient.updateUser(user);
     }
 
     private int getCreditIncrease(int curCredit, int amount) {
-        int totalInc = 0;
+        double tmp = curCredit;
+        double totalInc = 0;
         do {
-            int step = amount > 1000 ? 10 : amount / 100;
+            double step = amount > 1000 ? 10 : amount / 100.0;
             amount -= 1000;
-            final int delta = 100 - curCredit;
-            final int inc = step * (delta / 100);
+            final double delta = 100 - tmp;
+            if (delta<0) return 100-curCredit;
+            final double inc = (step *  (delta / 100.0));
             totalInc += inc;
-            curCredit += inc;
+            tmp += inc;
+            if (tmp>100) return 100-curCredit;
         } while (amount > 0);
 
-        return totalInc;
+        return (int) totalInc;
     }
 
     public void postHandleSell(TradeRecord record) {
@@ -332,4 +336,6 @@ public class TradeRecordService extends SuperServiceImpl<TradeRecordMapper, Trad
     public boolean isPullerRollback(Integer sid, TradeRecord record) {
         return record.getPuller().equals(sid);
     }
+
+
 }
