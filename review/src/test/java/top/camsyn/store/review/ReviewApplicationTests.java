@@ -15,7 +15,9 @@ class ReviewApplicationTests {
     @Test
     void contextLoads() {
 //        reviewLogService.selectByRid("28");
-        reviewLogService.updateByRid("28","0");
+//        reviewLogService.updateByRid("28","0");
+//        reviewLogService.report("38","违约",2);
+        System.out.println(reviewLogService.selectReportRecord("11910215"));
     }
 
 }

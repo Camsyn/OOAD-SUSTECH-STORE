@@ -13,8 +13,8 @@ public interface ReviewLogMapper {
     @Select("select * from r_log order by time desc")
     List<ReviewLog> selectAll();
 
-    @Select("select * from r_log where r_id = #{R_id} order by time desc")
-    ReviewLog selectByR_id(int R_id);
+    @Select("select * from r_log where id = #{id} order by time desc")
+    ReviewLog selectByR_id(int id);
 
     @Select("select * from r_log where initiator = #{i_id} order by time desc")
     List<ReviewLog> selectReportRecord(int i_id);
@@ -31,10 +31,10 @@ public interface ReviewLogMapper {
     @Select("select count(*) from t_sensitive_words where LOCATE(word,#{desc})>0")
     int review(String desc);
 
-    @Options(useGeneratedKeys = true, keyProperty = "r_id")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     @Insert("insert into r_log(initiator, target, description, time, state, category) values(#{initiator}, #{target}, #{description}, #{time}, #{state}, #{category})")
     void insert(ReviewLog reviewLog);
 
-    @Update("update r_log set description=#{description}, time=#{time}, state=#{state} where r_id=#{r_id}")
+    @Update("update r_log set description=#{description}, time=#{time}, state=#{state} where id=#{id}")
     void update(ReviewLog reviewLog);
 }
