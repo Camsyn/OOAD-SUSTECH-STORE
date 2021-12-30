@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21b4d3f4-dda9-4b57-bd29-b7e6ec650841" name="Changes" comment="最后一班?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/top/camsyn/store/order/service/TradeRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/controller/RequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/request/src/main/java/top/camsyn/store/request/mapper/RequestMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/review/src/main/java/top/camsyn/store/review/service/ReviewLogService.java" afterDir="false" />
-    </list>
+    <list default="true" id="21b4d3f4-dda9-4b57-bd29-b7e6ec650841" name="Changes" comment="最后一班?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640839488607</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="最后一班?">
+      <created>1640843838117</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1640843838117</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
